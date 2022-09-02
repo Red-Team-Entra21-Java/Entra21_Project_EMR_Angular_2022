@@ -1,0 +1,30 @@
+<body class="hold-transition sidebar-mini">
+
+  <div class="wrapper">
+    <app-header ></app-header>
+    <app-menu ></app-menu>
+    <!-- <app-header [hidden]="!security.authenticated"></app-header>
+    <app-menu [hidden]="!security.authenticated"></app-menu> -->
+
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block"><b>Version</b> 1.0.0</div>
+      <strong>Copyright &copy; 2022
+        <a href="https://seiler-emerson.github.io">Electronic Medical Record</a>.</strong>
+      All rights reserved.
+    </footer>
+
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+  </div>
+</body>

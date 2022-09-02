@@ -1,0 +1,111 @@
+<aside class="main-sidebar bg-primary elevation-4">
+    <a routerLink="/" class="brand-link">
+      <img src="../assets/icons/icon.png" alt="EMR Logo" class="brand-image elevation-3"
+        style="opacity: 0.8" />
+      <span class="brand-text font-weight-light text-light">EMR</span>
+    </a>
+  
+    <div class="sidebar">
+      <nav class="mt-2">
+
+        <ul *ngIf="!isAuthenticated()" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item">
+            <a routerLink="dashboard" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">account_circle</span>
+              <p class="mx-2 ">Login</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="appointments" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">person_add_alt</span>
+              <p class="mx-2 ">Cadastrar</p>
+            </a>
+          </li>
+        </ul>
+
+        <ul *ngIf="isAuthenticated()" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li *ngFor="let link of links" class="nav-item">
+            <a [routerLink]="link.rota" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">{{link.icon}}</span>
+              <p class="mx-2 ">{{link.textContent}}</p>
+            </a>
+            <ul *ngIf="link.submenu" class="nav nav-treeview">
+              <li *ngFor="let menu of link.submenu" class="nav-item ">
+                <a [routerLink]="menu.rota" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{menu.title}}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li class="nav-item">
+            <a routerLink="dashboard" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">dashboard</span>
+              <p class="mx-2 ">Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="appointments" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">monitor_heart</span>
+              <p class="mx-2 ">Atendimentos</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">people_alt</span>
+              <p class="mx-2">Cadastros<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a routerLink="patient" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pacientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="doctor" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Médicos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="user" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuários</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">description</span>
+              <p class="mx-2">Relatórios<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a routerLink="pagina" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pacientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="outro" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Médicos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="outro" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuários</p>
+                </a>
+              </li> 
+            </ul>
+          </li> -->
+  
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  
