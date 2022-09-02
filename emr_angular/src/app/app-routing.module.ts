@@ -17,13 +17,13 @@ const routes: Routes = [
   { path: "", component: LoginComponent},
   { path: "dashboard", component: DashboardComponent,canActivate: [SecurityService]},
   { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
-  { path: "new-appointment", component: NewAppointmentComponent,canActivate: [SecurityService]},
-  { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},
-  { path: "new-doctor", component: NewDoctorComponent,canActivate: [SecurityService]},
   { path: "patient", component: PatientComponent,canActivate: [SecurityService]},
-  { path: "new-patient", component: NewPatientComponent,canActivate: [SecurityService]},
+  { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},
   { path: "user", component: UserComponent,canActivate: [SecurityService]},
-  { path: "new-user", component: NewUserComponent,canActivate: [SecurityService]},
+  { path: "new-appointment", component: NewAppointmentComponent},
+  { path: "new-patient", component: NewPatientComponent},
+  { path: "new-doctor", component: NewDoctorComponent},
+  { path: "new-user", component: NewUserComponent},
 
 ];
 
