@@ -10,6 +10,7 @@ import { NewPatientComponent } from './new-patient/new-patient.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { UserComponent } from './user/user.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,10 +23,12 @@ import { UserComponent } from './user/user.component';
     PatientComponent,
     NewPatientComponent,
     NewUserComponent,
-    UserComponent
+    UserComponent,
+    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ]
 })
 export class CrudModule { }

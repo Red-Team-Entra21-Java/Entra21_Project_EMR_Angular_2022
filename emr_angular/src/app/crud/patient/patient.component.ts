@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, of } from 'rxjs';
+import { BackendService } from 'src/app/backend.service';
 
 @Component({
   selector: 'app-patient',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientComponent implements OnInit {
 
-  patients: Array<any> = [
+patients: Array<any> = [
     {
         name: "Sheldon Cooper",
         cpf: "036.869.260-40",
@@ -163,10 +165,30 @@ export class PatientComponent implements OnInit {
         ]
     },
 ]
+patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
-  constructor() { }
+  constructor(
+    private service: BackendService
+  ) { }
 
   ngOnInit(): void {
+    this.listar()
+  }
+
+  listar() {
+    this.service.listPatient("texte")
+      .pipe(
+        catchError(
+          (error) => {
+            this.patientList = this.patients 
+            return of(this.patientList)
+          }
+        )
+      )
+      .subscribe((Response) => {
+        console.log("Resultado:", Response);
+
+      })
   }
 
   deletePatient(index: number) {

@@ -16,7 +16,7 @@
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyPatient">
-                <tr *ngFor="let patient of patients; let index = index">
+                <tr *ngFor="let patient of patientList; let index = index">
                     <td>{{ patient.name }}</td>
                     <td>{{ patient.cpf }}</td>
                     <td>{{ patient.appointments.length }}</td>
@@ -36,6 +36,6 @@
                 </tr>
             </tbody>
         </table>
-
+        <!-- <button (click)="listar()">Listar</button> -->
     </div>
 </div>
