@@ -7,6 +7,8 @@ import { CrudModule } from './crud/crud.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     MenuComponent,
     LoginComponent,
+    HomeComponent,
+    FooterComponent,
     
   ],
   imports: [
