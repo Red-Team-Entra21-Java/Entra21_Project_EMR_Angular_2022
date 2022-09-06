@@ -11,16 +11,18 @@
             <thead class="text-center">
                 <th>Data</th>
                 <th>Hora</th>
+                <th>CPF Paciente</th>
                 <th>Nome Paciente</th>
                 <th>Nome Médico</th>
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
-                <tr>
-                    <td>Joana da Silva</td>
-                    <td>502.680.680-54</td>
-                    <td>3 atendimentos</td>
-                    <td>Carlos Alcantara</td>
+                <tr *ngFor="let appointment of appointments; let index = index">
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.hour }}</td>
+                    <td>{{ appointment.patientCPF}}</td>
+                    <td>{{ appointment.patientName}}</td>
+                    <td>{{ appointment.doctorName}}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
                           <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center">
