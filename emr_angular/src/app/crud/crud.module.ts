@@ -11,6 +11,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { UserComponent } from './user/user.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ]
 })
 export class CrudModule { }

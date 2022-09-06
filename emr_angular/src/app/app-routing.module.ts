@@ -10,8 +10,10 @@ import { NewPatientComponent } from './crud/new-patient/new-patient.component';
 import { NewUserComponent } from './crud/new-user/new-user.component';
 import { PatientComponent } from './crud/patient/patient.component';
 import { UserComponent } from './crud/user/user.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './initial-pages/home/home.component';
+import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { LoginComponent } from './initial-pages/login/login.component';
+import { NewUserIndexComponent } from './initial-pages/new-user-index/new-user-index.component';
 import { SecurityService } from './security.service';
 
 const routes: Routes = [
@@ -26,11 +28,12 @@ const routes: Routes = [
   { path: "new-patient", component: NewPatientComponent},
   { path: "new-doctor", component: NewDoctorComponent},
   { path: "new-user", component: NewUserComponent},
+  { path: "new-user-index", component: NewUserIndexComponent},
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),CrudModule],
+  imports: [RouterModule.forRoot(routes),CrudModule,InitialPagesModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

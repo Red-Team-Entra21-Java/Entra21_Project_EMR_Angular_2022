@@ -1,0 +1,22 @@
+.initial-image {
+    background-image: url(../../../assets/images/background-initial.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    background-size: cover;
+}
+
+.medical-color {
+    background-color: #47BED8;
+}
+
+.initial {
+    height: 100vh;
+}
+
+.title-initial {
+    font-size: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    line-height: 90px;
+}

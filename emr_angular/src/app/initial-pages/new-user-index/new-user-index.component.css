@@ -1,13 +1,9 @@
-.initial-image {
-    background-image: url(../../assets/images/background-initial.png);
+.login-image {
+    background-image: url(../../../assets/images/background-login.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: right;
+    background-attachment: inherit;
+    background-position: inherit;
     background-size: cover;
-}
-
-.medical-color {
-    background-color: #47BED8;
 }
 
 .initial {
@@ -19,4 +15,8 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     line-height: 90px;
+}
+
+.medical-color {
+    background-color: #47BED8;
 }

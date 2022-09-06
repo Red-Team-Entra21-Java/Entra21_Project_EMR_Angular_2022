@@ -7,10 +7,10 @@
     </div>
 
     <div class="col medical-color d-flex justify-content-center">
-        <div class="align-self-center text-end form-width">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card m-5 p-2" id="">
+        <div class="align-self-center text-end w-50">
+            <div class="row d-flex">
+                <div class="col">
+                    <div class="card" id="">
                         <div class="card-header">LOGIN</div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -22,7 +22,9 @@
                                 <input type="password" class="form-control" id="password" placeholder="Senha">
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer text-center">
+                            <p>Não possui cadastro? Cadastre-se <a href="/pages/cadastro/usuarios/usuario-2-novo-index.html">aqui!</a></p>
+                            <button class="btn btn-danger mr-1">Limpar</button>
                             <button class="btn btn-primary" (click)="login()">Entrar</button>
                         </div>
                     </div>
