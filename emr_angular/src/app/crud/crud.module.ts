@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DetailsPatientComponent } from './details-patient/details-patient.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { RouterModule } from '@angular/router';
     NewPatientComponent,
     NewUserComponent,
     UserComponent,
+    DetailsPatientComponent,
     
   ],
   imports: [

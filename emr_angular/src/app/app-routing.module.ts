@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppointmentComponent } from './crud/appointment/appointment.component';
 import { CrudModule } from './crud/crud.module';
 import { DashboardComponent } from './crud/dashboard/dashboard.component';
+import { DetailsPatientComponent } from './crud/details-patient/details-patient.component';
 import { DoctorComponent } from './crud/doctor/doctor.component';
 import { NewAppointmentComponent } from './crud/new-appointment/new-appointment.component';
 import { NewDoctorComponent } from './crud/new-doctor/new-doctor.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "new-doctor", component: NewDoctorComponent},
   { path: "new-user", component: NewUserComponent},
   { path: "new-user-index", component: NewUserIndexComponent},
+  { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]}
 
 ];
 
