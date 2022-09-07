@@ -14,6 +14,10 @@ import { UserComponent } from './crud/user/user.component';
 import { FormsPagesComponent } from './initial-pages/forms-pages/forms-pages.component';
 import { HomeComponent } from './initial-pages/home/home.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { AppointmentReportComponent } from './report/appointment-report/appointment-report.component';
+import { DoctorReportComponent } from './report/doctor-report/doctor-report.component';
+import { PatientReportComponent } from './report/patient-report/patient-report.component';
+import { UserReportComponent } from './report/user-report/user-report.component';
 import { SecurityService } from './services/security/security.service';
 
 const routes: Routes = [
@@ -32,7 +36,11 @@ const routes: Routes = [
   { path: "new-doctor/:name/:cpf/:motherName/:fatherNamer/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country/:registerNumber/:specialty/:numberAppointments", component: NewDoctorComponent,canActivate: [SecurityService]},
   { path: "new-user", component: NewUserComponent},
   { path: "new-user/:name/:email/:login/:password", component: NewUserComponent},
-  { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]}
+  { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]},
+  { path: "appointment-report", component: AppointmentReportComponent,canActivate: [SecurityService]},
+  { path: "patient-report", component: PatientReportComponent,canActivate: [SecurityService]},
+  { path: "doctor-report", component: DoctorReportComponent,canActivate: [SecurityService]},
+  { path: "user-report", component: UserReportComponent,canActivate: [SecurityService]},
 
 ];
 

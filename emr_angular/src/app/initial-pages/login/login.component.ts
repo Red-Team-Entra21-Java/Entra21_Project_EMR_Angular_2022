@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     for (let countLogin = 0; countLogin < this.userService.users.length; countLogin++) {
       if(login === this.userService.users[countLogin].login && password === this.userService.users[countLogin].password) {
         this.security.authenticated = true;
+        this.service.userLogged = this.userService.users[countLogin].name
         this.router.navigateByUrl('dashboard')
       } else {
         this.erroMessage = false;

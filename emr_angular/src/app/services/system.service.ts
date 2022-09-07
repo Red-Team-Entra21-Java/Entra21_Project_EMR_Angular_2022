@@ -7,6 +7,7 @@ export class SystemService {
 
   currentTitle!: string;
   isLogin!: boolean;
-  
+  userLogged!: string;
+
   constructor() { }
 }

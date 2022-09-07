@@ -9,6 +9,10 @@ import { LoginComponent } from './initial-pages/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
 import { SystemService } from './services/system.service';
+import { PatientReportComponent } from './report/patient-report/patient-report.component';
+import { AppointmentReportComponent } from './report/appointment-report/appointment-report.component';
+import { DoctorReportComponent } from './report/doctor-report/doctor-report.component';
+import { UserReportComponent } from './report/user-report/user-report.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,10 @@ import { SystemService } from './services/system.service';
     HeaderComponent,
     MenuComponent,
     FooterComponent,
+    PatientReportComponent,
+    AppointmentReportComponent,
+    DoctorReportComponent,
+    UserReportComponent,
     
   ],
   imports: [

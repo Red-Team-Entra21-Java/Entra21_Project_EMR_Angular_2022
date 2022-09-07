@@ -5,8 +5,8 @@
       <span class="brand-text font-weight-light text-light">EMR</span>
     </a>
   
-    <div class="sidebar">
-      <nav class="mt-2">
+    <div class="sidebar ">
+      <nav class="menu-height mt-2 d-flex flex-column justify-content-between">
 
         <ul *ngIf="!isAuthenticated()" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -38,73 +38,18 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <!-- <li class="nav-item">
-            <a routerLink="dashboard" class="nav-link text-light d-flex">
-              <span class="material-icons-sharp">dashboard</span>
-              <p class="mx-2 ">Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="appointments" class="nav-link text-light d-flex">
-              <span class="material-icons-sharp">monitor_heart</span>
-              <p class="mx-2 ">Atendimentos</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link text-light d-flex">
-              <span class="material-icons-sharp">people_alt</span>
-              <p class="mx-2">Cadastros<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a routerLink="patient" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pacientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="doctor" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Médicos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="user" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Usuários</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link text-light d-flex">
-              <span class="material-icons-sharp">description</span>
-              <p class="mx-2">Relatórios<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a routerLink="pagina" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pacientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="outro" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Médicos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="outro" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Usuários</p>
-                </a>
-              </li> 
-            </ul>
-          </li> -->
-  
+
+          </li>  
         </ul>
+        <ul class="">
+          <li class="list-style-none">
+            <button class="btn btn-danger" (click)="exit()">
+              <i class="fas fa-times"></i>
+              EXIT
+            </button>
+          </li>
+        </ul>
+        
       </nav>
     </div>
   </aside>
