@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-appointment',
@@ -12,11 +13,13 @@ export class AppointmentComponent implements OnInit {
   appointmenttList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: AppointmentService
+    private service: AppointmentService,
+    private system: SystemService
   ) { }
 
   ngOnInit(): void {
     this.listar()
+    this.enviarTitulo()
   }
 
   listar() {
@@ -39,7 +42,8 @@ export class AppointmentComponent implements OnInit {
     // this.patientList.appointment.splice(index,1)
   }
 
-
-
+  enviarTitulo() {
+    this.system.tituloAtual = "Atendimentos"
+  }
 
 }

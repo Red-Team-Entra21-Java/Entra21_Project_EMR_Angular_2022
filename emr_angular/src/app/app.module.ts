@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './initial-pages/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { SystemService } from './services/system.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { InitialPagesModule } from './initial-pages/initial-pages.module';
     CrudModule,
     InitialPagesModule
   ],
-  providers: [],
+  providers: [SystemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

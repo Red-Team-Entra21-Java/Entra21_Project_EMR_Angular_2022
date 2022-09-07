@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-doctor',
@@ -36,7 +37,7 @@ export class DoctorComponent implements OnInit {
   }
 
   deleteDoctor(index: number) {
-    this.doctorList.splice(index,1)
+    this.doctorList.splice(index, 1)
   }
 
 }

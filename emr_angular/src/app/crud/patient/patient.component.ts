@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { PatientService } from 'src/app/services/crud/patient.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-patient',
@@ -13,11 +14,13 @@ export class PatientComponent implements OnInit {
 patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: PatientService
+    private service: PatientService,
+    private system: SystemService
   ) { }
 
   ngOnInit(): void {
     this.listar()
+    this.sendTitle()
   }
 
   listar() {
@@ -38,6 +41,10 @@ patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI
 
   deletePatient(index: number) {
     this.patientList.splice(index,1)
+  }
+
+  sendTitle() {
+    this.system.tituloAtual = "Cadastro"
   }
 
 }

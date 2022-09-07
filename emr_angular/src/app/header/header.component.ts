@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from '../services/security/security.service';
+import { SystemService } from '../services/system.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private security: SecurityService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public system: SystemService
 
   ) { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  titulo: string = 'Dashboard';
-
   constructor(
-    private router: Router
+    private router: Router,
+    private system: SystemService
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   enviarTitulo() {
-    this.router.navigate(['title',this.titulo])
+    this.system.tituloAtual = "Dashboard"
   }
 
 }
