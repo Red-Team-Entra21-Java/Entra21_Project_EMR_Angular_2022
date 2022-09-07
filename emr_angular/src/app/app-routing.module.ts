@@ -15,7 +15,7 @@ import { HomeComponent } from './initial-pages/home/home.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
 import { LoginComponent } from './initial-pages/login/login.component';
 import { NewUserIndexComponent } from './initial-pages/new-user-index/new-user-index.component';
-import { SecurityService } from './security.service';
+import { SecurityService } from './services/security/security.service';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},

@@ -17,12 +17,12 @@
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
-                <tr *ngFor="let appointment of appointments; let index = index">
+                <tr *ngFor="let appointment of appointmenttList; let index = index">
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.hour }}</td>
                     <td>{{ appointment.patientCPF}}</td>
-                    <td>{{ appointment.patientName}}</td>
-                    <td>{{ appointment.doctorName}}</td>
+                    <td>{{ appointment.patient}}</td>
+                    <td>{{ appointment.doctor}}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
                           <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center">

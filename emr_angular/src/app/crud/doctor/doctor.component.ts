@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
-import { BackendService } from 'src/app/backend.service';
+import { DoctorService } from 'src/app/services/crud/doctor.service';
 
 @Component({
   selector: 'app-doctor',
@@ -12,7 +12,7 @@ export class DoctorComponent implements OnInit {
   doctorList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: BackendService
+    private service: DoctorService
   ) { }
 
   ngOnInit(): void {
