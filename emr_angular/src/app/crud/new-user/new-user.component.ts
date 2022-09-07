@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { UserService } from 'src/app/services/crud/user.service';
 
 @Component({
   selector: 'app-new-user',
@@ -7,41 +9,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewUserComponent implements OnInit {
 
-  constructor() { }
+  updateButtonHidden: boolean = this.service.updateButtonHidden;
+  name!: string | null
+  email!: string | null
+  login!: string | null
+  password!: string | null
+
+
+  constructor(
+    private service: UserService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.name = this.route.snapshot.paramMap.get("name")
+    this.email = this.route.snapshot.paramMap.get("email")
+    this.login = this.route.snapshot.paramMap.get("login")
+    this.password = this.route.snapshot.paramMap.get("password")
   }
-  
-  newUser() {
+
+  saveUser() {
     (<HTMLInputElement>document.getElementById('formNewUser')).addEventListener('submit', (event) => {
       event.preventDefault()
       let data = this.getData()
-      //console.log("Recebi", data)
 
-      let newUserButton =  (<HTMLInputElement>document.querySelector('#newUserButton'))
-
-      if(newUserButton.offsetParent !== null) {
-        console.log("Salvando",data)
+      if (this.updateButtonHidden === true) {
+        console.log("Salvando", data)
+        this.service.users.push(data)
       } else {
-        // patient[patient.indexOf(update)] = data
-        // console.log(data);
+        this.service.users[this.service.indexUpdateUser] = data
       }
-
+      
     });
   }
 
-
   getData() {
-    let name: string = (<HTMLInputElement>document.getElementById("userNameRecord")).value
-    let email: string = (<HTMLInputElement>document.getElementById("email")).value
-    let userName: string = (<HTMLInputElement>document.getElementById("userName")).value
-    let password: string = (<HTMLInputElement>document.getElementById("passwordUser")).value
+    this.name = (<HTMLInputElement>document.getElementById("userNameRecord")).value
+    this.email = (<HTMLInputElement>document.getElementById("userEmail")).value
+    this.login = (<HTMLInputElement>document.getElementById("userName")).value
+    this.password = (<HTMLInputElement>document.getElementById("passwordUser")).value
 
     return {
-      name: name,
-      email: email,
-      userName: userName,
-      password: password
+      name: this.name,
+      email: this.email,
+      login: this.login,
+      password: this.password
     }
   }
 

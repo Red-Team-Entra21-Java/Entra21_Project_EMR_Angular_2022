@@ -4,7 +4,7 @@
             <input type="text" class="form-control" placeholder="Enter the appointment date:"
                 aria-label="Recipient's username" aria-describedby="searchButton" id="searchAppointment">
             <button class="btn btn-primary" type="button" id="searchAppointmentButton">Search</button>
-            <button routerLink="../new-appointment" class="btn btn-success ml-2">New Appointment</button>
+            <button routerLink="../new-appointment" class="btn btn-success ml-2" (click)="newAppointment()">New Appointment</button>
         </div>
         <br>
         <table class="table table-bordered table-hover table-striped">
@@ -25,10 +25,10 @@
                     <td>{{ appointment.doctor}}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
-                          <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center">
+                          <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteAppointment(index)">
                               <span class="material-icons-sharp">delete</span>
                           </div>
-                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center">
+                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="sendData(index)">
                               <span class="material-icons-sharp">edit</span>
                           </div>
                           <div class="mx-1 btn btn-primary d-flex align-items-center justify-content-center">

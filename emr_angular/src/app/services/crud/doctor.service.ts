@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class DoctorService {
   path: string = "https://pokeapi.co/api/v2"
-
+  updateButtonHidden: boolean = true;
+  indexUpdateDoctor!: number;
+  
   doctors = [
       {
           name: "Rafael da Silva",
@@ -22,8 +24,8 @@ export class DoctorService {
           state: "São Paulo",
           country: "Brasil",
           registerNumber: "123456-9/RR",
-          speciality: "Clinico Geral",
-          numberAppointments: 23,
+          specialty: "Clinico Geral",
+          numberAppointments: "23",
       },
       {
           name: "Carlos Francesconi",
@@ -39,8 +41,8 @@ export class DoctorService {
           state: "Santa Catarina",
           country: "Brasil",
           registerNumber: "32455-9/SC",
-          speciality: "Cardiologista",
-          numberAppointments: 31
+          specialty: "Cardiologista",
+          numberAppointments: "31"
       },
       {
           name: "Maria Silva",
@@ -56,8 +58,8 @@ export class DoctorService {
           state: "Santa Catarina",
           country: "Brasil",
           registerNumber: "9836745-9/PR",
-          speciality: "Obstetra",
-          numberAppointments: 19
+          specialty: "Obstetra",
+          numberAppointments: "19"
       }
   ]
 

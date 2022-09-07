@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class PatientService {
 
   path: string = "https://pokeapi.co/api/v2"  //URL DA API
-
+  updateButtonHidden: boolean = true;
+  indexUpdatePatient!: number;
 
   patients: Array<any> = [
       {

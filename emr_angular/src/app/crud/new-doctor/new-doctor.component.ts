@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DoctorService } from 'src/app/services/crud/doctor.service';
 
 @Component({
   selector: 'app-new-doctor',
@@ -7,61 +9,92 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewDoctorComponent implements OnInit {
 
-  constructor() { }
+  updateButtonHidden: boolean = this.service.updateButtonHidden;
+  name!: string | null
+  cpf!: string | null
+  motherName!: string | null
+  fatherName!: string | null
+  genre!: string | null
+  birthDate!: string | null
+  streetName!: string | null
+  numberHome!: string | null
+  district!: string | null
+  city!: string | null
+  state!: string | null
+  country!: string | null
+  registerNumber!: string | null
+  specialty!: string | null
+  numberAppointments!: string | null
+
+  constructor(
+    private service: DoctorService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.name = this.route.snapshot.paramMap.get("name")
+    this.cpf = this.route.snapshot.paramMap.get("cpf")
+    this.motherName = this.route.snapshot.paramMap.get("motherName")
+    this.fatherName = this.route.snapshot.paramMap.get("fatherName")   
+    this.genre = this.route.snapshot.paramMap.get("genre")
+    this.birthDate = this.route.snapshot.paramMap.get("birthDate")
+    this.streetName = this.route.snapshot.paramMap.get("streetName")
+    this.numberHome = this.route.snapshot.paramMap.get("numberHome")
+    this.district = this.route.snapshot.paramMap.get("district")
+    this.city = this.route.snapshot.paramMap.get("city")
+    this.state = this.route.snapshot.paramMap.get("state")
+    this.country = this.route.snapshot.paramMap.get("country")
+    this.registerNumber = this.route.snapshot.paramMap.get("registerNumber")
+    this.specialty = this.route.snapshot.paramMap.get("specialty")
+    this.numberAppointments = this.route.snapshot.paramMap.get("numberAppointments")
   }
-  newDoctor() {
+  saveDoctor() {
     (<HTMLInputElement>document.getElementById('formNewDoctor')).addEventListener('submit', (event) => {
       event.preventDefault()
       let data = this.getData()
-      //console.log("Recebi", data)
-
-      let newDoctorButton =  (<HTMLInputElement>document.querySelector('#newDoctor'))
-
-      if(newDoctorButton.offsetParent !== null) {
-        console.log("Salvando",data)
+      if (this.updateButtonHidden === true) {
+        console.log("Salvando", data)
+        this.service.doctors.push(data)
       } else {
-        // patient[patient.indexOf(update)] = data
-        // console.log(data);
+        this.service.doctors[this.service.indexUpdateDoctor] = data
       }
 
     });
   }
 
   getData() {
-    let name: string = (<HTMLInputElement>document.getElementById("doctorName")).value
-    let cpf: string = (<HTMLInputElement>document.getElementById("doctorCPF")).value
-    let motherName: string = (<HTMLInputElement>document.getElementById("doctorMotherName")).value
-    let fatherName: string = (<HTMLInputElement>document.getElementById("doctorFatherName")).value
-    let genre: string = (<HTMLInputElement>document.querySelector('input[name="genreDoctor"]:checked')).value
-    let birthDate: string = (<HTMLInputElement>document.getElementById("doctorBirthDate")).value
-    let streetName: string = (<HTMLInputElement>document.getElementById("doctorStreet")).value
-    let numberHome: string = (<HTMLInputElement>document.getElementById("doctorHomeNumber")).value
-    let district: string = (<HTMLInputElement>document.getElementById("doctorDistrict")).value
-    let city: string = (<HTMLInputElement>document.getElementById("doctorCity")).value
-    let state: string = (<HTMLInputElement>document.getElementById("doctorState")).value
-    let country: string = (<HTMLInputElement>document.getElementById("doctorCountry")).value
-    let registerNumber: string = (<HTMLInputElement>document.getElementById("doctorRegisterNumber")).value
-    let specialty: string = (<HTMLInputElement>document.getElementById("doctorSpecialty")).value
-    let numberAppointments: Array<any> = []
-    
+    this.name = (<HTMLInputElement>document.getElementById("doctorName")).value
+    this.cpf = (<HTMLInputElement>document.getElementById("doctorCPF")).value
+    this.motherName = (<HTMLInputElement>document.getElementById("doctorMotherName")).value
+    this.fatherName = (<HTMLInputElement>document.getElementById("doctorFatherName")).value
+    this.genre = (<HTMLInputElement>document.querySelector('input[name="genreDoctor"]:checked')).value
+    this.birthDate = (<HTMLInputElement>document.getElementById("doctorBirthDate")).value
+    this.streetName = (<HTMLInputElement>document.getElementById("doctorStreet")).value
+    this.numberHome = (<HTMLInputElement>document.getElementById("doctorHomeNumber")).value
+    this.district = (<HTMLInputElement>document.getElementById("doctorDistrict")).value
+    this.city = (<HTMLInputElement>document.getElementById("doctorCity")).value
+    this.state = (<HTMLInputElement>document.getElementById("doctorState")).value
+    this.country = (<HTMLInputElement>document.getElementById("doctorCountry")).value
+    this.registerNumber = (<HTMLInputElement>document.getElementById("doctorRegisterNumber")).value
+    this.specialty = (<HTMLInputElement>document.getElementById("doctorSpecialty")).value
+    this.numberAppointments = ""
+
     return {
-      name: name,
-      cpf: cpf,
-      motherName: motherName,
-      fatherName: fatherName,
-      genre: genre,
-      birthDate: birthDate,
-      streetName: streetName,
-      numberHome: numberHome,
-      district: district,
-      city: city,
-      state: state,
-      country: country,
-      registerNumber: registerNumber,
-      specialty: specialty,
-      numberAppointments: numberAppointments
+      name: this.name,
+      cpf: this.cpf,
+      motherName: this.motherName,
+      fatherName: this.fatherName,
+      genre: this.genre,
+      birthDate: this.birthDate,
+      streetName: this.streetName,
+      numberHome: this.numberHome,
+      district: this.district,
+      city: this.city,
+      state: this.state,
+      country: this.country,
+      registerNumber: this.registerNumber,
+      specialty: this.specialty,
+      numberAppointments: this.numberAppointments
     }
   }
 

@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class AppointmentService {
 
   path: string = "https://pokeapi.co/api/v2"
+  updateButtonHidden: boolean = true;
+  indexUpdateAppointment!: number;
 
   appointments = [
     {
@@ -19,7 +21,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -31,7 +33,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -43,7 +45,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -55,7 +57,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -67,7 +69,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -79,7 +81,7 @@ export class AppointmentService {
       prescription: "paracetamol - 8/8h - se dor",
       certificate: "Declaracao de comparecimento",
       forwarding: "encaminhamento para neuro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
     {
       date: "2022-01-02",
@@ -91,7 +93,7 @@ export class AppointmentService {
       prescription: "laxante - 8/8h - 1 dia",
       certificate: "Atestado",
       forwarding: "encaminhamento para gastro",
-      medicalRealise: "Liberado"
+      medicalRelease: "Liberado"
     },
   ]
 

@@ -7,17 +7,25 @@ import { Injectable } from '@angular/core';
 export class UserService {
   path: string = "https://pokeapi.co/api/v2"  //URL DA API
 
+  updateButtonHidden: boolean = true;
+  indexUpdateUser!: number;
 
   users: Array<any> = [
     {
+      name: "Administrator",
+      email: "admin@admin.com",
       login: "admin",
       password: "admin"
     },
     {
+      name: "Doctor",
+      email: "doctor@doctor.com",
       login: "doctor",
       password: "doctor"
     },
     {
+      name: "User",
+      email: "user@user.com",
       login: "user",
       password: "user"
     }

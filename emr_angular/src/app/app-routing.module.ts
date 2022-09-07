@@ -26,9 +26,13 @@ const routes: Routes = [
   { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},
   { path: "user", component: UserComponent,canActivate: [SecurityService]},
   { path: "new-appointment", component: NewAppointmentComponent,canActivate: [SecurityService]},
+  { path: "new-appointment/:date/:hour/:doctor/:patient/:patientCPF/:anamnesis/:prescription/:certificate/:forwarding/:medicalRelease", component: NewAppointmentComponent,canActivate: [SecurityService]},
   { path: "new-patient", component: NewPatientComponent,canActivate: [SecurityService]},
+  { path: "new-patient/:name/:cpf/:motherName/:fatherNamer/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country", component: NewPatientComponent,canActivate: [SecurityService]},
   { path: "new-doctor", component: NewDoctorComponent,canActivate: [SecurityService]},
+  { path: "new-doctor/:name/:cpf/:motherName/:fatherNamer/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country/:registerNumber/:specialty/:numberAppointments", component: NewDoctorComponent,canActivate: [SecurityService]},
   { path: "new-user", component: NewUserComponent},
+  { path: "new-user/:name/:email/:login/:password", component: NewUserComponent},
   { path: "new-user-index", component: NewUserIndexComponent},
   { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]}
 

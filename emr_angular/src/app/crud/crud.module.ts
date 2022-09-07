@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DetailsPatientComponent } from './details-patient/details-patient.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DetailsPatientComponent } from './details-patient/details-patient.compo
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class CrudModule { }
