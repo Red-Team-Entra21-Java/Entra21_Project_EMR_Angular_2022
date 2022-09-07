@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   enviarTitulo() {
-    this.system.tituloAtual = "Dashboard"
+    this.system.currentTitle = "Dashboard"
   }
 
 }

@@ -43,7 +43,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   enviarTitulo() {
-    this.system.tituloAtual = "Atendimentos"
+    this.system.currentTitle = "Appointments"
   }
 
 }

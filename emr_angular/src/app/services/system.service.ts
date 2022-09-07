@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SystemService {
 
-  tituloAtual!: string;
+  currentTitle!: string;
 
   constructor() { }
 }

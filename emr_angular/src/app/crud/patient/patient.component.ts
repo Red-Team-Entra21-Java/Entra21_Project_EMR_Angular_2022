@@ -44,7 +44,7 @@ patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI
   }
 
   sendTitle() {
-    this.system.tituloAtual = "Cadastro"
+    this.system.currentTitle = "Records"
   }
 
 }

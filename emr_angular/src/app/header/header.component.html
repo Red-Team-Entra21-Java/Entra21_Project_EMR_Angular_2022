@@ -4,14 +4,14 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a routerLink="" class="nav-link">{{ system.tituloAtual }}</a>
+        <a routerLink="" class="nav-link">{{ system.currentTitle }}</a>
       </li>
     </ul>
   
     <ul class="navbar-nav ml-auto">
       <li *ngIf="isAuthenticated()" class="nav-item dropdown">
         <button class="btn btn-danger" (click)="exit()">
-          Sair
+          Exit
           <i class="fas fa-times"></i>
         </button>
         

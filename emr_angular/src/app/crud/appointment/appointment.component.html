@@ -1,19 +1,19 @@
 <div class="card m-5 p-2" id="listAppointmentContainer">
     <div class="card-body">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Digite a data do atendimento:"
+            <input type="text" class="form-control" placeholder="Enter the appointment date:"
                 aria-label="Recipient's username" aria-describedby="searchButton" id="searchAppointment">
-            <button class="btn btn-primary" type="button" id="searchAppointmentButton">Buscar</button>
-            <button routerLink="../new-appointment" class="btn btn-success ml-2">Novo Atendimento</button>
+            <button class="btn btn-primary" type="button" id="searchAppointmentButton">Search</button>
+            <button routerLink="../new-appointment" class="btn btn-success ml-2">New Appointment</button>
         </div>
         <br>
         <table class="table table-bordered table-hover table-striped">
             <thead class="text-center">
-                <th>Data</th>
-                <th>Hora</th>
+                <th>Date</th>
+                <th>Hour</th>
                 <th>CPF Paciente</th>
-                <th>Nome Paciente</th>
-                <th>Nome Médico</th>
+                <th>Pacient Name</th>
+                <th>Doctor Name</th>
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
