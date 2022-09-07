@@ -20,7 +20,7 @@ import { SecurityService } from './services/security/security.service';
 const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "login", component: LoginComponent},
-  { path: "dashboard", component: DashboardComponent,canActivate: [SecurityService]},
+  { path: "dashboard/:title", component: DashboardComponent,canActivate: [SecurityService]},
   { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
   { path: "patient", component: PatientComponent,canActivate: [SecurityService]},
   { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},

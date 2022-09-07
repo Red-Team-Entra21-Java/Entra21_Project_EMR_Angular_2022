@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from '../services/security/security.service';
 
 @Component({
@@ -9,12 +9,18 @@ import { SecurityService } from '../services/security/security.service';
 })
 export class HeaderComponent implements OnInit {
 
+  titulo!: string | null
+
   constructor(
     private router: Router,
-    private security: SecurityService
+    private security: SecurityService,
+    private route: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
+    this.titulo = this.route.snapshot.paramMap.get('title')
+    console.log(this.titulo);
   }
 
   exit() {
@@ -23,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isAuthenticated(): boolean {
-    if(this.security.authenticated) {
+    if (this.security.authenticated) {
       return true;
     } else {
       return false

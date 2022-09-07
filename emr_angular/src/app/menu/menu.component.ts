@@ -22,7 +22,8 @@ export class MenuComponent implements OnInit {
 
     this.links.push(
       {
-        rota: 'dashboard',
+        // rota: 'dashboard',
+        rota: ['/dashboard', 'Teste'],
         textContent: 'Dashboard',
         icon: 'dashboard'
       }
