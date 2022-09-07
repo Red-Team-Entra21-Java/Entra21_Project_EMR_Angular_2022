@@ -1,20 +1,20 @@
 <div class="card m-5 p-2" id="newUserContainer">
   <div class="card-body">
-    <form action="/salvo.html" enctype="text/plain" method="get" id="formNewUser">
+    <form action="/salvo.html" enctype="text/plain" method="get" id="formNewUser" ngNativeValidate>
       <div class="card-body">
         <div class="row">
           <div class="col-12">
             <div class="mb-3">
               <label for="userNameRecord" class="form-label">Enter your name:</label>
-              <input type="text" class="form-control" id="userNameRecord" placeholder="Your Name" [(ngModel)]="name" name="name">
+              <input type="text" class="form-control" id="userNameRecord" placeholder="Your Name" [(ngModel)]="name" name="name" required>
             </div>
             <div class="mb-3">
               <label for="userEmail" class="form-label">Enter you e-mail:</label>
-              <input type="email" class="form-control" id="userEmail" placeholder="your_email@email.com" [(ngModel)]="email" name="email">
+              <input type="email" class="form-control" id="userEmail" placeholder="your_email@email.com" [(ngModel)]="email" name="email" required>
             </div>
             <div class="mb-3">
-              <label for="userName" class="form-label">User Name:</label>
-              <input type="text" class="form-control" id="userName" placeholder="User Name" [(ngModel)]="login" name="login" required>
+              <label for="login" class="form-label">User Name:</label>
+              <input type="text" class="form-control" id="login" placeholder="User Name" [(ngModel)]="login" name="login" required>
             </div>
           </div>
           <div class="col-12">
@@ -29,7 +29,7 @@
         <div class="d-flex flex-row justify-content-center gap-1">
           <button type="submit" class="mx-1 btn btn-primary" id="newUserButton" [hidden]="!updateButtonHidden" (click)="saveUser()" >Salve</button>
           <button type="submit" class="mx-1 btn btn-success" id="updateUser" [hidden]="updateButtonHidden" (click)="saveUser()" >Update</button>
-          <button type="reset" class="mx-1 btn btn-outline-danger">Cancel</button>
+          <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
         </div>
       </div>

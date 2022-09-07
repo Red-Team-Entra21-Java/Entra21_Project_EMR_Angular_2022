@@ -35,6 +35,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule,
     FormsModule
+  ],
+  exports: [
+    NewUserComponent
   ]
 })
 export class CrudModule { }

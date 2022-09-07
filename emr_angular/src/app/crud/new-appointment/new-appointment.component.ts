@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
 import { PatientService } from 'src/app/services/crud/patient.service';
 
@@ -27,7 +27,8 @@ export class NewAppointmentComponent implements OnInit {
   constructor(
     private service: AppointmentService,
     private servicePatient: PatientService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +55,8 @@ export class NewAppointmentComponent implements OnInit {
       } else {
         this.service.appointments[this.service.indexUpdateAppointment] = data
       }
+      this.router.navigateByUrl("appointments")
+
     });
   }
 
@@ -81,5 +84,9 @@ export class NewAppointmentComponent implements OnInit {
       forwarding: this.forwarding,
       medicalRelease: this.medicalRelease,
     }
+  }
+
+  cancelRecord() {
+    this.router.navigateByUrl("appointments")
   }
 }

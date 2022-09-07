@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from 'src/app/services/crud/user.service';
+import { SecurityService } from 'src/app/services/security/security.service';
 
 @Component({
   selector: 'app-new-user',
@@ -18,7 +19,9 @@ export class NewUserComponent implements OnInit {
 
   constructor(
     private service: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private securityService: SecurityService
   ) { }
 
   ngOnInit(): void {
@@ -36,17 +39,21 @@ export class NewUserComponent implements OnInit {
       if (this.updateButtonHidden === true) {
         console.log("Salvando", data)
         this.service.users.push(data)
+
+        this.isLogged()
+
       } else {
         this.service.users[this.service.indexUpdateUser] = data
       }
-      
+      this.router.navigateByUrl("user")
+
     });
   }
 
   getData() {
     this.name = (<HTMLInputElement>document.getElementById("userNameRecord")).value
     this.email = (<HTMLInputElement>document.getElementById("userEmail")).value
-    this.login = (<HTMLInputElement>document.getElementById("userName")).value
+    this.login = (<HTMLInputElement>document.getElementById("login")).value
     this.password = (<HTMLInputElement>document.getElementById("passwordUser")).value
 
     return {
@@ -57,4 +64,15 @@ export class NewUserComponent implements OnInit {
     }
   }
 
+  isLogged() {
+    if(this.securityService.authenticated === false) {
+      this.router.navigateByUrl("")
+    } else {
+      this.router.navigateByUrl("user")
+    }
+  }
+
+  cancelRecord() {
+    this.router.navigateByUrl("appointments")
+  }
 }

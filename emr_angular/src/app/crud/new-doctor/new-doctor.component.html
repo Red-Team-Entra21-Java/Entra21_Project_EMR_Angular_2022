@@ -1,6 +1,6 @@
 <div class="card m-5 p-2" id="newDoctorContainer">
     <div class="card-body">
-        <form action="/salvo.html" enctype="text/plain" method="get" id="formNewDoctor">
+        <form action="/salvo.html" enctype="text/plain" method="get" id="formNewDoctor" ngNativeValidate>
             <div class="card-body">
                 <div class="row">
                     <div class="col">
@@ -147,7 +147,7 @@
             <div class="d-flex flex-row justify-content-center gap-1">
                 <button type="submit" class="mx-1 btn btn-primary" id="newDoctor" [hidden]="!updateButtonHidden" (click)="saveDoctor()">Save</button>
                 <button type="submit" class="mx-1 btn btn-success" id="updateDoctor" [hidden]="updateButtonHidden" (click)="saveDoctor()">Update</button>
-                <button type="reset" class="mx-1 btn btn-outline-danger">Cancel</button>
+                <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
             </div>
         </form>

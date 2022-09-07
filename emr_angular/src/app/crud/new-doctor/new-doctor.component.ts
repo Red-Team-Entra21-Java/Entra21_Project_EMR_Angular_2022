@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
 
 @Component({
@@ -28,7 +28,8 @@ export class NewDoctorComponent implements OnInit {
 
   constructor(
     private service: DoctorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,7 +59,7 @@ export class NewDoctorComponent implements OnInit {
       } else {
         this.service.doctors[this.service.indexUpdateDoctor] = data
       }
-
+      this.router.navigateByUrl("doctor")
     });
   }
 
@@ -98,4 +99,7 @@ export class NewDoctorComponent implements OnInit {
     }
   }
 
+  cancelRecord() {
+    this.router.navigateByUrl("doctor")
+  }
 }

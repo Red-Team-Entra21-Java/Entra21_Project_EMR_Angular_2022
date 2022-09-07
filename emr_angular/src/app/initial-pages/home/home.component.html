@@ -2,10 +2,12 @@
     <div class="col background-color d-flex justify-content-center ">
         <div class="align-self-center text-end">
              <h1 class="text-light title-initial ">Electronic <br/> Medical <br/>Record</h1>
-             <p class="text-secondary">Prontuário Eletrônico para registros médicos.<br/>Faça o login ou cadastre-se!</p>
-             <a routerLink="../login" class="btn btn-light w-25">Login</a>
-             <a href="/pages/cadastro/usuarios/usuario-2-novo-index.html" class="btn btn-outline-light">Cadastre-se</a>
+             <p class="text-secondary">Electronic medical record for medical records.<br/>Log in or sign up!</p>
+             <a routerLink="../login" (click)="recordUser(false)" class="btn btn-light w-25">Login</a>
+             <a routerLink="../login" (click)="recordUser(true)" class="btn btn-light ml-2 w-25">Register</a>
         </div>
     </div>
     <div class="col initial-image"></div>
 </section>
+
+

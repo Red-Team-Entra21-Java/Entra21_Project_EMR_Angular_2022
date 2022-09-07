@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewUserIndexComponent } from './new-user-index.component';
+import { FormsPagesComponent } from './forms-pages.component';
 
-describe('NewUserIndexComponent', () => {
-  let component: NewUserIndexComponent;
-  let fixture: ComponentFixture<NewUserIndexComponent>;
+describe('FormsPagesComponent', () => {
+  let component: FormsPagesComponent;
+  let fixture: ComponentFixture<FormsPagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewUserIndexComponent ]
+      declarations: [ FormsPagesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NewUserIndexComponent);
+    fixture = TestBed.createComponent(FormsPagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

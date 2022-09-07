@@ -11,15 +11,14 @@ import { NewPatientComponent } from './crud/new-patient/new-patient.component';
 import { NewUserComponent } from './crud/new-user/new-user.component';
 import { PatientComponent } from './crud/patient/patient.component';
 import { UserComponent } from './crud/user/user.component';
+import { FormsPagesComponent } from './initial-pages/forms-pages/forms-pages.component';
 import { HomeComponent } from './initial-pages/home/home.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
-import { LoginComponent } from './initial-pages/login/login.component';
-import { NewUserIndexComponent } from './initial-pages/new-user-index/new-user-index.component';
 import { SecurityService } from './services/security/security.service';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
-  { path: "login", component: LoginComponent},
+  { path: "login", component: FormsPagesComponent},
   { path: "dashboard", component: DashboardComponent,canActivate: [SecurityService]},
   { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
   { path: "patient", component: PatientComponent,canActivate: [SecurityService]},
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: "new-doctor/:name/:cpf/:motherName/:fatherNamer/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country/:registerNumber/:specialty/:numberAppointments", component: NewDoctorComponent,canActivate: [SecurityService]},
   { path: "new-user", component: NewUserComponent},
   { path: "new-user/:name/:email/:login/:password", component: NewUserComponent},
-  { path: "new-user-index", component: NewUserIndexComponent},
   { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]}
 
 ];
