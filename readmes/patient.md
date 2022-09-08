@@ -5,5 +5,5 @@
 Here it is possible to create, list, edit, delete and detail patients.
 
 ## Patient
-![Patient](/emr_angular/src/assets/images/readme_images/pages/patient/emr_patients.gif)
+![Patient](/emr_angular/src/assets/images/readme_images/pages/emr_patients.gif)
 

@@ -5,6 +5,6 @@
 Here you can create, list, edit, delete and drill down to users.
 
 ## User
-![User](/emr_angular/src/assets/images/readme_images/pages/user/emr_user.gif)
+![User](/emr_angular/src/assets/images/readme_images/pages/emr_user.gif)
 
 
