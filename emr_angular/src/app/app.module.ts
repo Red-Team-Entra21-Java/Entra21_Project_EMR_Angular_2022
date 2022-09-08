@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { CrudModule } from './crud/crud.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './initial-pages/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
 import { SystemService } from './services/system.service';

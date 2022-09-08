@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
