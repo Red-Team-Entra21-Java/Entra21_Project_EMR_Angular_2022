@@ -8,16 +8,16 @@
         <div class="card-header">LOGIN</div>
         <div class="card-body">
             <div class="mb-3">
-                <label for="userName" class="form-label">Nome de usuário:</label>
+                <label for="userName" class="form-label">User Name:</label>
                 <input type="text" class="form-control" id="userName" placeholder="Usuário" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Senha:</label>
+                <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="password" placeholder="Senha" required>
             </div>
 
             <div class="card-footer text-center">
-                <p>Não possui cadastro? Cadastre-se <a routerLink="" (click)="recordUser(true)">aqui!</a></p>
+                <p>Don't have a registration? Register <a routerLink="" (click)="recordUser(true)">here!</a></p>
                 <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
                 <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
             </div>
