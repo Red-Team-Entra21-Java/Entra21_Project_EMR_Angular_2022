@@ -1,6 +1,6 @@
 <div class="card m-5 p-2">
     <table class=" table table-sm table-striped table-hover ">
-        <thead>
+        <thead class="text-center">
             <th>Date</th>
             <th>Hour</th>
             <th>Doctor</th>
@@ -12,7 +12,7 @@
             <th>Medical Release</th>
         </thead>
         <tbody>
-            <tr *ngFor="let appointment of appointmentList; let index = index">
+            <tr class="text-center" *ngFor="let appointment of appointmentList; let index = index">
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.hour }}</td>
                 <td>{{ appointment.doctor }}</td>
