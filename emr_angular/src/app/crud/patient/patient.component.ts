@@ -11,7 +11,6 @@ import { SystemService } from 'src/app/services/system.service';
 })
 export class PatientComponent implements OnInit {
 
-
   patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
@@ -36,8 +35,7 @@ export class PatientComponent implements OnInit {
         )
       )
       .subscribe((Response) => {
-        console.log("Resultado:", Response);
-
+        // console.log("Resultado:", Response);
       })
   }
 
@@ -63,6 +61,7 @@ export class PatientComponent implements OnInit {
     let state = this.patientList[index].state
     let country = this.patientList[index].country
     console.log('new-patient',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country);
+    console.log('fatherName',fatherName);
     this.router.navigate(['new-patient',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country]);
     this.service.updateButtonHidden = false
     this.service.indexUpdatePatient = index;

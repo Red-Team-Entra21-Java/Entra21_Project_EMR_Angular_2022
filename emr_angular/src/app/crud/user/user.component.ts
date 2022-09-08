@@ -32,8 +32,7 @@ export class UserComponent implements OnInit {
         )
       )
       .subscribe((Response) => {
-        console.log("Resultado:", Response);
-
+        // console.log("Resultado:", Response);
       })
   }
 

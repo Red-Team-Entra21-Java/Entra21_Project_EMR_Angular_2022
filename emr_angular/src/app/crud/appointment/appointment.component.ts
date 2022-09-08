@@ -35,8 +35,7 @@ export class AppointmentComponent implements OnInit {
         )
       )
       .subscribe((Response) => {
-        console.log("Resultado:", Response);
-
+        // console.log("Resultado:", Response);
       })
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientService } from 'src/app/services/crud/patient.service';
 
 @Component({
   selector: 'app-patient-report',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientReportComponent implements OnInit {
 
-  constructor() { }
+  patientList!: Array<any>;
+
+
+  constructor(
+    private patientService: PatientService
+  ) { }
 
   ngOnInit(): void {
+    this.patientList = this.patientService.patients
   }
 
 }

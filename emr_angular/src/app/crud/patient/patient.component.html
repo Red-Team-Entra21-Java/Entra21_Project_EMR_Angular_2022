@@ -12,15 +12,14 @@
             <thead class="text-center">
                 <th>Patient's Name</th>
                 <th>CPF</th>
-                <!-- <th>Number of Appointmentss</th> -->
+                <th>Number of Appointmentss</th>
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyPatient">
                 <tr *ngFor="let patient of patientList; let index = index">
                     <td>{{ patient.name }}</td>
                     <td>{{ patient.cpf }}</td>
-                    <!-- <td>{{ patient.appointments.length }}</td> -->
-                    <!-- <td>{{ patient.fatherName }}</td> -->
+                    <td>{{ patient.appointments.length }}</td>
                     <td class="p-1">
                         <div class="d-flex gap-1 justify-content-center p-1">
                             <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deletePatient(index)">

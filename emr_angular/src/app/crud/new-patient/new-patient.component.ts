@@ -58,7 +58,6 @@ export class NewPatientComponent implements OnInit {
     });
   }
 
-
   getData() {
     this.name = (<HTMLInputElement>document.getElementById("patientName")).value
     this.cpf = (<HTMLInputElement>document.getElementById("patientCPF")).value
@@ -90,6 +89,6 @@ export class NewPatientComponent implements OnInit {
   }
 
   cancelRecord() {
-    this.router.navigateByUrl("appointments")
+    this.router.navigateByUrl("patient")
   }
 }

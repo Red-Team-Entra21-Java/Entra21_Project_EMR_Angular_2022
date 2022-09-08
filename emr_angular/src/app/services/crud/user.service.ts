@@ -28,7 +28,19 @@ export class UserService {
       email: "user@user.com",
       login: "user",
       password: "user"
-    }
+    },
+    {
+      name: "Emerson Seiler",
+      email: "seiler@seiler.com",
+      login: "seiler",
+      password: "123"
+    },
+    {
+      name: "Emerson Seiler",
+      email: "seiler@seiler.com",
+      login: "1",
+      password: "1"
+    },
   ]
 
   constructor(

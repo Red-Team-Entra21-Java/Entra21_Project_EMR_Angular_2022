@@ -32,8 +32,7 @@ export class DoctorComponent implements OnInit {
         )
       )
       .subscribe((Response) => {
-        console.log("Resultado:", Response);
-
+        // console.log("Resultado:", Response);
       })
   }
 

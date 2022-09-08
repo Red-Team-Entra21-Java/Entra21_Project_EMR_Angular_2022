@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/crud/user.service';
 
 @Component({
   selector: 'app-user-report',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserReportComponent implements OnInit {
 
-  constructor() { }
+  userList!: Array<any>;
+
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userList = this.userService.users
   }
 
 }

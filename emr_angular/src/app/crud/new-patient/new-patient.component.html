@@ -27,7 +27,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="patientFatherName" class="form-label">Father's name:</label>
-                            <input type="text" class="form-control" id="patientFatherName" placeholder="Father's name" [(ngModel)]="fatherName" name="fatherName">                        
+                            <input type="text" class="form-control" id="patientFatherName" placeholder="Father's name" [(ngModel)]="fatherName" name="fatherName" required>                        
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
             <div class="d-flex flex-row justify-content-center gap-1">
                 <button type="submit" class="mx-1 btn btn-primary" id="newPatient" [hidden]="!updateButtonHidden" (click)="savePatient()">Salve</button>
                 <button type="submit" class="mx-1 btn btn-success" id="updatePatient" [hidden]="updateButtonHidden" (click)="savePatient()">Update</button>
-                <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord">Cancel</button>
+                <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
             </div>
             
