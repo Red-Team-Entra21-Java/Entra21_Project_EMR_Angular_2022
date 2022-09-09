@@ -1,0 +1,28 @@
+<div class="card m-5 p-2">
+    <table class=" table table-sm table-striped table-hover ">
+        <thead class="text-center">
+            <th>Date</th>
+            <th>Hour</th>
+            <th>Doctor</th>
+            <th>Patient</th>
+            <th>Patient CPF</th>
+            <th>Anamnesis</th>
+            <th>Prescription</th>
+            <th>Forwarding</th>
+            <th>Medical Release</th>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let appointment of appointmentList; let index = index">
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.hour }}</td>
+                <td>{{ appointment.doctor }}</td>
+                <td>{{ appointment.patient }}</td>
+                <td>{{ appointment.patientCPF }}</td>
+                <td>{{ appointment.anamnesis }}</td>
+                <td>{{ appointment.prescription }}</td>
+                <td>{{ appointment.forwarding }}</td>
+                <td>{{ appointment.medicalRelease }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

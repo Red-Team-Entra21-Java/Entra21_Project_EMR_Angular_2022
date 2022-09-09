@@ -1,39 +1,26 @@
-<section class="row initial p-0 m-0">
+<div class="alert alert-danger alert-dismissible" role="alert" [hidden]="erroMessage">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+    <strong>Login ou Senha incorreta!</strong>
+</div>
+<form action="" method="post" id="formLogin" ngNativeValidate>
+    <div class="card" id="">
+        <div class="card-header">LOGIN</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="userName" class="form-label">User Name:</label>
+                <input type="text" class="form-control" id="userName" placeholder="User name" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
 
-    <div class="col login-image">
-        <a class="text-primary logo-link" href="/index.html">
-            <img class="logo" src="/icons/logo.png" alt="">
-        </a>
-    </div>
-
-    <div class="col background-color d-flex justify-content-center">
-        <div class="align-self-center text-end w-50">
-            <div class="row d-flex">
-                <div class="col">
-                    <div class="card" id="">
-                        <div class="card-header">LOGIN</div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="userName" class="form-label">Nome de usuário:</label>
-                                <input type="text" class="form-control" id="userName" placeholder="Usuário">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Senha:</label>
-                                <input type="password" class="form-control" id="password" placeholder="Senha">
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <p>Não possui cadastro? Cadastre-se <a href="/pages/cadastro/usuarios/usuario-2-novo-index.html">aqui!</a></p>
-                            <button class="btn btn-danger mr-1">Limpar</button>
-                            <button class="btn btn-primary" (click)="login()">Entrar</button>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="card-footer text-center">
+                <p>Don't have a registration? Register <a routerLink="" (click)="recordUser(true)">here!</a></p>
+                <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
             </div>
         </div>
     </div>
-</section>
-
-
-
+</form>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { SecurityService } from '../security.service';
+import { SystemService } from '../services/system.service';
 
 @Component({
   selector: 'app-header',
@@ -10,24 +9,12 @@ import { SecurityService } from '../security.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private security: SecurityService
+    public system: SystemService
   ) { }
 
   ngOnInit(): void {
   }
 
-  exit() {
-    this.security.authenticated = false
-    this.router.navigateByUrl("")
-  }
-
-  isAuthenticated(): boolean {
-    if(this.security.authenticated) {
-      return true;
-    } else {
-      return false
-    }
-  }
+  
 
 }

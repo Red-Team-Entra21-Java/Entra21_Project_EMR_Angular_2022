@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
-import { BackendService } from 'src/app/backend.service';
+import { AppointmentService } from 'src/app/services/crud/appointment.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-appointment',
@@ -9,74 +11,63 @@ import { BackendService } from 'src/app/backend.service';
 })
 export class AppointmentComponent implements OnInit {
 
-  patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
-
-  appointments: Array<any> = []
-
-
+  appointmenttList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: BackendService
+    private service: AppointmentService,
+    private system: SystemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.listar()
-    setTimeout(() => {
-      this.listAppointments()
-    }, 100); //verificar
+    this.list()
+    this.sendTitle()
   }
 
-  listar() {
-    this.service.listPatient("texte")
+  list() {
+    this.service.listAppointments("texte")
       .pipe(
         catchError(
           (error) => {
-            this.patientList = this.service.patients
-            return of(this.patientList)
+            this.appointmenttList = this.service.appointments
+            return of(this.appointmenttList)
           }
         )
       )
       .subscribe((Response) => {
-        console.log("Resultado:", Response);
-
+        // console.log("Resultado:", Response);
       })
   }
 
   deleteAppointment(index: number) {
-    // this.patientList.appointment.splice(index,1)
+    this.appointmenttList.splice(index,1)
   }
 
+  sendTitle() {
+    this.system.currentTitle = "Appointments"
+  }
 
-  listAppointments() {
-    let date
-    let hour
-    let patientCPF
-    let patientName
-    let doctorName
+  sendData(index:number) {
+    let date = this.appointmenttList[index].date
+    let hour = this.appointmenttList[index].hour
+    let doctor = this.appointmenttList[index].doctor
+    let patient = this.appointmenttList[index].patient
+    let patientCPF = this.appointmenttList[index].patientCPF
+    let anamnesis = this.appointmenttList[index].anamnesis
+    let prescription = this.appointmenttList[index].prescription
+    let certificate = this.appointmenttList[index].certificate
+    let forwarding = this.appointmenttList[index].forwarding
+    let medicalRelease = this.appointmenttList[index].medicalRelease
+    
+    console.log('new-appointment',date, hour, doctor, patient, patientCPF, anamnesis, prescription, certificate, forwarding, medicalRelease);
+    this.router.navigate(['new-appointment',date, hour, doctor, patient, patientCPF, anamnesis, prescription, certificate, forwarding, medicalRelease]);
+    this.service.updateButtonHidden = false
+    this.service.indexUpdateAppointment = index;
+    
+  }
 
-    for (let count = 0; count < this.patientList.length; count++) {
-      for (let countAp = 0; countAp < this.patientList[count].appointments.length; countAp++) {
-        date = this.patientList[count].appointments[countAp].date
-        hour = this.patientList[count].appointments[countAp].hour
-        patientCPF = this.patientList[count].cpf
-        patientName = this.patientList[count].name
-        doctorName = this.patientList[count].doctor
-
-        this.appointments.push(
-          {
-            date: date,
-            hour: hour,
-            patientCPF: patientCPF,
-            patientName: patientName,
-            doctorName: doctorName
-          }
-        )
-      }
-
-    }
-    console.log(this.appointments);
-
-
+  newAppointment() {
+    this.service.updateButtonHidden = true
   }
 
 }

@@ -5,9 +5,13 @@ import { AppComponent } from './app.component';
 import { CrudModule } from './crud/crud.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './initial-pages/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { SystemService } from './services/system.service';
+import { PatientReportComponent } from './report/patient-report/patient-report.component';
+import { AppointmentReportComponent } from './report/appointment-report/appointment-report.component';
+import { DoctorReportComponent } from './report/doctor-report/doctor-report.component';
+import { UserReportComponent } from './report/user-report/user-report.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import { InitialPagesModule } from './initial-pages/initial-pages.module';
     HeaderComponent,
     MenuComponent,
     FooterComponent,
+    PatientReportComponent,
+    AppointmentReportComponent,
+    DoctorReportComponent,
+    UserReportComponent,
     
   ],
   imports: [
@@ -23,7 +31,7 @@ import { InitialPagesModule } from './initial-pages/initial-pages.module';
     CrudModule,
     InitialPagesModule
   ],
-  providers: [],
+  providers: [SystemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

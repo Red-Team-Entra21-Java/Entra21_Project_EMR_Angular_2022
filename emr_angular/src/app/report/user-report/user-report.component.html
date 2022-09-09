@@ -1,0 +1,17 @@
+<div class="card m-5 p-2">
+    <table class=" table table-sm table-striped table-hover ">
+        <thead class="text-center">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Login</th>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let user of userList; let index = index">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.login }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

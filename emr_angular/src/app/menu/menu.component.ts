@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SecurityService } from '../security.service';
+import { SecurityService } from '../services/security/security.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +23,7 @@ export class MenuComponent implements OnInit {
     this.links.push(
       {
         rota: 'dashboard',
+        // rota: ['/dashboard', 'Teste'],
         textContent: 'Dashboard',
         icon: 'dashboard'
       }
@@ -29,42 +31,66 @@ export class MenuComponent implements OnInit {
     this.links.push(
       {
         rota: 'appointments',
-        textContent: 'Atendimentos',
+        textContent: 'Appointments',
         icon: 'monitor_heart',
       }
     )
     this.links.push(
       {
         rota: 'patient',
-        textContent: 'Cadastros',
+        textContent: 'Records',
         icon: 'people_alt',
         submenu: [
           {
             rota: 'patient',
-            title: 'Pacientes'
+            title: 'Patients'
           },
           {
             rota: 'doctor',
-            title: 'Médicos'
+            title: 'Doctors'
           },
           {
             rota: 'user',
-            title: 'Usuários'
+            title: 'Users'
           }
         ]
       }
     )
     this.links.push(
       {
-        rota: 'patient',
-        textContent: 'Relatórios',
-        icon: 'description'
+        rota: 'appointment-report',
+        textContent: 'Reports',
+        icon: 'description',
+        submenu: [
+          {
+            rota: 'appointment-report',
+            title: 'Appointments'
+          },
+          {
+            rota: 'patient-report',
+            title: 'Patients'
+          },
+          {
+            rota: 'doctor-report',
+            title: 'Doctors'
+          },
+          {
+            rota: 'user-report',
+            title: 'Users'
+          }
+        ]
       }
     )
   }
 
+
+  exit() {
+    this.security.authenticated = false
+    this.router.navigateByUrl("")
+  }
+
   isAuthenticated(): boolean {
-    if(this.security.authenticated) {
+    if (this.security.authenticated) {
       return true;
     } else {
       return false
