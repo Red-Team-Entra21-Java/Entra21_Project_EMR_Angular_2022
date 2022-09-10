@@ -1,0 +1,112 @@
+<div class="card m-5 p-2" id="newPatientContainer">
+    <div class="card-body">
+        <form action="/salvo.html" enctype="text/plain" method="get" id="formNewPatient" ngNativeValidate>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label">Patient's name:</label>
+                            <input type="text" class="form-control" id="patientName" placeholder="Patient's name" [(ngModel)]="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientCPF" class="form-label">Patient's CPF:</label>
+                            <input type="text" class="form-control" id="patientCPF" placeholder="000.000.000-00" [(ngModel)]="cpf" name="cpf" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientMotherName" class="form-label">Mother's name:</label>
+                            <input type="text" class="form-control" id="patientMotherName" placeholder="Mother's name" [(ngModel)]="motherName" name="motherName" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientFatherName" class="form-label">Father's name:</label>
+                            <input type="text" class="form-control" id="patientFatherName" placeholder="Father's name" [(ngModel)]="fatherName" name="fatherName" required>                        
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genre" id="genreMale" value="male" >
+                            <label class="form-check-label" for="genreMale">Male</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genre" id="genreFemale" value="female">
+                            <label class="form-check-label" for="genreFemale">Female</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genre" id="genreOther" value="other" checked>
+                            <label class="form-check-label" for="genreOther">
+                              Other
+                            </label>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="birthDate" class="form-label">Birth Date:</label>
+                            <input type="date" class="form-control" id="birthDate" required [(ngModel)]="birthDate" name="birthDate">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientStreet" class="form-label">Street:</label>
+                            <input type="text" class="form-control" id="patientStreet" placeholder="Street" [(ngModel)]="streetName" name="streetName">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientHomeNumber" class="form-label">Number:</label>
+                            <input type="text" class="form-control" id="patientHomeNumber" placeholder="Numero" [(ngModel)]="numberHome" name="numberHome">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientDistrict" class="form-label">District:</label>
+                            <input type="text" class="form-control" id="patientDistrict" placeholder="District" [(ngModel)]="district" name="district">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientCity" class="form-label">City:</label>
+                            <input type="text" class="form-control" id="patientCity" placeholder="City" [(ngModel)]="city" name="city">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientState" class="form-label">State:</label>
+                            <input type="text" class="form-control" id="patientState" placeholder="State" [(ngModel)]="state" name="state">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="patientCountry" class="form-label">Country:</label>
+                            <input type="text" class="form-control" id="patientCountry" placeholder="Country" [(ngModel)]="country" name="country">
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="d-flex flex-row justify-content-center gap-1">
+                <button type="submit" class="mx-1 btn btn-primary" id="newPatient" [hidden]="!updateButtonHidden" (click)="savePatient()">Save</button>
+                <button type="submit" class="mx-1 btn btn-success" id="updatePatient" [hidden]="updateButtonHidden" (click)="savePatient()">Update</button>
+                <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
+
+            </div>
+            
+        </form>
+    </div>
+</div>

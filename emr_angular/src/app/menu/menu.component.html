@@ -1,0 +1,56 @@
+<aside class="main-sidebar background-color elevation-4">
+    <a routerLink="dashboard" class="brand-link">
+      <img src="../assets/icons/icon.png" alt="EMR Logo" class="brand-image elevation-3"
+        style="opacity: 0.8" />
+      <span class="brand-text font-weight-light text-light">EMR</span>
+    </a>
+  
+    <div class="sidebar ">
+      <nav class="menu-height mt-2 d-flex flex-column justify-content-between">
+
+        <ul *ngIf="!isAuthenticated()" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item">
+            <a routerLink="dashboard" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">account_circle</span>
+              <p class="mx-2 ">Login</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="appointments" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">person_add_alt</span>
+              <p class="mx-2 ">Cadastrar</p>
+            </a>
+          </li>
+        </ul>
+
+        <ul *ngIf="isAuthenticated()" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li *ngFor="let link of links" class="nav-item">
+            <a [routerLink]="link.rota" class="nav-link text-light d-flex">
+              <span class="material-icons-sharp">{{link.icon}}</span>
+              <p class="mx-2 ">{{link.textContent}}</p>
+            </a>
+            <ul *ngIf="link.submenu" class="nav nav-treeview">
+              <li *ngFor="let menu of link.submenu" class="nav-item ">
+                <a [routerLink]="menu.rota" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{menu.title}}</p>
+                </a>
+              </li>
+            </ul>
+
+          </li>  
+        </ul>
+        <ul class="">
+          <li class="list-style-none">
+            <button class="btn btn-danger" (click)="exit()">
+              <i class="fas fa-times"></i>
+              EXIT
+            </button>
+          </li>
+        </ul>
+        
+      </nav>
+    </div>
+  </aside>
+  
