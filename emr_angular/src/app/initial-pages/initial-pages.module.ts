@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsPagesComponent } from './forms-pages/forms-pages.component';
 import { CrudModule } from '../crud/crud.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,13 +14,15 @@ import { CrudModule } from '../crud/crud.module';
   declarations: [
     LoginComponent,
     HomeComponent,
-    FormsPagesComponent
+    FormsPagesComponent,
+    
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    CrudModule
+    CrudModule,
+    FormsModule
   ]
 })
 export class InitialPagesModule { }

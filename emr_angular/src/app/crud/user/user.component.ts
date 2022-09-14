@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   userList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: UserService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -22,17 +22,17 @@ export class UserComponent implements OnInit {
   }
 
   list() {
-    this.service.listUser("texte")
+    this.userService.listUser(this.getData())
       .pipe(
         catchError(
           (error) => {
-            this.userList = this.service.users
+            this.userList = this.userService.users
             return of(this.userList)
           }
         )
       )
       .subscribe((Response) => {
-        // console.log("Resultado:", Response);
+        console.log("Resultado:", Response);
       })
   }
 
@@ -47,12 +47,19 @@ export class UserComponent implements OnInit {
     let password = this.userList[index].password
     console.log('new-user',name, email, login, password);
     this.router.navigate(['new-user',name, email, login, password]);
-    this.service.updateButtonHidden = false
-    this.service.indexUpdateUser = index;
+    this.userService.updateButtonHidden = false
+    this.userService.indexUpdateUser = index;
   }
 
   newUser() {
-    this.service.updateButtonHidden = true
+    this.userService.updateButtonHidden = true
   }
 
+  getData():any {
+
+    return {
+      login: "admin",
+      senha: "admin"
+    }
+  }
 }

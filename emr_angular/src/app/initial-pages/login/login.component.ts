@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { SystemService } from 'src/app/services/system.service';
@@ -12,6 +13,8 @@ import { SystemService } from 'src/app/services/system.service';
 export class LoginComponent implements OnInit {
 
   erroMessage: boolean = true;
+  login!: string;
+  password!: string;
 
   constructor(
     private router: Router,
@@ -24,50 +27,37 @@ export class LoginComponent implements OnInit {
     this.security.authenticated = false;
   }
 
-  login(): void {
-    (<HTMLInputElement>document.getElementById('formLogin')).addEventListener('submit', (event) => {
-      event.preventDefault()
-      this.logar()
+  validateLogin(): void {
+
+    this.userService.listUser(this.getData())
+      .pipe(
+        catchError(
+          (error) => {
+            return of(error)
+          }
+        )
+      )
+      .subscribe((Response) => {
+        console.log("Resultado:", Response);
+        if (this.login === Response[0].login && this.password === Response[0].senha) {
+              this.security.authenticated = true;
+              this.service.userLogged = Response[0].name
+              this.router.navigateByUrl('dashboard')
+            } else {
+              this.erroMessage = false;
+            }
+      })
 
 
-    });
-    // this.security.authenticated = true;
-    // this.router.navigateByUrl('dashboard')
-    
-  }
+    };
 
-  recordUser(data: boolean) {
-
-    switch (data) {
-      case true:
-        this.service.isLogin = true;
-        break;
-      case false:
-        this.service.isLogin = false;
-        break;
-    
-      default:
-        this.service.isLogin = true;
-        break;
-    }
-  }
-
-  logar() {
-    let login = (<HTMLInputElement>document.getElementById("userName")).value
-    let password = (<HTMLInputElement>document.getElementById("password")).value
-
-    for (let countLogin = 0; countLogin < this.userService.users.length; countLogin++) {
-      if(login === this.userService.users[countLogin].login && password === this.userService.users[countLogin].password) {
-        this.security.authenticated = true;
-        this.service.userLogged = this.userService.users[countLogin].name
-        this.router.navigateByUrl('dashboard')
-      } else {
-        this.erroMessage = false;
-        
-      }
+    getData():any {
       
+      return {
+        login: this.login,
+        senha: this.password
+      }
     }
 
   }
 
-}
