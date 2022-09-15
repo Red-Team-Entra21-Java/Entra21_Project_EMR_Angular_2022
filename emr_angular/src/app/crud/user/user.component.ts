@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
   }
 
   list() {
-    this.userService.listUser(this.getData())
+    this.userService.listAllUsers()
       .pipe(
         catchError(
           (error) => {
@@ -33,6 +33,8 @@ export class UserComponent implements OnInit {
       )
       .subscribe((Response) => {
         console.log("Resultado:", Response);
+        this.userService.users = Response
+        this.userList = this.userService.users
       })
   }
 
@@ -55,11 +57,4 @@ export class UserComponent implements OnInit {
     this.userService.updateButtonHidden = true
   }
 
-  getData():any {
-
-    return {
-      login: "admin",
-      senha: "admin"
-    }
-  }
 }

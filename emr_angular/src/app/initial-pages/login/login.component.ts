@@ -33,31 +33,58 @@ export class LoginComponent implements OnInit {
       .pipe(
         catchError(
           (error) => {
+            this.loginOffline()
             return of(error)
           }
         )
       )
       .subscribe((Response) => {
         console.log("Resultado:", Response);
-        if (this.login === Response[0].login && this.password === Response[0].password) {
-              this.security.authenticated = true;
-              this.service.userLogged = Response[0].name
-              this.router.navigateByUrl('dashboard')
-            } else {
-              this.erroMessage = false;
-            }
+        this.loginOnline(Response)
       })
 
 
-    };
+  };
 
-    getData():any {
-      
-      return {
-        login: this.login,
-        password: this.password
-      }
+  getData(): any {
+
+    return {
+      login: this.login,
+      password: this.password
+
+    }
+  }
+
+  loginOnline(Response: any) {
+    
+    if (this.login === Response[0].login && this.password === Response[0].password) {
+      this.security.authenticated = true;
+      this.service.userLogged = Response[0].name
+      this.router.navigateByUrl('dashboard')
+    } else {
+      this.erroMessage = false;
     }
 
   }
 
+  loginOffline() {
+    this.userService.users.push(
+      {
+        login: "baseteste",
+        name: "Testador",
+        password: "teste",
+        email: "teste@teste.com"
+      }
+    )
+    for (let countLogin = 0; countLogin < this.userService.users.length; countLogin++) {
+      if (this.login === this.userService.users[countLogin].login && this.password === this.userService.users[countLogin].password) {
+        this.security.authenticated = true;
+        this.service.userLogged = this.userService.users[countLogin].name
+        this.router.navigateByUrl('dashboard')
+      }else {
+        this.erroMessage = false;
+      }
+    }
+  }
+
+}

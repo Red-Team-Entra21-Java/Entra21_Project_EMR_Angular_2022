@@ -25,4 +25,9 @@ export class UserService {
 
       return this.http.post<any>(this.path+"/login",credentials)
   }
+
+  listAllUsers() {
+    
+    return this.http.get<any>(this.path)
+  }
 }
