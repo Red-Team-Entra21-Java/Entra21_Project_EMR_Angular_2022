@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe((Response) => {
         console.log("Resultado:", Response);
-        if (this.login === Response[0].login && this.password === Response[0].senha) {
+        if (this.login === Response[0].login && this.password === Response[0].password) {
               this.security.authenticated = true;
               this.service.userLogged = Response[0].name
               this.router.navigateByUrl('dashboard')
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       
       return {
         login: this.login,
-        senha: this.password
+        password: this.password
       }
     }
 
