@@ -47,38 +47,4 @@ export class UserService {
     return this.http.delete<any>(this.apiUrl + '/' + user.id);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  path: string = "http://localhost:8080/sistema"  //URL DA API
-
-
-  users: Array<any> = [
-
-  ]
-
-  // constructor(
-  //     private http: HttpClient
-  // ) { }
-
-  listUser(credentials: string) {
-      console.log(this.path+"/login",credentials);
-
-      return this.http.post<any>(this.path+"/login",credentials)
-  }
-
-  listAllUsers() {
-
-    return this.http.get<any>(this.path)
-  }
 }

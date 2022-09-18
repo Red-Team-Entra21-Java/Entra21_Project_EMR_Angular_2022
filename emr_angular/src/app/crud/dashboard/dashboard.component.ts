@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   appointmentsNumber: number = this.appointmentService.appointments.length
   patientsNumber: number = this.patientService.patients.length
-  doctorsNumber: number = this.doctorService.doctors.length
+  doctorsNumber!: number // = this.doctorService.doctorList.length
   usersNumber: number = this.userService.userList.length
 
   constructor(
@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.enviarTitulo()
+    this.doctorsNumber 
   }
 
   enviarTitulo() {

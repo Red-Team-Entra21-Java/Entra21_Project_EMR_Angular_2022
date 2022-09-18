@@ -13,7 +13,6 @@ export class NewUserComponent implements OnInit {
 
   user!: any;
 
-
   updateButtonHidden: boolean = this.userService.updateButtonHidden;
   name!: string | null
   email!: string | null
@@ -23,7 +22,6 @@ export class NewUserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router,
     private securityService: SecurityService,
 
