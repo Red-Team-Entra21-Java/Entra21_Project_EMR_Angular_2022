@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
   { path: "patient", component: PatientComponent,canActivate: [SecurityService]},
   { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},
-  { path: "user", component: UserComponent,canActivate: [SecurityService]},
+  { path: "user", component: UserComponent},
   { path: "new-appointment", component: NewAppointmentComponent,canActivate: [SecurityService]},
   { path: "new-appointment/:date/:hour/:doctor/:patient/:patientCPF/:anamnesis/:prescription/:certificate/:forwarding/:medicalRelease", component: NewAppointmentComponent,canActivate: [SecurityService]},
   { path: "new-patient", component: NewPatientComponent,canActivate: [SecurityService]},

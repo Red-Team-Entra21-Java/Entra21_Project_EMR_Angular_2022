@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 
@@ -7,18 +8,65 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  path: string = "http://localhost:8080/sistema"  //URL DA API
 
   updateButtonHidden: boolean = true;
   indexUpdateUser!: number;
 
-  users: Array<any> = [
-    
-  ]
+  apiUrl: string = 'http://localhost:8080/user';
 
   constructor(
-      private http: HttpClient
+    private http: HttpClient
   ) { }
+
+
+  getAll(): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl);
+  }
+
+  getById(user: any): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl + '/' + user.id);
+  }
+
+  create(user: any): Observable<any> {
+
+    return this.http.post<any>(this.apiUrl, user);
+  }
+
+  update(user: any): Observable<any> {
+
+    return this.http.put<any>(this.apiUrl + '/' + user.id, user);
+  }
+
+  delete(user: any): Observable<any> {
+
+    return this.http.delete<any>(this.apiUrl + '/' + user.id);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  path: string = "http://localhost:8080/sistema"  //URL DA API
+
+
+  users: Array<any> = [
+
+  ]
+
+  // constructor(
+  //     private http: HttpClient
+  // ) { }
 
   listUser(credentials: string) {
       console.log(this.path+"/login",credentials);
@@ -27,7 +75,7 @@ export class UserService {
   }
 
   listAllUsers() {
-    
+
     return this.http.get<any>(this.path)
   }
 }

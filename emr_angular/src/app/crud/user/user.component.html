@@ -4,7 +4,7 @@
             <input type="text" class="form-control" placeholder="Enter the login user"
                 aria-label="Recipient's username" aria-describedby="searchButton" id="searchUser">
             <button class="btn btn-primary" type="button" id="searchUserButton">Search</button>
-            <button routerLink="../new-user" class="btn btn-success ml-2" (click)="newUser()" >New User</button>
+            <button routerLink="../new-user" class="btn btn-success ml-2"  >New User</button>
         </div>
         <br>
         <table class="table table-bordered table-hover table-striped">
@@ -21,10 +21,10 @@
                     <td>{{ user.login }}</td>
                     <td class="p-1">
                         <div class="d-flex gap-1 justify-content-center p-0 m-0">
-                            <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteUser(index)">
+                            <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" >
                                 <span class="material-icons-sharp">delete</span>
                             </div>
-                            <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="sendData(index)">
+                            <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" >
                                 <span class="material-icons-sharp">edit</span>
                             </div>
                             <div class="mx-1 btn btn-primary d-flex align-items-center justify-content-center">

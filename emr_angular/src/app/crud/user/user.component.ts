@@ -10,51 +10,167 @@ import { UserService } from 'src/app/services/crud/user.service';
 })
 export class UserComponent implements OnInit {
 
-  userList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
+  userList!: Array<any>;
+  user!: any;
+  register!: boolean;
 
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-      this.list()    
+    this.getAll();
   }
 
-  list() {
-    this.userService.listAllUsers()
+  getAll(): void {
+    this.userService
+      .getAll()
       .pipe(
-        catchError(
-          (error) => {
-            this.userList = this.userService.users
-            return of(this.userList)
-          }
-        )
+        catchError((error) => {
+          let userList: Array<any> = new Array();
+          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
+          userList.push({ id: 1, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
+          userList.push({ id: 1, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+          
+          return of(userList);
+        })
       )
-      .subscribe((Response) => {
-        console.log("Resultado:", Response);
-        this.userService.users = Response
-        this.userList = this.userService.users
-      })
+      .subscribe((response) => {
+        console.log(response);
+        this.userList = response;
+      });
   }
 
-  deleteUser(index: number) {
-    this.userList.splice(index,1)
+  openForm(): void {
+    this.user = {};
+    this.register = true;
   }
 
-  sendData(index:number) {
-    let name = this.userList[index].name
-    let email = this.userList[index].email
-    let login = this.userList[index].login
-    let password = this.userList[index].password
-    console.log('new-user',name, email, login, password);
-    this.router.navigate(['new-user',name, email, login, password]);
-    this.userService.updateButtonHidden = false
-    this.userService.indexUpdateUser = index;
+  closeForm(): void {
+
+    this.user = {};
+    this.register = false;
   }
 
-  newUser() {
-    this.userService.updateButtonHidden = true
+  updateForm(user: any): void {
+    this.user = user;
+    this.register = true;
   }
 
+  create(): void {
+
+    if (!this.validForm()) {
+      alert('Preencha os campos obrigatorios');
+      return;
+    }
+
+
+
+    this.userService
+      .create(this.user)
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.user.push(response);
+          this.closeForm();
+        }
+      });
+  }
+
+  validForm(): boolean {
+    let valid: boolean = true;
+    if (!this.user.name) {
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  update(): void {
+    if (!this.validForm()) {
+      alert('Preencha os campos obrigatorios');
+      return;
+    }
+    this.userService
+      .update(this.user)
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.userList[this.userList.indexOf(this.user)] = response;
+          this.closeForm();
+        }
+      });
+  }
+
+  delete(user: any): void {
+    this.userService
+      .delete(user)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.userList.splice(this.userList.indexOf(user), 1);
+        }
+      });
+  }
 }
+  // userList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
+
+  // constructor(
+  //   private userService: UserService,
+  //   private router: Router
+  // ) { }
+
+  // ngOnInit(): void {
+  //     this.list()    
+  // }
+
+  // list() {
+  //   this.userService.listAllUsers()
+  //     .pipe(
+  //       catchError(
+  //         (error) => {
+  //           this.userList = this.userService.users
+  //           return of(this.userList)
+  //         }
+  //       )
+  //     )
+  //     .subscribe((Response) => {
+  //       console.log("Resultado:", Response);
+  //       this.userService.users = Response
+  //       this.userList = this.userService.users
+  //     })
+  // }
+
+  // deleteUser(index: number) {
+  //   this.userList.splice(index,1)
+  // }
+
+  // sendData(index:number) {
+  //   let name = this.userList[index].name
+  //   let email = this.userList[index].email
+  //   let login = this.userList[index].login
+  //   let password = this.userList[index].password
+  //   console.log('new-user',name, email, login, password);
+  //   this.router.navigate(['new-user',name, email, login, password]);
+  //   this.userService.updateButtonHidden = false
+  //   this.userService.indexUpdateUser = index;
+  // }
+
+  // newUser() {
+  //   this.userService.updateButtonHidden = true
+  // }
+
+

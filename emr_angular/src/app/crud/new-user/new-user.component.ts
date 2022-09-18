@@ -10,7 +10,7 @@ import { SecurityService } from 'src/app/services/security/security.service';
 })
 export class NewUserComponent implements OnInit {
 
-  updateButtonHidden: boolean = this.service.updateButtonHidden;
+  updateButtonHidden: boolean = this.userService.updateButtonHidden;
   name!: string | null
   email!: string | null
   login!: string | null
@@ -18,7 +18,7 @@ export class NewUserComponent implements OnInit {
 
 
   constructor(
-    private service: UserService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private securityService: SecurityService
@@ -38,12 +38,12 @@ export class NewUserComponent implements OnInit {
 
       if (this.updateButtonHidden === true) {
         console.log("Salvando", data)
-        this.service.users.push(data)
+        this.userService.users.push(data)
 
         this.isLogged()
 
       } else {
-        this.service.users[this.service.indexUpdateUser] = data
+        this.userService.users[this.userService.indexUpdateUser] = data
       }
       this.router.navigateByUrl("user")
 

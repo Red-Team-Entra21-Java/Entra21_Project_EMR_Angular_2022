@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
   loginOffline() {
     this.userService.users.push(
       {
-        login: "baseteste",
+        login: "teste",
         name: "Testador",
         password: "teste",
         email: "teste@teste.com"
