@@ -28,63 +28,38 @@ export class LoginComponent implements OnInit {
   }
 
   validateLogin(): void {
-
-    this.userService.listUser(this.getData())
-      .pipe(
-        catchError(
-          (error) => {
-            this.loginOffline()
-            return of(error)
-          }
-        )
-      )
-      .subscribe((Response) => {
-        console.log("Resultado:", Response);
-        this.loginOnline(Response)
+    this.userService
+    .getAll()
+    .pipe(
+      catchError((error) => {
+        let userList: Array<any> = new Array();
+        userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
+        userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
+        userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+        return of(userList);
       })
-
-
+    )
+    .subscribe((response) => {
+      console.log(response);
+      this.userService.userList = response;
+      this.verifyLogin(response)
+    });
   };
 
-  getData(): any {
-
-    return {
-      login: this.login,
-      password: this.password
-
-    }
-  }
-
-  loginOnline(Response: any) {
-    
-    if (this.login === Response[0].login && this.password === Response[0].password) {
-      this.security.authenticated = true;
-      this.service.userLogged = Response[0].name
-      this.router.navigateByUrl('dashboard')
-    } else {
-      this.erroMessage = false;
-    }
-
-  }
-
-  loginOffline() {
-    this.userService.users.push(
-      {
-        login: "teste",
-        name: "Testador",
-        password: "teste",
-        email: "teste@teste.com"
-      }
-    )
-    for (let countLogin = 0; countLogin < this.userService.users.length; countLogin++) {
-      if (this.login === this.userService.users[countLogin].login && this.password === this.userService.users[countLogin].password) {
+  verifyLogin(response: any) {
+    for (let countLogin = 0; countLogin < response.length; countLogin++) {
+      if (this.login === response[countLogin].login && this.password === response[countLogin].password) {
         this.security.authenticated = true;
-        this.service.userLogged = this.userService.users[countLogin].name
-        this.router.navigateByUrl('dashboard')
+        this.service.userLogged = response[countLogin].name
+        this.router.navigateByUrl('dashboard')        
       }else {
-        this.erroMessage = false;
+        this.erroMessage = false;        
       }
     }
   }
 
+  recordUser() {
+    this.service.isLogin = false;
+  }
 }
+

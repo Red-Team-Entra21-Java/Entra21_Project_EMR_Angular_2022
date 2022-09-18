@@ -12,6 +12,9 @@ export class UserService {
   updateButtonHidden: boolean = true;
   indexUpdateUser!: number;
 
+  userList!: Array<any>;
+  user!: any;
+
   apiUrl: string = 'http://localhost:8080/user';
 
   constructor(

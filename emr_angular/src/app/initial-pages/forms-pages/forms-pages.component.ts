@@ -15,6 +15,7 @@ export class FormsPagesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLogin
   }
 
 }

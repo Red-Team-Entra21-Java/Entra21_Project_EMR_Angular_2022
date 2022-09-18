@@ -8,14 +8,12 @@ import { UserService } from 'src/app/services/crud/user.service';
 })
 export class UserReportComponent implements OnInit {
 
-  userList!: Array<any>;
-
   constructor(
-    private userService: UserService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.userList = this.userService.users
+    
   }
 
 }

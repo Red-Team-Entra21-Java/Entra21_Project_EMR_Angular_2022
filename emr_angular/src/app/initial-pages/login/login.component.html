@@ -3,7 +3,7 @@
             aria-hidden="true">&times;</span></button>
     <strong>Login or Password incorrect!</strong>
 </div>
-<div class="card" id="">
+<div class="card">
     <div class="card-header">LOGIN</div>
     <div class="card-body">
         <div class="mb-3">
@@ -17,8 +17,8 @@
         </div>
 
         <div class="card-footer text-center">
-            <p>Don't have a registration? Register <a routerLink="" >here!</a></p> 
-            <button class="btn btn-primary" (click)="validateLogin()">Login</button>
+            <p>Don't have a registration? Register <a routerLink="../login" (click)="recordUser()" >here!</a></p> 
+            <button type="password" class="btn btn-primary" (click)="validateLogin()">Login</button>
             <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
         </div>
     </div>

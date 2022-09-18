@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   appointmentsNumber: number = this.appointmentService.appointments.length
   patientsNumber: number = this.patientService.patients.length
   doctorsNumber: number = this.doctorService.doctors.length
-  usersNumber: number = this.userService.users.length
+  usersNumber: number = this.userService.userList.length
 
   constructor(
     private router: Router,
