@@ -141,9 +141,9 @@
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-center gap-1">
-                <button type="submit" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" (click)="createDoctor()">Save</button>
-                <button type="submit" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateDoctor()">Update</button>
-                <button type="reset" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
+                <button type="button" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" (click)="createDoctor()">Save</button>
+                <button type="button" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateDoctor()">Update</button>
+                <button type="button" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
             </div>
         </form>

@@ -57,7 +57,7 @@ export class NewUserComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         if (response) {          
-          this.user.push(response);
+          this.userService.userList.push(response);
         }
       });
       this.router.navigateByUrl("user")

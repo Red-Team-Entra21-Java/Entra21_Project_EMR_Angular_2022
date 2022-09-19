@@ -61,7 +61,7 @@ export class NewDoctorComponent implements OnInit {
       .create(this.doctor)
       .pipe(
         catchError((error) => {
-          this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
+          //this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
           this.router.navigateByUrl("doctor")           
           return of( this.doctorService.doctorList);
         })
@@ -69,7 +69,7 @@ export class NewDoctorComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         if (response) {          
-          this.doctor.push(response);
+          this.doctorService.doctorList.push(response);
         }
       });
       this.router.navigateByUrl("doctor")
