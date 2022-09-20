@@ -14,7 +14,7 @@ import { SystemService } from 'src/app/services/system.service';
 export class DashboardComponent implements OnInit {
 
   appointmentsNumber: number = this.appointmentService.appointments.length
-  patientsNumber: number = this.patientService.patients.length
+  patientsNumber!: number // = this.patientService.patients.length
   doctorsNumber!: number // = this.doctorService.doctorList.length
   usersNumber: number = this.userService.userList.length
 

@@ -14,61 +14,70 @@ export class PatientComponent implements OnInit {
   patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: PatientService,
-    private system: SystemService,
-    private router: Router
+    public patientService: PatientService,
   ) { }
 
   ngOnInit(): void {
-    this.list()
-    this.sendTitle()
+    this.listAllPatient();
   }
 
-  list() {
-    this.service.listPatient("texte")
+  listAllPatient(): void {
+    this.patientService
+      .getAll()
       .pipe(
-        catchError(
-          (error) => {
-            this.patientList = this.service.patients
-            return of(this.patientList)
-          }
-        )
+        catchError((error) => {
+          let patientList: Array<any> = new Array();
+          patientList.push(
+            { 
+              id: 1,
+              name: 'Patient Teste',
+              cpf: "1234",
+              nameMother: "Mother Teste",
+              nameFather: "Father Teste",
+              genre: "female",
+              birth: 1985-12-30,
+              streetName: "Street Teste",
+              numberHome: 145,
+              district: "Center",
+              city: "Teste",
+              state: "CA",
+              country: "Brazil"
+            }
+          );
+
+          
+          return of(patientList);
+        })
       )
-      .subscribe((Response) => {
-        // console.log("Resultado:", Response);
-      })
+      .subscribe((response) => {
+        console.log(response);
+        this.patientService.patientList = response;
+      });
   }
 
-  deletePatient(index: number) {
-    this.patientList.splice(index, 1)
+  newPatient(): void {
+    this.patientService.updateButtonHidden = true
   }
 
-  sendTitle() {
-    this.system.currentTitle = "Records"
+  updatePatient(patient: any): void {
+    this.patientService.updateButtonHidden = false
+    this.patientService.patient = patient;
   }
-
-  sendData(index:number) {
-    let name = this.patientList[index].name
-    let cpf = this.patientList[index].cpf
-    let motherName = this.patientList[index].motherName
-    let fatherName = this.patientList[index].fatherName
-    let genre = this.patientList[index].genre
-    let birthDate = this.patientList[index].birthDate
-    let streetName = this.patientList[index].streetName
-    let numberHome = this.patientList[index].numberHome
-    let district = this.patientList[index].district
-    let city = this.patientList[index].city
-    let state = this.patientList[index].state
-    let country = this.patientList[index].country
-    console.log('new-patient',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country);
-    console.log('fatherName',fatherName);
-    this.router.navigate(['new-patient',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country]);
-    this.service.updateButtonHidden = false
-    this.service.indexUpdatePatient = index;
-  }
-
-  newPatient() {
-    this.service.updateButtonHidden = true
+  
+  deletePatient(patient: any): void {
+    this.patientService
+      .delete(patient)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.patientService.patientList.splice(this.patientService.patientList.indexOf(patient), 1);
+        }
+      });
   }
 
 }

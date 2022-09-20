@@ -9,9 +9,9 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 })
 export class DoctorComponent implements OnInit {
 
-  
-
-  constructor(public doctorService: DoctorService) { }
+  constructor(
+    public doctorService: DoctorService
+  ) { }
 
   ngOnInit(): void {
     this.listAllDoctor();

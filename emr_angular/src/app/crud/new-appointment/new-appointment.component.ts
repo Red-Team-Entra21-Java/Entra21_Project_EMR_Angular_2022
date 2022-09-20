@@ -22,7 +22,7 @@ export class NewAppointmentComponent implements OnInit {
   forwarding!: string | null
   medicalRelease!: string | null
 
-  patientList: Array<any> = this.servicePatient.patients
+  patientList: Array<any> = this.servicePatient.patientList
 
   constructor(
     private service: AppointmentService,
