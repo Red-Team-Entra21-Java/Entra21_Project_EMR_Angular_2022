@@ -38,20 +38,16 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Genre:</label> 
-                                
+                            <label class="form-label">Genre:</label>
                             <select class="form-select form-control" [(ngModel)]="doctor.genre" name="genre">
                               <option *ngFor="let genre of genreBox" >{{ genre }}</option>
-     
                             </select>
-                          </div>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorBirthDate"
-                                class="form-label">Birth Date:</label>
-                            <input type="date" class="form-control"
-                                id="doctorBirthDate" [(ngModel)]="doctor.birth" name="birth">
+                            <label for="doctorBirthDate" class="form-label">Birth Date:</label>
+                            <input type="date" class="form-control" id="doctorBirthDate" [(ngModel)]="doctor.birth" name="birth">
                         </div>
                     </div>
                 </div>
