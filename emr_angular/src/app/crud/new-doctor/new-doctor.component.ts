@@ -72,6 +72,7 @@ export class NewDoctorComponent implements OnInit {
           this.doctorService.doctorList.push(response);
         }
       });
+      this.clearInputs()
       this.router.navigateByUrl("doctor")
   }
 
@@ -90,10 +91,30 @@ export class NewDoctorComponent implements OnInit {
           this.doctorService.doctorList[this.doctorService.doctorList.indexOf(this.doctorService.doctor)] = response;
         }
       });
+      this.clearInputs()
       this.router.navigateByUrl("doctor")
   }
 
   cancelRecord() {
+    this.clearInputs()
     this.router.navigateByUrl("doctor")
+  }
+
+  clearInputs() {
+    this.name = ""
+    this.cpf = ""
+    this.nameMother = ""
+    this.nameFather = ""
+    this.genre = ""
+    this.birth = new Date()
+    this.streetName = ""
+    this.numberHome = new Number()
+    this.district = ""
+    this.city = ""
+    this.state = ""
+    this.country = ""
+    this.registerNumber = ""
+    this.registerState = ""
+    this.specialty = ""
   }
 }

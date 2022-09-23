@@ -60,6 +60,7 @@ export class NewUserComponent implements OnInit {
           this.userService.userList.push(response);
         }
       });
+      this.clearInputs()
       this.router.navigateByUrl("user")
   }
 
@@ -77,11 +78,20 @@ export class NewUserComponent implements OnInit {
         if (response) {
           this.userService.userList[this.userService.userList.indexOf(this.userService.user)] = response;
         }
-      });
+      });   
+      this.clearInputs()
       this.router.navigateByUrl("user")
   }
 
   cancelRecord() {
+    this.clearInputs()
     this.router.navigateByUrl("user")
+  }
+
+  clearInputs() {
+    this.name = ""
+    this.email = ""
+    this.login = ""
+    this.password = ""
   }
 }
