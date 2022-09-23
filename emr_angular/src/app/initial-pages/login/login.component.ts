@@ -27,6 +27,33 @@ export class LoginComponent implements OnInit {
     this.security.authenticated = false;
   }
 
+
+  validateLogin2() {
+    this.userService
+      .login({login: this.login, password: this.password})
+      .pipe(
+        catchError((error) => {
+          let userList: Array<any> = new Array();
+          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
+          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
+          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+          
+          return of( userList);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response[0].login === this.login) {   
+          this.security.authenticated = true;
+          this.service.userLogged = response[0].name
+          this.router.navigateByUrl('dashboard')
+        } else {
+          this.erroMessage = false;        
+        }
+      });
+  }
+
+
   validateLogin(): void {
     this.userService
     .getAll()
@@ -60,6 +87,19 @@ export class LoginComponent implements OnInit {
 
   recordUser() {
     this.service.isLogin = false;
+  }
+
+
+
+  teste() {
+    if( this.erroMessage === false) {
+      this.erroMessage = true;        
+      
+    } else {
+      
+      this.erroMessage = false;        
+    }
+
   }
 }
 
