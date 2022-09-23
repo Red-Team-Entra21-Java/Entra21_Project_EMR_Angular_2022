@@ -22,8 +22,23 @@ export class AboutComponent implements OnInit {
       .pipe(
         catchError((error) => {
           let teamList: Array<any> = new Array();
-          teamList.push({ id: 1, name: 'teste', github: "teste", collage:"ADS" });
-          
+          teamList.push(
+            {
+              id: 1,
+              name: 'Emerson Seiler',
+              github: 'https://github.com/seiler-emerson',
+              college: 'Studying Software Engineering',
+              image: 'https://avatars.githubusercontent.com/u/42720635?v=4'
+            },
+            {
+              id: 2,
+              name: 'Welliton Borges',
+              github: 'https://github.com/wellitonborges',
+              college: 'Studying Software Engineering',
+              image: 'https://avatars.githubusercontent.com/u/48368109?v=4'
+            }
+          );
+
           return of(teamList);
         })
       )
