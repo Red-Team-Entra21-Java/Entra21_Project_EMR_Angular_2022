@@ -7,23 +7,22 @@
     </div>
 
     <div class="col background-color d-flex justify-content-center">
-        <div class="align-self-center text-end w-50">
+        <div class="align-self-center text-end w-75">
             <div class="row d-flex">
-                <div class="col">
-                    <div class="card" *ngFor="let team of this.aboutService.teamList;">
-                        <img src="..." class="card-img-top" alt="...">
-                      
-                        <div class="card-body">
-                          <h5 class="card-title">{{team.name}}</h5>
-                          <p class="card-text">{{team.college}}</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col-12">
+                    <div class="card-deck">
+                        <div class="card" *ngFor="let team of this.aboutService.teamList;">
+                            <img src="{{team.image}}" class="card-img-top" alt="Profile picture">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title">{{team.name}}</h5>
+                                <p class="card-text">{{team.college}}</p>
+                                <a href="{{team.github}}" class="btn btn-primary" target="_blank">Visit GitHub Profile</a>
+                                </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
-
