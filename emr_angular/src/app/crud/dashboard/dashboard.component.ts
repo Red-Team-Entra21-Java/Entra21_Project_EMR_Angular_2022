@@ -5,6 +5,7 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 import { PatientService } from 'src/app/services/crud/patient.service';
 import { UserService } from 'src/app/services/crud/user.service';
 import { SystemService } from 'src/app/services/system.service';
+import { DoctorComponent } from '../doctor/doctor.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +25,8 @@ export class DashboardComponent implements OnInit {
     private appointmentService: AppointmentService,
     private patientService: PatientService,
     private doctorService: DoctorService,
-    private userService: UserService
+    private userService: UserService,
+
   ) { }
 
   ngOnInit(): void {
