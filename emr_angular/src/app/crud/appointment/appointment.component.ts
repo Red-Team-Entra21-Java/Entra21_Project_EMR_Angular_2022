@@ -14,60 +14,59 @@ export class AppointmentComponent implements OnInit {
   appointmenttList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
 
   constructor(
-    private service: AppointmentService,
-    private system: SystemService,
-    private router: Router
+    public appointmentService: AppointmentService,
+    private system: SystemService
   ) { }
 
   ngOnInit(): void {
-    this.list()
-    this.sendTitle()
+    this.listAllAppointment();
   }
 
-  list() {
-    this.service.listAppointments("texte")
+  listAllAppointment(): void {
+    this.appointmentService
+      .getAll()
       .pipe(
-        catchError(
-          (error) => {
-            this.appointmenttList = this.service.appointments
-            return of(this.appointmenttList)
-          }
-        )
+        catchError((error) => {
+          let appointmentList: Array<any> = new Array();
+          appointmentList.push({ 	id: 1, patient_id: 1, doctor_id: 1, date: 2020-12-30, hour: "22:34:00", anamnesis: "Dor de cabeça", prescription: "Paracetamol 8/8h", certificate: "atestado 15 dias", forwarding: "n/h", medicalRelease: "liberado" });
+                    
+          return of(appointmentList);
+        })
       )
-      .subscribe((Response) => {
-        // console.log("Resultado:", Response);
-      })
+      .subscribe((response) => {
+        console.log(response);
+        this.appointmentService.appointmentList = response;
+      });
   }
 
-  deleteAppointment(index: number) {
-    this.appointmenttList.splice(index,1)
+  newAppointment(): void {
+    this.appointmentService.updateButtonHidden = true
+  }
+
+  updateAppointment(appointment: any): void {
+    this.appointmentService.updateButtonHidden = false
+    this.appointmentService.appointment = appointment;
+  }
+  
+  deleteAppointment(appointment: any): void {
+    this.appointmentService
+      .delete(appointment)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.appointmentService.appointmentList.splice(this.appointmentService.appointmentList.indexOf(appointment), 1);
+        }
+      });
   }
 
   sendTitle() {
     this.system.currentTitle = "Appointments"
   }
 
-  sendData(index:number) {
-    let date = this.appointmenttList[index].date
-    let hour = this.appointmenttList[index].hour
-    let doctor = this.appointmenttList[index].doctor
-    let patient = this.appointmenttList[index].patient
-    let patientCPF = this.appointmenttList[index].patientCPF
-    let anamnesis = this.appointmenttList[index].anamnesis
-    let prescription = this.appointmenttList[index].prescription
-    let certificate = this.appointmenttList[index].certificate
-    let forwarding = this.appointmenttList[index].forwarding
-    let medicalRelease = this.appointmenttList[index].medicalRelease
-    
-    console.log('new-appointment',date, hour, doctor, patient, patientCPF, anamnesis, prescription, certificate, forwarding, medicalRelease);
-    this.router.navigate(['new-appointment',date, hour, doctor, patient, patientCPF, anamnesis, prescription, certificate, forwarding, medicalRelease]);
-    this.service.updateButtonHidden = false
-    this.service.indexUpdateAppointment = index;
-    
-  }
-
-  newAppointment() {
-    this.service.updateButtonHidden = true
-  }
 
 }

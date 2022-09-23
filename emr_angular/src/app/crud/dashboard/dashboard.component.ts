@@ -14,14 +14,14 @@ import { DoctorComponent } from '../doctor/doctor.component';
 })
 export class DashboardComponent implements OnInit {
 
-  appointmentsNumber: number = this.appointmentService.appointments.length
-  patientsNumber!: number // = this.patientService.patients.length
-  doctorsNumber!: number // = this.doctorService.doctorList.length
-  usersNumber: number = this.userService.userList.length
+  appointmentsNumber!: number
+  patientsNumber!: number
+  doctorsNumber!: number
+  usersNumber!: number
 
   constructor(
     private router: Router,
-    private system: SystemService,
+    private systemService: SystemService,
     private appointmentService: AppointmentService,
     private patientService: PatientService,
     private doctorService: DoctorService,
@@ -32,10 +32,26 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.enviarTitulo()
     this.doctorsNumber 
+
+      this.systemService.listAllAppointment()
+      this.systemService.listAllDoctor()
+      this.systemService.listAllPatient()
+      this.systemService.listAllUser()
+      this.populateDashboard()
+
   }
 
   enviarTitulo() {
-    this.system.currentTitle = "Dashboard"
+    this.systemService.currentTitle = "Dashboard"
+  }
+
+  populateDashboard() {
+    setTimeout(() => {
+      this.appointmentsNumber = this.appointmentService.appointmentList.length
+      this.patientsNumber = this.patientService.patientList.length
+      this.doctorsNumber = this.doctorService.doctorList.length
+      this.usersNumber = this.userService.userList.length
+    }, 1000);
   }
 
 }

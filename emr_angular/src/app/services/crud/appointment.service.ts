@@ -1,110 +1,48 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
 
-  path: string = "https://pokeapi.co/api/v2"
   updateButtonHidden: boolean = true;
-  indexUpdateAppointment!: number;
-
-  appointments = [
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Rafael Silva",
-      patient: "Sheldon Cooper",
-      patientCPF: "036.869.260-40",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Calos Francesconi",
-      patient: "Sheldon Cooper",
-      patientCPF: "036.869.260-40",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Isabel Carolina",
-      patient: "Joana da Silva",
-      patientCPF: "502.680.680-54",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Afonso Alonso",
-      patient: "Joana da Silva",
-      patientCPF: "502.680.680-54",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Rafael Silva",
-      patient: "Cleber Silveira",
-      patientCPF: "163.514.890-16",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Rafael Silva",
-      patient: "Cleber Silveira",
-      patientCPF: "163.514.890-16",
-      anamnesis: "Dor de cabeca",
-      prescription: "paracetamol - 8/8h - se dor",
-      certificate: "Declaracao de comparecimento",
-      forwarding: "encaminhamento para neuro",
-      medicalRelease: "Liberado"
-    },
-    {
-      date: "2022-01-02",
-      hour: "01:15:00",
-      doctor: "Afonso Alonso",
-      patient: "Cleber Silveira",
-      patientCPF: "163.514.890-16",
-      anamnesis: "Dor abdominal",
-      prescription: "laxante - 8/8h - 1 dia",
-      certificate: "Atestado",
-      forwarding: "encaminhamento para gastro",
-      medicalRelease: "Liberado"
-    },
-  ]
-
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  listAppointments(appointments: string) {
-    console.log(this.path + "/appointments/" + appointments);
-
-    return this.http.get<any>(this.path + "/appointments/" + appointments)
-  }
+    indexUpdateDoctor!: number;
+  
+    appointmentList!: Array<any>;
+    appointment!: any;
+  
+    apiUrl: string = 'http://localhost:8080/appointment';
+  
+    constructor(
+      private http: HttpClient
+    ) { }
+  
+  
+    getAll(): Observable<any> {
+  
+      return this.http.get<any>(this.apiUrl);
+    }
+  
+    getById(appointment: any): Observable<any> {
+  
+      return this.http.get<any>(this.apiUrl + '/' + appointment.id);
+    }
+  
+    create(appointment: any): Observable<any> {
+  
+      return this.http.post<any>(this.apiUrl, appointment);
+    }
+  
+    update(appointment: any): Observable<any> {
+  
+      return this.http.put<any>(this.apiUrl + '/' + appointment.id, appointment);
+    }
+  
+    delete(appointment: any): Observable<any> {
+  
+      return this.http.delete<any>(this.apiUrl + '/' + appointment.id);
+    }
 
 }

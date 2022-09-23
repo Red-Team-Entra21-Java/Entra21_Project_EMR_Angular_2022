@@ -15,6 +15,7 @@ export class PatientComponent implements OnInit {
 
   constructor(
     public patientService: PatientService,
+    private systemService: SystemService
   ) { }
 
   ngOnInit(): void {
@@ -78,6 +79,10 @@ export class PatientComponent implements OnInit {
           this.patientService.patientList.splice(this.patientService.patientList.indexOf(patient), 1);
         }
       });
+  }
+
+  sendTitle() {
+    this.systemService.currentTitle = "Records"
   }
 
 }

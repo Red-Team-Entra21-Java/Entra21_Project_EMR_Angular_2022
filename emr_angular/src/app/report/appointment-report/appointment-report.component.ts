@@ -18,7 +18,7 @@ export class AppointmentReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.appointmentList = this.appointmentService.appointments
+    this.appointmentList = this.appointmentService.appointmentList
     this.sendTitle()
   }
 

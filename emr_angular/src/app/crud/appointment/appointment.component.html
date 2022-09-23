@@ -17,7 +17,7 @@
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
-                <tr *ngFor="let appointment of appointmenttList; let index = index">
+                <tr *ngFor="let appointment of this.appointmentService.appointmentList; let index = index">
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.hour }}</td>
                     <td>{{ appointment.patientCPF}}</td>
@@ -25,10 +25,10 @@
                     <td>{{ appointment.doctor}}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
-                          <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteAppointment(index)">
+                          <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteAppointment(appointment)">
                               <span class="material-icons-sharp">delete</span>
                           </div>
-                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="sendData(index)">
+                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="updateAppointment(appointment)">
                               <span class="material-icons-sharp">edit</span>
                           </div>
                           <div class="mx-1 btn btn-primary d-flex align-items-center justify-content-center">
