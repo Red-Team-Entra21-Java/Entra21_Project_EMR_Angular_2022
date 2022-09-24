@@ -9,20 +9,20 @@
         <br>
         <table class="table table-bordered table-hover table-striped">
             <thead class="text-center">
-                <th>Date</th>
-                <!-- <th>Hour</th> -->
+                <th>ID</th>
+                <th>Date/Hour</th>
                 <th>CPF Patient</th>
                 <th>Patient Name</th>
                 <th>Doctor Name</th>
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
-                <tr *ngFor="let appointment of this.appointmentService.appointmentList; let index = index">
-                    <td>{{ appointment.date }}</td>
-                    <!-- <td>{{ appointment.hour }}</td> -->
-                    <td>{{ appointment.patientCPF}}</td>
-                    <td>{{ appointment.patient}}</td>
-                    <td>{{ appointment.doctor}}</td>
+                <tr *ngFor="let appointment of this.appointmentService.appointmentList">
+                    <td>{{ appointment.id }}</td>
+                    <td>{{ appointment.date_open }}</td>
+                    <td>{{ this.patientService.patientList[appointment.patient_id].cpf}}</td>
+                    <td>{{ this.patientService.patientList[appointment.patient_id].name}}</td>
+                    <td>{{ this.doctorService.doctorList[appointment.doctor_id].name}}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
                           <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteAppointment(appointment)">

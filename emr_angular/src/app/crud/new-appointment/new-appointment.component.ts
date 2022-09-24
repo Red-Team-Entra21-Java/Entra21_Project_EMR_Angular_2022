@@ -17,8 +17,7 @@ export class NewAppointmentComponent implements OnInit {
   appointment!: any;
 
   updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
-  date!: Date | null
-  hour!: Time | null
+  date!: string | null
   doctor!: string | null
   patient!: string | null
   patientCPF!: string | null
@@ -54,7 +53,6 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-    this.date = new Date()
     this.appointmentService
       .create(this.appointment)
       .pipe(
@@ -101,8 +99,7 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   clearInputs() {
-    this.date = new Date()
-    this.hour = {hours: 0, minutes:0}
+    this.date = ""
     this.doctor = ""
     this.patient = ""
     this.patientCPF = ""

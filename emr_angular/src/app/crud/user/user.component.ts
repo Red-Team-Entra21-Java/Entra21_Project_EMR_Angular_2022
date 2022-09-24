@@ -29,7 +29,7 @@ export class UserComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.userService.userList = response;
       });
   }

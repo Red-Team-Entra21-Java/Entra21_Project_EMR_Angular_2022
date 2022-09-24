@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { PatientService } from 'src/app/services/crud/patient.service';
 import { SystemService } from 'src/app/services/system.service';
@@ -45,13 +44,11 @@ export class PatientComponent implements OnInit {
               country: "Brazil"
             }
           );
-
-          
           return of(patientList);
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.patientService.patientList = response;
       });
   }
