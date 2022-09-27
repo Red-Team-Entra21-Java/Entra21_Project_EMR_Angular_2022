@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormsPagesComponent } from './forms-pages/forms-pages.component';
 import { CrudModule } from '../crud/crud.module';
 import { FormsModule } from '@angular/forms';
-import { AboutComponent } from './about/about.component';
+import { TeamComponent } from './team/team.component';
 
 
 
@@ -16,7 +16,7 @@ import { AboutComponent } from './about/about.component';
     LoginComponent,
     HomeComponent,
     FormsPagesComponent,
-    AboutComponent,
+    TeamComponent,
     
   ],
   imports: [

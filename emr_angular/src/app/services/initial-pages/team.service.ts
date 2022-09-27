@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AboutService {
+export class TeamService {
 
-  
   teamList!: Array<any>;
   team!: any;
 
@@ -22,6 +21,4 @@ export class AboutService {
 
     return this.http.get<any>(this.apiUrl);
   }
-
-
 }

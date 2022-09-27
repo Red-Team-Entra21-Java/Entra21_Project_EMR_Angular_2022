@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
-import { AboutService } from 'src/app/services/initial-pages/about.service';
+import { TeamService } from 'src/app/services/initial-pages/team.service';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-team',
+  templateUrl: './team.component.html',
+  styleUrls: ['./team.component.css']
 })
-export class AboutComponent implements OnInit {
+export class TeamComponent implements OnInit {
 
   constructor(
-    public aboutService: AboutService
+    public teamService: TeamService
   ) { }
 
   ngOnInit(): void {
     this.listAllTeam()
   }
   listAllTeam(): void {
-    this.aboutService
+    this.teamService
       .getAll()
       .pipe(
         catchError((error) => {
@@ -27,15 +27,17 @@ export class AboutComponent implements OnInit {
               id: 1,
               name: 'Emerson Seiler',
               github: 'https://github.com/seiler-emerson',
+              linkedin: 'https://www.linkedin.com/in/seileremerson/',
               college: 'Studying Software Engineering',
-              image: 'https://avatars.githubusercontent.com/u/42720635?v=4'
+              image: 'https://avatars.githubusercontent.com/seiler-emerson'
             },
             {
               id: 2,
               name: 'Welliton Borges',
-              github: 'https://github.com/wellitonborges',
+              github: 'https://github.com/Wellitonborges',
+              linkedin: 'https://www.linkedin.com/in/seileremerson/',
               college: 'Studying Software Engineering',
-              image: 'https://avatars.githubusercontent.com/u/48368109?v=4'
+              image: 'https://avatars.githubusercontent.com/Wellitonborges'
             }
           );
 
@@ -44,9 +46,8 @@ export class AboutComponent implements OnInit {
       )
       .subscribe((response) => {
         console.log(response);
-        this.aboutService.teamList = response;
+        this.teamService.teamList = response;
       });
   }
-
 
 }

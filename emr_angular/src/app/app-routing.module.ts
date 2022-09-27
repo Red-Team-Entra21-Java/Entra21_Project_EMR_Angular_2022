@@ -11,10 +11,10 @@ import { NewPatientComponent } from './crud/new-patient/new-patient.component';
 import { NewUserComponent } from './crud/new-user/new-user.component';
 import { PatientComponent } from './crud/patient/patient.component';
 import { UserComponent } from './crud/user/user.component';
-import { AboutComponent } from './initial-pages/about/about.component';
 import { FormsPagesComponent } from './initial-pages/forms-pages/forms-pages.component';
 import { HomeComponent } from './initial-pages/home/home.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { TeamComponent } from './initial-pages/team/team.component';
 import { AppointmentReportComponent } from './report/appointment-report/appointment-report.component';
 import { DoctorReportComponent } from './report/doctor-report/doctor-report.component';
 import { PatientReportComponent } from './report/patient-report/patient-report.component';
@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: "patient-report", component: PatientReportComponent,canActivate: [SecurityService]},
   { path: "doctor-report", component: DoctorReportComponent,canActivate: [SecurityService]},
   { path: "user-report", component: UserReportComponent,canActivate: [SecurityService]},
-  { path: "about", component: AboutComponent},
+  { path: "team", component: TeamComponent},
 
 ];
 
