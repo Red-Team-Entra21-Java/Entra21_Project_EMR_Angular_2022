@@ -17,7 +17,9 @@ export class NewAppointmentComponent implements OnInit {
   appointment!: any;
 
   updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
-  date!: string | null
+  // date_open!: string | null
+  patient_id!: number | null
+  doctor_id!: number | null
   doctor!: string | null
   patient!: string | null
   patientCPF!: string | null
@@ -43,7 +45,7 @@ export class NewAppointmentComponent implements OnInit {
     }
   }
 
-  //VERIDICAR
+  //VERIFICAR
   isLogged() {
     if(this.securityService.authenticated === false) {
       this.router.navigateByUrl("")
@@ -53,6 +55,7 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
+    this.appointment.doctor_id = 2
     this.appointmentService
       .create(this.appointment)
       .pipe(
@@ -63,9 +66,11 @@ export class NewAppointmentComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {          
           this.appointmentService.appointmentList.push(response);
+          console.log(response);
+          
           
           
         }
@@ -98,8 +103,12 @@ export class NewAppointmentComponent implements OnInit {
     this.router.navigateByUrl("appointments")
   }
 
+  setPatientId(id: any) {
+    this.appointment.patient_id = id;      
+  }
+
+
   clearInputs() {
-    this.date = ""
     this.doctor = ""
     this.patient = ""
     this.patientCPF = ""
@@ -110,6 +119,5 @@ export class NewAppointmentComponent implements OnInit {
     this.forwarding = ""
     this.medicalRelease = ""
   }
-
 
 }

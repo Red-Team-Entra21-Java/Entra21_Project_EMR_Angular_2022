@@ -1,9 +1,19 @@
 <section class="row initial p-0 m-0">
 
     <div class="col team-image">
-        <a class="text-primary" routerLink="">
-            <img class="logo" src="../../../assets/icons/logo.png" alt="">
-        </a>
+        <div class="row">
+            <a class="text-primary" routerLink="">
+                <img class="logo ml-3" src="../../../assets/icons/logo.png" alt="">
+            </a>
+        </div>
+        <div class="row h-100 d-flex align-items-center justify-content-center">
+            <div class="card h-25 w-75">
+                <div class="card-body text-center">
+                    <h5>Inicialmente o time contava com 3 integrantes, infelizmente devido a problemas pessoais nossa colega Bárbara Ribeiro precisou sair do curso um pouco antes dos modulos de Angular e Spring.</h5>
+                    <h5>Atualmente o time é composto apenas pelos integrantes Emerson e Welliton</h5>
+                </div>
+            </div>
+        </div>
 
         
     </div>
@@ -15,13 +25,15 @@
                 <div class="col-12">
                         <div class="card mb-1" >
                             <div class="card-body box-profile">
-                                <div class="d-flex">
+                                <div class="d-flex align-items-center">
                                     <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle mr-3" src="{{team.image}}" alt="{{team.name}}">
+                                        <img class="profile-user-img img-circle m-1" src="{{team.image}}" alt="{{team.name}}">
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h2 class="">{{team.name}}</h2>
-                                        <p class="text-muted ">{{team.college}}</p>
+                                        <div class="w-75">
+                                            <p class="text-muted ml-1">{{team.college}}</p>
+                                        </div>
                                         <div>
                                             <a href="{{team.github}}" target="_blank" class="btn btn-secondary"><b>GitHub</b></a>
                                             <a href="{{team.linkedin}}" target="_blank" class="btn btn-primary ml-2"><b>LinkedIn</b></a>
@@ -34,11 +46,7 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <p>Inicialmente nossa time contava com 3 integrantes, infelizmente devido a problemas pessoais nossa colega Bárbara Ribeiro precisou sair do curso um pouco antes dos modulos de Angular e Soring. Hoje o time é composto apenas pelos integrantes Emerson e Welliton</p>
-                </div>
-            </div>
+           
 
         </div>
 

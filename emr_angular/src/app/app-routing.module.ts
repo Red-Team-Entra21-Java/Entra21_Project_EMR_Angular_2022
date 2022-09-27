@@ -25,25 +25,25 @@ const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "login", component: FormsPagesComponent},
   { path: "dashboard", component: DashboardComponent,canActivate: [SecurityService]},
-  { path: "appointments", component: AppointmentComponent},
+  { path: "team", component: TeamComponent},
+  { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
   { path: "patient", component: PatientComponent,canActivate: [SecurityService]},
   { path: "doctor", component: DoctorComponent,canActivate: [SecurityService]},
   { path: "user", component: UserComponent,canActivate: [SecurityService]},
-  { path: "new-appointment", component: NewAppointmentComponent},
-  // { path: "new-appointment/:date/:hour/:doctor/:patient/:patientCPF/:anamnesis/:prescription/:certificate/:forwarding/:medicalRelease", component: NewAppointmentComponent,canActivate: [SecurityService]},
+  { path: "new-appointment", component: NewAppointmentComponent,canActivate: [SecurityService]},
   { path: "new-patient", component: NewPatientComponent,canActivate: [SecurityService]},
-  // { path: "new-patient/:name/:cpf/:motherName/:fatherName/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country", component: NewPatientComponent,canActivate: [SecurityService]},
   { path: "new-doctor", component: NewDoctorComponent,canActivate: [SecurityService]},
-  // { path: "new-doctor/:name/:cpf/:motherName/:fatherName/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country/:registerNumber/:specialty/:numberAppointments", component: NewDoctorComponent,canActivate: [SecurityService]},
   { path: "new-user", component: NewUserComponent},
-  // { path: "new-user/:name/:email/:login/:password", component: NewUserComponent},
   { path: "detail-patient", component: DetailsPatientComponent,canActivate: [SecurityService]},
   { path: "appointment-report", component: AppointmentReportComponent,canActivate: [SecurityService]},
   { path: "patient-report", component: PatientReportComponent,canActivate: [SecurityService]},
   { path: "doctor-report", component: DoctorReportComponent,canActivate: [SecurityService]},
   { path: "user-report", component: UserReportComponent,canActivate: [SecurityService]},
-  { path: "team", component: TeamComponent},
-
+  
+  // { path: "new-appointment/:date/:hour/:doctor/:patient/:patientCPF/:anamnesis/:prescription/:certificate/:forwarding/:medicalRelease", component: NewAppointmentComponent,canActivate: [SecurityService]},
+  // { path: "new-patient/:name/:cpf/:motherName/:fatherName/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country", component: NewPatientComponent,canActivate: [SecurityService]},
+  // { path: "new-doctor/:name/:cpf/:motherName/:fatherName/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country/:registerNumber/:specialty/:numberAppointments", component: NewDoctorComponent,canActivate: [SecurityService]},
+  // { path: "new-user/:name/:email/:login/:password", component: NewUserComponent},
 ];
 
 @NgModule({

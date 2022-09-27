@@ -17,18 +17,18 @@
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyAppointment">
-                <tr *ngFor="let appointment of this.appointmentService.appointmentList">
+                <tr *ngFor="let appointment of this.appointmentService.appointmentList; let index = index">
                     <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date_open }}</td>
-                    <td>{{ this.patientService.patientList[appointment.patient_id].cpf}}</td>
-                    <td>{{ this.patientService.patientList[appointment.patient_id].name}}</td>
-                    <td>{{ this.doctorService.doctorList[appointment.doctor_id].name}}</td>
+                    <td>{{ appointment.date_appointment }}</td>
+                    <td>{{ this.getPatientCpf(appointment.patient_id) }}</td>
+                    <td>{{ this.getPatientName(appointment.patient_id) }}</td>
+                    <td>{{ this.getDoctorName(appointment.doctor_id) }}</td>
                     <td class="p-1">
                       <div class="d-flex gap-1 justify-content-center p-1">
                           <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteAppointment(appointment)">
                               <span class="material-icons-sharp">delete</span>
                           </div>
-                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="updateAppointment(appointment)">
+                          <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" routerLink="../new-appointment" (click)="updateAppointment(appointment)">
                               <span class="material-icons-sharp">edit</span>
                           </div>
                           <div class="mx-1 btn btn-primary d-flex align-items-center justify-content-center">

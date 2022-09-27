@@ -19,6 +19,7 @@ export class PatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.listAllPatient();
+    this.sendTitle()
   }
 
   listAllPatient(): void {
