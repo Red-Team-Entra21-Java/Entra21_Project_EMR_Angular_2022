@@ -2,7 +2,7 @@
 
 ## 🩺&nbsp; Appointment
 
-![Appointment](readme_images/emr_appointment.gif)
+![Appointment](../emr_angular/src/assets/images/readme_images/emr_appointment.gif)
 
 The appointments section is the part where the patient appointments data is listed, created, edited and deleted. Here you can find information regarding each service performed.
 
