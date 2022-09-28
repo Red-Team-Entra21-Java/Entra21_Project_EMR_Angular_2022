@@ -1,0 +1,12 @@
+.team-image {
+    background-image: url(../../../assets/images/team.jpg);
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-position: inherit;
+    background-size: cover;
+}
+
+.logo {
+    height: 40px;
+    margin-top: 10px;
+}

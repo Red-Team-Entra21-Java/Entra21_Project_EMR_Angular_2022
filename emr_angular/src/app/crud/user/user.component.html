@@ -9,22 +9,24 @@
         <br>
         <table class="table table-bordered table-hover table-striped">
             <thead class="text-center">
+                <th>ID</th>
                 <th>Name</th>
                 <th>email</th>
-                <th>User</th>
+                <th>Login</th>
                 <th></th>
             </thead>
             <tbody class="text-center" id="tbodyUser">
-                <tr *ngFor="let user of userList; let index = index">
+                <tr *ngFor="let user of this.userService.userList; let index = index">
+                    <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.login }}</td>
                     <td class="p-1">
                         <div class="d-flex gap-1 justify-content-center p-0 m-0">
-                            <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteUser(index)">
+                            <div class="mx-1 btn btn-danger d-flex align-items-center justify-content-center" (click)="deleteUser(user)" >
                                 <span class="material-icons-sharp">delete</span>
                             </div>
-                            <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" (click)="sendData(index)">
+                            <div class="mx-1 btn btn-success d-flex align-items-center justify-content-center" routerLink="../new-user" (click)="updateUser(user)">
                                 <span class="material-icons-sharp">edit</span>
                             </div>
                             <div class="mx-1 btn btn-primary d-flex align-items-center justify-content-center">

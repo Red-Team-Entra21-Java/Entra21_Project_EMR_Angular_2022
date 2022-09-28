@@ -1,55 +1,55 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  path: string = "https://pokeapi.co/api/v2"  //URL DA API
 
   updateButtonHidden: boolean = true;
   indexUpdateUser!: number;
 
-  users: Array<any> = [
-    {
-      name: "Administrator",
-      email: "admin@admin.com",
-      login: "admin",
-      password: "admin"
-    },
-    {
-      name: "Doctor",
-      email: "doctor@doctor.com",
-      login: "doctor",
-      password: "doctor"
-    },
-    {
-      name: "User",
-      email: "user@user.com",
-      login: "user",
-      password: "user"
-    },
-    {
-      name: "Emerson Seiler",
-      email: "seiler@seiler.com",
-      login: "seiler",
-      password: "123"
-    },
-    {
-      name: "Emerson Seiler",
-      email: "seiler@seiler.com",
-      login: "1",
-      password: "1"
-    },
-  ]
+  userList!: Array<any>;
+  user!: any;
+
+  apiUrl: string = 'http://localhost:8080/user';
 
   constructor(
-      private http: HttpClient
+    private http: HttpClient
   ) { }
 
-  listUser(user: string) {
-      console.log(this.path + "/user/" + user);
 
-      return this.http.get<any>(this.path + "/user/" + user)
+  getAll(): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl);
   }
+
+  getById(user: any): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl + '/' + user.id);
+  }
+
+  create(user: any): Observable<any> {
+
+    return this.http.post<any>(this.apiUrl, user);
+  }
+
+  update(user: any): Observable<any> {
+
+    return this.http.put<any>(this.apiUrl + '/' + user.id, user);
+  }
+
+  delete(user: any): Observable<any> {
+
+    return this.http.delete<any>(this.apiUrl + '/' + user.id);
+  }
+
+  login(user: any): Observable<any> {
+
+    return this.http.post<any>(this.apiUrl + '/login', user);
+  }
+
 }

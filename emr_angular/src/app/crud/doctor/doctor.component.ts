@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
 
@@ -10,60 +9,71 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 })
 export class DoctorComponent implements OnInit {
 
-  doctorList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
-
   constructor(
-    private service: DoctorService,
-    private router: Router
+    public doctorService: DoctorService
   ) { }
 
   ngOnInit(): void {
-    this.list()
+    this.listAllDoctor();
   }
 
-  list() {
-    this.service.listDoctor("texte")
+  listAllDoctor(): void {
+    this.doctorService
+      .getAll()
       .pipe(
-        catchError(
-          (error) => {
-            this.doctorList = this.service.doctors
-            return of(this.doctorList)
-          }
-        )
+        catchError((error) => {
+          let doctorList: Array<any> = new Array();
+          doctorList.push(
+            { 
+              id: 1,
+              name: 'Doctor Teste',
+              cpf: "1234",
+              nameMother: "Mother Teste",
+              nameFather: "Father Teste",
+              genre: "female",
+              birth: 1985-12-30,
+              streetName: "Street Teste",
+              numberHome: 145,
+              district: "Center",
+              city: "Teste",
+              state: "CA",
+              country: "Brazil"
+            }
+          );
+
+          
+          return of(doctorList);
+        })
       )
-      .subscribe((Response) => {
-        // console.log("Resultado:", Response);
-      })
+      .subscribe((response) => {
+        console.log(response);
+        this.doctorService.doctorList = response;
+      });
   }
 
-  deleteDoctor(index: number) {
-    this.doctorList.splice(index, 1)
+  newDoctor(): void {
+    this.doctorService.updateButtonHidden = true
   }
 
-  sendData(index:number) {
-    let name = this.doctorList[index].name
-    let cpf = this.doctorList[index].cpf
-    let motherName = this.doctorList[index].motherName
-    let fatherName = this.doctorList[index].fatherName
-    let genre = this.doctorList[index].genre
-    let birthDate = this.doctorList[index].birthDate
-    let streetName = this.doctorList[index].streetName
-    let numberHome = this.doctorList[index].numberHome
-    let district = this.doctorList[index].district
-    let city = this.doctorList[index].city
-    let state = this.doctorList[index].state
-    let country = this.doctorList[index].country
-    let registerNumber = this.doctorList[index].registerNumber
-    let specialty = this.doctorList[index].specialty
-    let numberAppointments = this.doctorList[index].numberAppointments
-    console.log('doctor',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country, registerNumber, specialty, numberAppointments);
-    this.router.navigate(['new-doctor',name, cpf, motherName, fatherName, genre, birthDate, streetName, numberHome, district, city, state, country, registerNumber, specialty, numberAppointments]);
-    this.service.updateButtonHidden = false
-    this.service.indexUpdateDoctor = index;
+  updateDoctor(doctor: any): void {
+    this.doctorService.updateButtonHidden = false
+    this.doctorService.doctor = doctor;
   }
-
-  newDoctor() {
-    this.service.updateButtonHidden = true
+  
+  deleteDoctor(doctor: any): void {
+    this.doctorService
+      .delete(doctor)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.doctorService.doctorList.splice(this.doctorService.doctorList.indexOf(doctor), 1);
+        }
+      });
   }
 
 }

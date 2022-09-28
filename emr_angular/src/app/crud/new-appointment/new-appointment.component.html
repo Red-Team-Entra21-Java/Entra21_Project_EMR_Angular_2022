@@ -6,53 +6,77 @@
                     <div class="col">
                         <div class="input-group mb-3" >
                             <label class="input-group-text" for="patientList" >Patient</label>
-                            <select class="form-select form-control" id="patientList" >
-                                <option value="patient.name" *ngFor="let patient of patientList; let index = index"> {{ patient.name}} - {{ patient.cpf }}</option>
+                            <select [disabled]="!updateButtonHidden" class="form-select form-control" (ngModelChange)="setPatientId($event)" [(ngModel)]="appointment.patient_id" name="patient" >
+                                <option [ngValue]="patient.id" *ngFor="let patient of this.patientService.patientList; let index = index">{{ patient.id }} - {{ patient.name }} - {{ patient.cpf }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="medicalAnamnesisAppointment" class="form-label">Anamnesis</label>
-                            <textarea class="form-control" id="medicalAnamnesisAppointment" rows="3"
-                                placeholder="Describe the patient's complaint." [(ngModel)]="anamnesis" name="anamnesis" required></textarea>
+                            <label class="form-label">Anamnesis</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Describe the patient's complaint." [(ngModel)]="appointment.anamnesis" name="anamnesis" required></textarea>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="medicalPrescriptionAppointment" class="form-label">Prescription</label>
                             <textarea class="form-control" id="medicalPrescriptionAppointment" rows="3"
-                                placeholder="Describe the prescription." [(ngModel)]="prescription" name="prescription"></textarea>
+                                placeholder="Describe the prescription." [(ngModel)]="appointment.prescription" name="prescription"></textarea>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="medicalCertificateAppointment" class="form-label">Certificate</label>
                             <textarea class="form-control" id="medicalCertificateAppointment" rows="3"
-                                placeholder="Describe the certificate." [(ngModel)]="certificate" name="certificate"></textarea>
+                                placeholder="Describe the certificate." [(ngModel)]="appointment.certificate" name="certificate"></textarea>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="medicalForwardingAppointment" class="form-label">Forwarding</label>
                             <textarea class="form-control" id="medicalForwardingAppointment" rows="3"
-                                placeholder="Describe the forwarding." [(ngModel)]="forwarding" name="forwarding" ></textarea>
+                                placeholder="Describe the forwarding." [(ngModel)]="appointment.forwarding" name="forwarding" ></textarea>
+                        </div>
+                    </div>
+
+
+<!-- 
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="medicalForwardingAppointment" class="form-label">Doctor Id</label>
+                            <textarea class="form-control" id="medicalForwardingAppointment" rows="3"
+                                placeholder="Describe the forwarding." [(ngModel)]="appointment.doctor_id" name="doctor_id" ></textarea>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="medicalReleaseAppointment" class="form-label">Medical Release</label>
-                            <textarea class="form-control" id="medicalReleaseAppointment" rows="3"
-                                placeholder="Describe the medical release." [(ngModel)]="medicalRelease" name="medicalRelease" required></textarea>
+                            <label for="medicalForwardingAppointment" class="form-label">Patient Id</label>
+                            <textarea class="form-control" id="medicalForwardingAppointment" rows="3"
+                                placeholder="Describe the forwarding." [(ngModel)]="appointment.patient_id" name="patient_id" ></textarea>
                         </div>
-                    </div>
-        
-                </div>
+                    </div> -->
 
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Medical Release:</label>
+                                <select class="form-select form-control" [(ngModel)]="appointment.medicalRelease" name="medicalRelease">
+                                    <option *ngFor="let medicalRelease of medicalReleaseBox">{{ medicalRelease }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+    
+                    </div>
+                </div>
+                
             </div>
             <div class="d-flex flex-row justify-content-center gap-1">
-                <button type="submit" class="mx-1 btn btn-primary" id="newAppointment" [hidden]="!updateButtonHidden" (click)="saveAppointment()">Save</button>
-                <button type="submit" class="mx-1 btn btn-success" id="updateAppointment" [hidden]="updateButtonHidden" (click)="saveAppointment()">Update</button>
+                <button type="button" class="mx-1 btn btn-primary" id="newAppointment" [hidden]="!updateButtonHidden" (click)="createAppointment()">Save</button>
+                <button type="button" class="mx-1 btn btn-success" id="updateAppointment" [hidden]="updateButtonHidden" (click)="updateAppointment()">Update</button>
                 <button type="reset" class="mx-1 btn btn-danger" (click)="cancelRecord()">Cancel</button>
             </div>
         </form>

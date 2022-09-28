@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { SystemService } from 'src/app/services/system.service';
@@ -12,6 +13,8 @@ import { SystemService } from 'src/app/services/system.service';
 export class LoginComponent implements OnInit {
 
   erroMessage: boolean = true;
+  login!: string;
+  password!: string;
 
   constructor(
     private router: Router,
@@ -24,50 +27,43 @@ export class LoginComponent implements OnInit {
     this.security.authenticated = false;
   }
 
-  login(): void {
-    (<HTMLInputElement>document.getElementById('formLogin')).addEventListener('submit', (event) => {
-      event.preventDefault()
-      this.logar()
-
-
-    });
-    // this.security.authenticated = true;
-    // this.router.navigateByUrl('dashboard')
-    
+  validateLogin() {
+    this.userService
+      .login({login: this.login, password: this.password})
+      .pipe(
+        catchError((error) => {
+          let userList: Array<any> = new Array();
+          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
+          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
+          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+          return of(userList);
+        })
+      )
+      .subscribe((response: any) => {
+        if (response[0]) {   
+          this.loginApproved(response)
+        } else {
+          this.errorLogin()      
+        }
+      });
   }
 
-  recordUser(data: boolean) {
-
-    switch (data) {
-      case true:
-        this.service.isLogin = true;
-        break;
-      case false:
-        this.service.isLogin = false;
-        break;
-    
-      default:
-        this.service.isLogin = true;
-        break;
-    }
+  loginApproved(response: any) {
+    this.security.authenticated = true;
+    this.service.userLogged = response[0].name
+    this.router.navigateByUrl('dashboard')
   }
 
-  logar() {
-    let login = (<HTMLInputElement>document.getElementById("userName")).value
-    let password = (<HTMLInputElement>document.getElementById("password")).value
+  errorLogin() {
+    this.erroMessage = false; 
+    setTimeout(() => {
+      this.erroMessage = true; 
+    }, 3000); 
+  }
 
-    for (let countLogin = 0; countLogin < this.userService.users.length; countLogin++) {
-      if(login === this.userService.users[countLogin].login && password === this.userService.users[countLogin].password) {
-        this.security.authenticated = true;
-        this.service.userLogged = this.userService.users[countLogin].name
-        this.router.navigateByUrl('dashboard')
-      } else {
-        this.erroMessage = false;
-        
-      }
-      
-    }
-
+  recordUser() {
+    this.service.isLogin = false;
   }
 
 }
+

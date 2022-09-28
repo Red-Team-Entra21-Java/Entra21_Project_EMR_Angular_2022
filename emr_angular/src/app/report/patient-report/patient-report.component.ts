@@ -16,7 +16,7 @@ export class PatientReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.patientList = this.patientService.patients
+    this.patientList = this.patientService.patientList
   }
 
 }

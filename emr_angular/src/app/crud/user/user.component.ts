@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
 
@@ -10,49 +9,56 @@ import { UserService } from 'src/app/services/crud/user.service';
 })
 export class UserComponent implements OnInit {
 
-  userList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
-
-  constructor(
-    private service: UserService,
-    private router: Router
-  ) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
-      this.list()    
+    this.listAllUser();
   }
 
-  list() {
-    this.service.listUser("texte")
+  listAllUser(): void {
+    this.userService
+      .getAll()
       .pipe(
-        catchError(
-          (error) => {
-            this.userList = this.service.users
-            return of(this.userList)
-          }
-        )
+        catchError((error) => {
+          let userList: Array<any> = new Array();
+          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
+          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
+          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+          
+          return of(userList);
+        })
       )
-      .subscribe((Response) => {
-        // console.log("Resultado:", Response);
-      })
+      .subscribe((response) => {
+        // console.log(response);
+        this.userService.userList = response;
+      });
   }
 
-  deleteUser(index: number) {
-    this.userList.splice(index,1)
+  newUser(): void {
+    this.userService.updateButtonHidden = true
   }
 
-  sendData(index:number) {
-    let name = this.userList[index].name
-    let email = this.userList[index].email
-    let login = this.userList[index].login
-    let password = this.userList[index].password
-    console.log('new-user',name, email, login, password);
-    this.router.navigate(['new-user',name, email, login, password]);
-    this.service.updateButtonHidden = false
-    this.service.indexUpdateUser = index;
+  updateUser(user: any): void {
+    this.userService.updateButtonHidden = false
+    this.userService.user = user;
   }
-
-  newUser() {
-    this.service.updateButtonHidden = true
+  
+  deleteUser(user: any): void {
+    this.userService
+      .delete(user)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.userService.userList.splice(this.userService.userList.indexOf(user), 1);
+        }
+      });
   }
 
 }
+
+

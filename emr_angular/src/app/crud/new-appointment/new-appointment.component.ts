@@ -1,7 +1,10 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
 import { PatientService } from 'src/app/services/crud/patient.service';
+import { SecurityService } from 'src/app/services/security/security.service';
 
 @Component({
   selector: 'app-new-appointment',
@@ -10,9 +13,13 @@ import { PatientService } from 'src/app/services/crud/patient.service';
 })
 export class NewAppointmentComponent implements OnInit {
 
-  updateButtonHidden: boolean = this.service.updateButtonHidden;
-  date!: string | null
-  hour!: string | null
+  medicalReleaseBox: Array<String> = ["Released", "internee", "Forwarded Evaluation", "Death"]
+  appointment!: any;
+
+  updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
+  // date_open!: string | null
+  patient_id!: number | null
+  doctor_id!: number | null
   doctor!: string | null
   patient!: string | null
   patientCPF!: string | null
@@ -22,71 +29,95 @@ export class NewAppointmentComponent implements OnInit {
   forwarding!: string | null
   medicalRelease!: string | null
 
-  patientList: Array<any> = this.servicePatient.patients
-
   constructor(
-    private service: AppointmentService,
-    private servicePatient: PatientService,
-    private route: ActivatedRoute,
-    private router: Router
+    private appointmentService: AppointmentService,
+    public patientService: PatientService,
+    private router: Router,
+    private securityService: SecurityService,
+
   ) { }
 
   ngOnInit(): void {
-    this.date = this.route.snapshot.paramMap.get("date")
-    this.hour = this.route.snapshot.paramMap.get("hour")
-    this.doctor = this.route.snapshot.paramMap.get("doctor")
-    this.patient = this.route.snapshot.paramMap.get("patient")
-    this.patientCPF = this.route.snapshot.paramMap.get("patientCPF")
-    this.anamnesis = this.route.snapshot.paramMap.get("anamnesis")
-    this.prescription = this.route.snapshot.paramMap.get("prescription")
-    this.certificate = this.route.snapshot.paramMap.get("certificate")
-    this.forwarding = this.route.snapshot.paramMap.get("forwarding")
-    this.medicalRelease = this.route.snapshot.paramMap.get("medicalRelease")
-  }
-
-  saveAppointment() {
-    (<HTMLInputElement>document.getElementById('formNewAppointment')).addEventListener('submit', (event) => {
-      event.preventDefault()
-      let data = this.getData()
-      
-      if (this.updateButtonHidden === true) {
-        console.log("Salvando", data)
-        this.service.appointments.push(data)
-      } else {
-        this.service.appointments[this.service.indexUpdateAppointment] = data
-      }
-      this.router.navigateByUrl("appointments")
-
-    });
-  }
-
-  getData() {
-    this.date = "12/12/2022"
-    this.hour = "13:24"
-    this.doctor = "Rafael"
-    this.patient = "Sheldon"
-    this.patientCPF = "123"
-    this.anamnesis = (<HTMLInputElement>document.getElementById("medicalAnamnesisAppointment")).value
-    this.prescription = (<HTMLInputElement>document.getElementById("medicalPrescriptionAppointment")).value
-    this.certificate = (<HTMLInputElement>document.getElementById("medicalCertificateAppointment")).value
-    this.forwarding = (<HTMLInputElement>document.getElementById("medicalForwardingAppointment")).value
-    this.medicalRelease = (<HTMLInputElement>document.getElementById("medicalReleaseAppointment")).value
-
-    return {
-      date: this.date,
-      hour: this.hour,
-      doctor: this.doctor,
-      patient: this.patient,
-      patientCPF: this.patientCPF,
-      anamnesis: this.anamnesis,
-      prescription: this.prescription,
-      certificate: this.certificate,
-      forwarding: this.forwarding,
-      medicalRelease: this.medicalRelease,
+    if(!this.appointmentService.updateButtonHidden) {
+      this.appointment = this.appointmentService.appointment;
+    } else {
+      this.appointment = {};
     }
   }
 
+  //VERIFICAR
+  isLogged() {
+    if(this.securityService.authenticated === false) {
+      this.router.navigateByUrl("")
+    } else {
+      this.router.navigateByUrl("appointments")
+    }
+  }
+
+  createAppointment() {
+    this.appointment.doctor_id = 2
+    this.appointmentService
+      .create(this.appointment)
+      .pipe(
+        catchError((error) => {
+          //this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
+          this.router.navigateByUrl("appointments")           
+          return of( this.appointmentService.appointmentList);
+        })
+      )
+      .subscribe((response: any) => {
+        // console.log(response);
+        if (response) {          
+          this.appointmentService.appointmentList.push(response);
+          console.log(response);
+          
+          
+          
+        }
+      });
+      this.clearInputs();
+      this.router.navigateByUrl("appointments")
+  }
+
+  updateAppointment(): void {
+    this.appointmentService
+      .update(this.appointmentService.appointment)
+      .pipe(
+        catchError((error) => {
+          this.appointmentService.appointmentList[this.appointmentService.appointmentList.indexOf(this.appointmentService.appointment)] = this.appointmentService.appointment;//VERIFICAR
+          return of(error);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response) {
+          this.appointmentService.appointmentList[this.appointmentService.appointmentList.indexOf(this.appointmentService.appointment)] = response;
+        }
+      });
+      this.clearInputs()
+      this.router.navigateByUrl("appointments")
+  }
+
   cancelRecord() {
+    this.clearInputs()
     this.router.navigateByUrl("appointments")
   }
+
+  setPatientId(id: any) {
+    this.appointment.patient_id = id;      
+  }
+
+
+  clearInputs() {
+    this.doctor = ""
+    this.patient = ""
+    this.patientCPF = ""
+    this.anamnesis = ""
+    this.prescription = ""
+    this.certificate = ""
+    this.certificate = ""
+    this.forwarding = ""
+    this.medicalRelease = ""
+  }
+
 }

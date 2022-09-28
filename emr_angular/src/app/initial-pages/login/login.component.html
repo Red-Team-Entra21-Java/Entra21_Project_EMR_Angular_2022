@@ -1,26 +1,25 @@
 <div class="alert alert-danger alert-dismissible" role="alert" [hidden]="erroMessage">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
             aria-hidden="true">&times;</span></button>
-    <strong>Login ou Senha incorreta!</strong>
+    <strong>Login or Password incorrect!</strong>
 </div>
-<form action="" method="post" id="formLogin" ngNativeValidate>
-    <div class="card" id="">
-        <div class="card-header">LOGIN</div>
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="userName" class="form-label">User Name:</label>
-                <input type="text" class="form-control" id="userName" placeholder="User name" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required>
-            </div>
+<div class="card">
+    <div class="card-header">LOGIN</div>
+    <div class="card-body">
+        <div class="mb-3">
+            <label for="userName" class="form-label">User Name:</label>
+            <input type="text" class="form-control" placeholder="User name" required [(ngModel)]="login" name="login">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="password"
+                name="password">
+        </div>
 
-            <div class="card-footer text-center">
-                <p>Don't have a registration? Register <a routerLink="" (click)="recordUser(true)">here!</a></p>
-                <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
-                <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
-            </div>
+        <div class="card-footer text-center">
+            <p>Don't have a registration? Register <a routerLink="../login" (click)="recordUser()" >here!</a></p> 
+            <button type="submit" class="btn btn-primary" (click)="validateLogin()">Login</button>
+            <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
         </div>
     </div>
-</form>
+</div>
