@@ -70,7 +70,7 @@ The system flow is based on the concept:
   <br />
 
 ## 👨🏽‍🏫&nbsp; Instructions for execute the Project <a name="execute-project"></a>
-
+# IMPLEMENTING...
 1. Make a project copy to your machine:
     - git clone https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022
     - Or a direct download from the page [HERE](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022).
@@ -99,7 +99,7 @@ The system flow is based on the concept:
 ---
 
 ## 📚&nbsp; Technologies and Concepts <a name="technologies"></a>
-
+# IMPLEMENTING...
 In this project we use Angular framework with HTML5, CSS3, Bootstrap and apply the following concepts:
 
 1. Git
