@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
 import { SecurityService } from 'src/app/services/security/security.service';

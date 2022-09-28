@@ -18,7 +18,11 @@
 
 ## 🏥&nbsp; About the project <a name="about-project"></a>
 
-It is a system used to manage the attendance of a clinic. It has functionalities to manage patients with their respective medical records, which in turn store their medical consultation.
+The EMR is an electronic medical record system that aims to deal with the management of small clinics and medical care offices.
+
+Focused on the management of electronic medical records, it is able to store and manage information related to patients during the service cycles. With the history, it is possible for the health professional to know the personalities of the patient's framework and thus make better decisions.
+
+Another important point is related to the issue of printed documentation, thus eliminating the possibility of errors caused by handwriting interpretation problems.
 
 <br>
 
@@ -113,15 +117,16 @@ In this project we use Angular framework with HTML5, CSS3, Bootstrap and apply t
     - Navigation
     - Forms
 3. Angular
-- Components
-     - Routes
-         - Protected routes
-         - Routes with parameters
-     - Modules
-     - Services
-     - Requisitions
-     - TypeScript
-
+    - Components
+    - Routes
+        - Protected routes
+        - Routes with parameters
+    - Modules
+    - Services
+    - Requisitions
+    - TypeScript
+4. Java/Spring
+    
 </br>
 
 ---

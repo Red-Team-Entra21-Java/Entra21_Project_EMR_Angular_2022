@@ -108,34 +108,4 @@ export class AppointmentComponent implements OnInit {
     }
     return doctorName
   }
-
-  // listAppointmentTable() {
-  //   this.listAllAppointment();
-  //   for (let count = 0; count < this.appointmentService.appointmentList.length; count++) {
-  //     for (let countPatient = 0; countPatient < this.patientService.patientList.length; countPatient++) {
-  //       if (this.appointmentService.appointmentList[count].patient_id === this.patientService.patientList[countPatient].id) {
-  //         for (let countDoctor = 0; countDoctor < this.doctorService.doctorList.length; countDoctor++) {
-  //           if (this.appointmentService.appointmentList[count].doctor_id === this.doctorService.doctorList[countDoctor].id) {
-  //             this.localAppointmentList.push(
-  //               {
-  //                 id: this.appointmentService.appointmentList[count].id,
-  //                 patientName: this.patientService.patientList[countPatient].name,
-  //                 patientCpf: this.patientService.patientList[countPatient].cpf,
-  //                 doctorName: this.doctorService.doctorList[countDoctor].name,
-  //                 anamnesis: this.appointmentService.appointmentList[count].anamnesis,
-  //                 prescription: this.appointmentService.appointmentList[count].prescription,
-  //                 certificate: this.appointmentService.appointmentList[count].certificate,
-  //                 forwarding: this.appointmentService.appointmentList[count].forwarding,
-  //                 medicalRelease: this.appointmentService.appointmentList[count].medicalRelease,
-  //                 date: this.appointmentService.appointmentList[count].date_open,
-  //               }
-  //             )
-  //           } 
-  //         }
-  //       }
-  //     }      
-  //   }
-  //   console.log(this.localAppointmentList);
-  // }
-
 }
