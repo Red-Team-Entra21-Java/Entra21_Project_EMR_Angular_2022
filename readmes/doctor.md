@@ -2,7 +2,7 @@
 
 ## 👩‍🔬&nbsp; Doctor
 
-![Doctor](readme_images/emr_doctor.gif)
+![Doctor](../emr_angular/src/assets/images/readme_images/emr_doctor.gif)
 
 The doctors section is the part where the doctors data is listed, created, edited and deleted. Here you can find personal information, in addition to the total list of services.
 

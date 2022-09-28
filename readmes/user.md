@@ -2,7 +2,7 @@
 
 ## 👨🏻‍💻&nbsp; User
 
-![User](/emr_angular/src/assets/images/readme_images/emr_user.gif)
+![User](../emr_angular/src/assets/images/readme_images/emr_user.gif)
 
 The users section is the part where user data is listed, created, edited and deleted. Here you can find your personal information.
 

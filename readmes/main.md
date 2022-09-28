@@ -4,7 +4,7 @@
 
 This is the set of home pages, consisting of the home, login and user registration.
 
-![EMR_initial](readme_images/emr_initial.gif)
+![EMR_initial](../emr_angular/src/assets/images/readme_images/emr_initial.gif)
 
 ## Home
 

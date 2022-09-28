@@ -2,7 +2,7 @@
 
 ## 😷&nbsp; Patient
 
-![Patient](readme_images/emr_patient.gif)
+![Patient](../emr_angular/src/assets/images/readme_images/emr_patient.gif)
 
 The patient section is the part where patient data is listed, created, edited and deleted. Here you can find personal information, in addition to the total list of services.
 
