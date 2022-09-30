@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
 
@@ -10,7 +11,8 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 export class DoctorComponent implements OnInit {
 
   constructor(
-    public doctorService: DoctorService
+    public doctorService: DoctorService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -55,9 +57,25 @@ export class DoctorComponent implements OnInit {
     this.doctorService.updateButtonHidden = true
   }
 
-  updateDoctor(doctor: any): void {
+  // updateDoctor(doctor: any): void {
+  //   this.doctorService.updateButtonHidden = false
+  //   this.doctorService.doctor = doctor;
+  // }
+
+  updateDoctor(doctor: any):void {
     this.doctorService.updateButtonHidden = false
-    this.doctorService.doctor = doctor;
+    this.doctorService
+    .getById(doctor)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        this.doctorService.doctor = response[0];
+        this.router.navigateByUrl("new-doctor")
+      });
   }
   
   deleteDoctor(doctor: any): void {

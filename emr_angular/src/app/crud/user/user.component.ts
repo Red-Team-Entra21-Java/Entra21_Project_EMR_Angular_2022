@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
 
@@ -9,7 +10,10 @@ import { UserService } from 'src/app/services/crud/user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
+  constructor(
+    public userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.listAllUser();
@@ -38,9 +42,25 @@ export class UserComponent implements OnInit {
     this.userService.updateButtonHidden = true
   }
 
-  updateUser(user: any): void {
+  // updateUser(user: any): void {
+  //   this.userService.updateButtonHidden = false
+  //   this.userService.user = user;
+  // }
+
+  updateUser(user: any):void {
     this.userService.updateButtonHidden = false
-    this.userService.user = user;
+    this.userService
+    .getById(user)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        this.userService.user = response[0];
+        this.router.navigateByUrl("new-user")
+      });
   }
   
   deleteUser(user: any): void {

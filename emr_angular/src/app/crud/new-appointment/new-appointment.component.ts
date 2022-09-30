@@ -101,6 +101,7 @@ export class NewAppointmentComponent implements OnInit {
   cancelRecord() {
     this.clearInputs()
     this.router.navigateByUrl("appointments")
+    
   }
 
   setPatientId(id: any) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
@@ -19,7 +20,8 @@ export class AppointmentComponent implements OnInit {
     public appointmentService: AppointmentService,
     public patientService: PatientService,
     public doctorService: DoctorService,
-    private system: SystemService
+    private system: SystemService,
+    private router: Router,
   ) { }
 
 
@@ -49,12 +51,29 @@ export class AppointmentComponent implements OnInit {
     this.appointmentService.updateButtonHidden = true
   }
 
-  updateAppointment(appointment: any): void {
-    this.appointmentService.updateButtonHidden = false
-    this.appointmentService.appointment = appointment;
-    console.log(appointment);
+  // updateAppointment2(appointment: any): void {
+  //   this.appointmentService.updateButtonHidden = false
+  //   this.appointmentService.appointment = appointment;
+  //   console.log(appointment);
     
+  // }
+
+  updateAppointment(appointment: any):void {
+    this.appointmentService.updateButtonHidden = false
+    this.appointmentService
+    .getById(appointment)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        this.appointmentService.appointment = response[0];
+        this.router.navigateByUrl("new-appointment")
+      });
   }
+
   
   deleteAppointment(appointment: any): void {
     this.appointmentService

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { PatientService } from 'src/app/services/crud/patient.service';
 import { SystemService } from 'src/app/services/system.service';
@@ -14,7 +15,8 @@ export class PatientComponent implements OnInit {
 
   constructor(
     public patientService: PatientService,
-    private systemService: SystemService
+    private systemService: SystemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,11 +60,27 @@ export class PatientComponent implements OnInit {
     this.patientService.updateButtonHidden = true
   }
 
-  updatePatient(patient: any): void {
-    this.patientService.updateButtonHidden = false
-    this.patientService.patient = patient;
-  }
+  // updatePatient(patient: any): void {
+  //   this.patientService.updateButtonHidden = false
+  //   this.patientService.patient = patient;
+  // }
   
+  updatePatient(patient: any):void {
+    this.patientService.updateButtonHidden = false
+    this.patientService
+    .getById(patient)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        this.patientService.patient = response[0];
+        this.router.navigateByUrl("new-patient")
+      });
+  }
+
   deletePatient(patient: any): void {
     this.patientService
       .delete(patient)
