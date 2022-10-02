@@ -67,7 +67,7 @@ export class NewDoctorComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {          
           this.doctorService.doctorList.push(response);
         }
@@ -86,7 +86,7 @@ export class NewDoctorComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.doctorService.doctorList[this.doctorService.doctorList.indexOf(this.doctorService.doctor)] = response;
         }

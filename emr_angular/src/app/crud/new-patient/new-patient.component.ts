@@ -63,7 +63,7 @@ export class NewPatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {          
           this.patientService.patientList.push(response);
         }
@@ -82,7 +82,7 @@ export class NewPatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.patientService.patientList[this.patientService.patientList.indexOf(this.patientService.patient)] = response;
         }
@@ -110,4 +110,7 @@ export class NewPatientComponent implements OnInit {
     this.state = ""
     this.country = ""
   }
+
+
+
 }

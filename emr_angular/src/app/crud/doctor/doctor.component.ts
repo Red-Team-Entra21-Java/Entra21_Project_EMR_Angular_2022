@@ -10,6 +10,9 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 })
 export class DoctorComponent implements OnInit {
 
+  doctorIdSelected!: number;
+
+
   constructor(
     public doctorService: DoctorService,
     private router: Router
@@ -48,7 +51,7 @@ export class DoctorComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.doctorService.doctorList = response;
       });
   }
@@ -72,8 +75,8 @@ export class DoctorComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        console.log(response);
-        this.doctorService.doctor = response[0];
+        // console.log(response);
+        this.doctorService.doctor = response;
         this.router.navigateByUrl("new-doctor")
       });
   }
@@ -87,11 +90,14 @@ export class DoctorComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.doctorService.doctorList.splice(this.doctorService.doctorList.indexOf(doctor), 1);
         }
       });
   }
 
+  saveDoctorId(doctorId: number) {
+    this.doctorIdSelected = doctorId;
+  }
 }

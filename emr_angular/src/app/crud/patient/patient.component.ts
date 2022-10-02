@@ -12,6 +12,7 @@ import { SystemService } from 'src/app/services/system.service';
 export class PatientComponent implements OnInit {
 
   patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
+  patientIdSelected!: number;
 
   constructor(
     public patientService: PatientService,
@@ -60,10 +61,6 @@ export class PatientComponent implements OnInit {
     this.patientService.updateButtonHidden = true
   }
 
-  // updatePatient(patient: any): void {
-  //   this.patientService.updateButtonHidden = false
-  //   this.patientService.patient = patient;
-  // }
   
   updatePatient(patient: any):void {
     this.patientService.updateButtonHidden = false
@@ -75,8 +72,8 @@ export class PatientComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        console.log(response);
-        this.patientService.patient = response[0];
+        // console.log(response);
+        this.patientService.patient = response;
         this.router.navigateByUrl("new-patient")
       });
   }
@@ -90,7 +87,7 @@ export class PatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.patientService.patientList.splice(this.patientService.patientList.indexOf(patient), 1);
         }
@@ -99,6 +96,10 @@ export class PatientComponent implements OnInit {
 
   sendTitle() {
     this.systemService.currentTitle = "Records"
+  }
+
+  savePatientId(patientId: number) {
+    this.patientIdSelected = patientId;
   }
 
 }

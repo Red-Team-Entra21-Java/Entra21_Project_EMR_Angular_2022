@@ -17,12 +17,9 @@ export class NewAppointmentComponent implements OnInit {
   appointment!: any;
 
   updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
-  // date_open!: string | null
-  patient_id!: number | null
-  doctor_id!: number | null
-  doctor!: string | null
-  patient!: string | null
-  patientCPF!: string | null
+  patientId!: number | null
+  doctor!: any | null
+  patient!: any | null
   anamnesis!: string | null
   prescription!: string | null
   certificate!: string | null
@@ -42,7 +39,7 @@ export class NewAppointmentComponent implements OnInit {
       this.appointment = this.appointmentService.appointment;
     } else {
       this.appointment = {};
-    }
+    }    
   }
 
   //VERIFICAR
@@ -55,7 +52,8 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-    this.appointment.doctor_id = 2
+    this.appointment.doctor = {id: 2}
+    this.appointment.patient = {id: this.patientId}
     this.appointmentService
       .create(this.appointment)
       .pipe(
@@ -68,11 +66,8 @@ export class NewAppointmentComponent implements OnInit {
       .subscribe((response: any) => {
         // console.log(response);
         if (response) {          
-          this.appointmentService.appointmentList.push(response);
-          console.log(response);
-          
-          
-          
+          // this.appointmentService.appointmentList.push(response);
+          // console.log(response);        
         }
       });
       this.clearInputs();
@@ -89,7 +84,7 @@ export class NewAppointmentComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.appointmentService.appointmentList[this.appointmentService.appointmentList.indexOf(this.appointmentService.appointment)] = response;
         }
@@ -104,15 +99,14 @@ export class NewAppointmentComponent implements OnInit {
     
   }
 
-  setPatientId(id: any) {
-    this.appointment.patient_id = id;      
+  setPatient(patientId: any) {
+    this.patientId = patientId   
   }
 
 
   clearInputs() {
     this.doctor = ""
     this.patient = ""
-    this.patientCPF = ""
     this.anamnesis = ""
     this.prescription = ""
     this.certificate = ""

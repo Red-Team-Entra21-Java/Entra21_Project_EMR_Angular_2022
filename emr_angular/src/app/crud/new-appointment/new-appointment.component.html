@@ -6,9 +6,10 @@
                     <div class="col">
                         <div class="input-group mb-3" >
                             <label class="input-group-text" for="patientList" >Patient</label>
-                            <select [disabled]="!updateButtonHidden" class="form-select form-control" (ngModelChange)="setPatientId($event)" [(ngModel)]="appointment.patient_id" name="patient" >
+                            <select *ngIf="updateButtonHidden" class="form-select form-control" (ngModelChange)="setPatient($event)" [(ngModel)]="appointment.patient" name="patient" >
                                 <option [ngValue]="patient.id" *ngFor="let patient of this.patientService.patientList; let index = index">{{ patient.id }} - {{ patient.name }} - {{ patient.cpf }}</option>
                             </select>
+                            <input *ngIf="!updateButtonHidden" type="text"class="form-control" [(ngModel)]="appointment.patient.name + ' - ' + appointment.patient.cpf" name="name" disabled>
                         </div>
                     </div>
                     <div class="col">

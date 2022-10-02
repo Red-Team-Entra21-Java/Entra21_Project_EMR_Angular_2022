@@ -1,19 +1,42 @@
 <div class="card m-5 p-2" id="newPatientContainer">
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            Check CPF, invalid format entered.
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+
+
     <div class="card-body">
-        <form action="/salvo.html" enctype="text/plain" method="get" id="formNewPatient" ngNativeValidate>
+        <form ngNativeValidate>
             <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Patient's name:</label>
-                            <input type="text" class="form-control" placeholder="Patient's name"
-                                [(ngModel)]="patient.name" name="name" required>
+                            <input type="text" class="form-control" placeholder="Patient's name" [(ngModel)]="patient.name" name="name"  ngModel required>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Patient's CPF:</label>
-                            <input type="text" class="form-control" placeholder="000.000.000-00"
+                            <input type="text" class="form-control" placeholder="000.000.000-00"  mask="000.000.000-00"
                                 [(ngModel)]="patient.cpf" name="cpf" required>
                         </div>
                     </div>
@@ -102,7 +125,7 @@
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-center gap-1">
-                <button type="button" class="mx-1 btn btn-primary" id="newPatient" [hidden]="!updateButtonHidden" (click)="createPatient()">Save</button>
+                <button type="submit" class="mx-1 btn btn-primary" id="newPatient" [hidden]="!updateButtonHidden" (click)="createPatient()">Save</button>
                 <button type="button" class="mx-1 btn btn-success" id="updatePatient" [hidden]="updateButtonHidden" (click)="updatePatient()">Update</button>
                 <button type="button" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
             </div>

@@ -55,7 +55,7 @@ export class NewUserComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {          
           this.userService.userList.push(response);
         }
@@ -74,7 +74,7 @@ export class NewUserComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.userService.userList[this.userService.userList.indexOf(this.userService.user)] = response;
         }

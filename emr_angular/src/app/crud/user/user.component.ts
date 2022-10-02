@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/crud/user.service';
 })
 export class UserComponent implements OnInit {
 
+  userIdSelected!: number;
+
   constructor(
     public userService: UserService,
     private router: Router
@@ -57,7 +59,7 @@ export class UserComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         this.userService.user = response[0];
         this.router.navigateByUrl("new-user")
       });
@@ -72,13 +74,16 @@ export class UserComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           this.userService.userList.splice(this.userService.userList.indexOf(user), 1);
         }
       });
   }
 
+  saveUserId(userId: number) {
+    this.userIdSelected = userId;
+  }
 }
 
 

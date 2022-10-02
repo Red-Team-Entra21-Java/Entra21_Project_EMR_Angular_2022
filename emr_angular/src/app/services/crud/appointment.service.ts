@@ -24,10 +24,15 @@ export class AppointmentService {
   
       return this.http.get<any>(this.apiUrl);
     }
+
+    getAllResume(): Observable<any> {
   
-    getById(appointment: any): Observable<any> {
+      return this.http.get<any>(this.apiUrl+ '/resume');
+    }
   
-      return this.http.get<any>(this.apiUrl + '/' + appointment.id);
+    getById(id: any): Observable<any> {
+  
+      return this.http.get<any>(this.apiUrl + '/' + id);
     }
   
     create(appointment: any): Observable<any> {

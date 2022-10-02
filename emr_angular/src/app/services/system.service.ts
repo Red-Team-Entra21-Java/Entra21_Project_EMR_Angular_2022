@@ -23,7 +23,7 @@ export class SystemService {
 
   listAllAppointment(): void {
     this.appointmentService
-      .getAll()
+      .getAllResume()
       .pipe(
         catchError((error) => {
           let appointmentList: Array<any> = new Array();
@@ -32,7 +32,7 @@ export class SystemService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.appointmentService.appointmentList = response;
       });
   }
@@ -64,7 +64,7 @@ export class SystemService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.doctorService.doctorList = response;
       });
   }
@@ -96,7 +96,7 @@ export class SystemService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.patientService.patientList = response;
       });
   }
@@ -115,7 +115,7 @@ export class SystemService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.userService.userList = response;
       });
   }
