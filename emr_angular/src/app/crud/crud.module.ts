@@ -15,6 +15,9 @@ import { RouterModule } from '@angular/router';
 import { DetailsPatientComponent } from './details-patient/details-patient.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { DetailsDoctorComponent } from './details-doctor/details-doctor.component';
+import { DetailsUserComponent } from './details-user/details-user.component';
+import { DetailsAppointmentComponent } from './details-appointment/details-appointment.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { NgxMaskModule } from 'ngx-mask';
     NewUserComponent,
     UserComponent,
     DetailsPatientComponent,
+    DetailsDoctorComponent,
+    DetailsUserComponent,
+    DetailsAppointmentComponent,
     
     
   ],

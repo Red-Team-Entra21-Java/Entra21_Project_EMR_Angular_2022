@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/crud/user.service';
 export class UserComponent implements OnInit {
 
   userIdSelected!: number;
+  prefix!: string;
 
   constructor(
     public userService: UserService,
@@ -83,6 +84,39 @@ export class UserComponent implements OnInit {
 
   saveUserId(userId: number) {
     this.userIdSelected = userId;
+  }
+
+  findUser(prefix: string) {
+    if(prefix === "" ) {
+      this.listAllUser()
+    } else {
+      this.userService
+      .startWith(prefix)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+        )
+        .subscribe((response: any) => {
+          // console.log(response);
+          this.userService.userList = response;
+        });
+    }
+  }
+
+  detailUser(user: any):void {
+    this.userService
+    .getById(user)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        // console.log(response);
+        this.userService.user = response;
+        this.router.navigateByUrl("detail-user")
+      });
   }
 }
 

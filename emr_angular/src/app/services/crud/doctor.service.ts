@@ -28,6 +28,11 @@ export class DoctorService {
   
       return this.http.get<any>(this.apiUrl + '/' + doctor.id);
     }
+
+    startWith(prefix: any): Observable<any> {
+
+      return this.http.get<any>(this.apiUrl + '/start/' + prefix);
+    }
   
     create(doctor: any): Observable<any> {
   

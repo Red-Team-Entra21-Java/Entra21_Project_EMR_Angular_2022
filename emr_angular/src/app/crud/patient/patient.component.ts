@@ -13,6 +13,7 @@ export class PatientComponent implements OnInit {
 
   patientList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
   patientIdSelected!: number;
+  prefix!: string;
 
   constructor(
     public patientService: PatientService,
@@ -109,6 +110,23 @@ export class PatientComponent implements OnInit {
       });
   }
   
+  findPatient(prefix: string) {
+    if(prefix === "" ) {
+      this.listAllPatient()
+    } else {
+      this.patientService
+      .startWith(prefix)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+        )
+        .subscribe((response: any) => {
+          // console.log(response);
+          this.patientService.patientList = response;
+        });
+    }
+  }
 
   sendTitle() {
     this.systemService.currentTitle = "Records"

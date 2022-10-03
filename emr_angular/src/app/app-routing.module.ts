@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppointmentComponent } from './crud/appointment/appointment.component';
 import { CrudModule } from './crud/crud.module';
 import { DashboardComponent } from './crud/dashboard/dashboard.component';
+import { DetailsAppointmentComponent } from './crud/details-appointment/details-appointment.component';
+import { DetailsDoctorComponent } from './crud/details-doctor/details-doctor.component';
 import { DetailsPatientComponent } from './crud/details-patient/details-patient.component';
+import { DetailsUserComponent } from './crud/details-user/details-user.component';
 import { DoctorComponent } from './crud/doctor/doctor.component';
 import { NewAppointmentComponent } from './crud/new-appointment/new-appointment.component';
 import { NewDoctorComponent } from './crud/new-doctor/new-doctor.component';
@@ -35,6 +38,9 @@ const routes: Routes = [
   { path: "new-doctor", component: NewDoctorComponent},
   { path: "new-user", component: NewUserComponent},
   { path: "detail-patient", component: DetailsPatientComponent},
+  { path: "detail-doctor", component: DetailsDoctorComponent},
+  { path: "detail-appointment", component: DetailsAppointmentComponent},
+  { path: "detail-user", component: DetailsUserComponent},
   { path: "appointment-report", component: AppointmentReportComponent,canActivate: [SecurityService]},
   { path: "patient-report", component: PatientReportComponent,canActivate: [SecurityService]},
   { path: "doctor-report", component: DoctorReportComponent,canActivate: [SecurityService]},

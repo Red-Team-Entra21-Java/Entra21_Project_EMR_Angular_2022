@@ -30,6 +30,11 @@ export class PatientService {
     return this.http.get<any>(this.apiUrl + '/' + patient.id);
   }
 
+  startWith(prefix: any): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl + '/start/' + prefix);
+  }
+
   create(patient: any): Observable<any> {
 
     return this.http.post<any>(this.apiUrl, patient);

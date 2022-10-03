@@ -1,0 +1,61 @@
+<div class="card m-5 p-2" >
+    <div class="card-body">
+        <form >
+            <div class="card-body">
+                <div class="row d-flex flex-column">
+                    <div class="col">
+                        <div class="input-group mb-3" >
+                            <label class="input-group-text" for="patientList" >Patient</label>
+                            <input type="text"class="form-control" [(ngModel)]="appointment.patient.name + ' - ' + appointment.patient.cpf" name="name" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="anamnesis" class="form-label">Anamnesis</label>
+                            <textarea class="form-control" rows="3" placeholder="Describe the patient's complaint." [(ngModel)]="appointment.anamnesis" name="anamnesis" id="anamnesis" disabled></textarea>
+                            
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="medicalPrescriptionAppointment" class="form-label">Prescription</label>
+                            <textarea class="form-control" id="medicalPrescriptionAppointment" rows="3"
+                                placeholder="Describe the prescription." [(ngModel)]="appointment.prescription" name="prescription" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="medicalCertificateAppointment" class="form-label">Certificate</label>
+                            <textarea class="form-control" id="medicalCertificateAppointment" rows="3"
+                                placeholder="Describe the certificate." [(ngModel)]="appointment.certificate" name="certificate" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="medicalForwardingAppointment" class="form-label">Forwarding</label>
+                            <textarea class="form-control" id="medicalForwardingAppointment" rows="3"
+                                placeholder="Describe the forwarding." [(ngModel)]="appointment.forwarding" name="forwarding" disabled></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="medicalRelease" class="form-label">Medical Release:</label>
+                                <select class="form-select form-control" [(ngModel)]="appointment.medicalRelease" name="medicalRelease" id="medicalRelease" disabled>
+                                    <option >{{ appointment.medicalRelease }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+    
+                    </div>
+                </div>
+                
+            </div>
+            
+        </form>
+        
+    </div>
+</div>

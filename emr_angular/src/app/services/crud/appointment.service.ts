@@ -34,6 +34,11 @@ export class AppointmentService {
   
       return this.http.get<any>(this.apiUrl + '/' + id);
     }
+
+    startWith(prefix: any): Observable<any> {
+
+      return this.http.get<any>(this.apiUrl + '/start/' + prefix);
+    }
   
     create(appointment: any): Observable<any> {
   
@@ -48,6 +53,11 @@ export class AppointmentService {
     delete(appointment: any): Observable<any> {
   
       return this.http.delete<any>(this.apiUrl + '/' + appointment.id);
+    }
+
+    getByPatientId(id: any): Observable<any> {
+
+      return this.http.get<any>(this.apiUrl + '/patient/' + id);
     }
 
 }

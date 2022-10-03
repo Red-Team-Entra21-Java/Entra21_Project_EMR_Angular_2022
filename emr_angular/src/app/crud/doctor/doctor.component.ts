@@ -11,7 +11,7 @@ import { DoctorService } from 'src/app/services/crud/doctor.service';
 export class DoctorComponent implements OnInit {
 
   doctorIdSelected!: number;
-
+  prefix!: string;
 
   constructor(
     public doctorService: DoctorService,
@@ -95,6 +95,39 @@ export class DoctorComponent implements OnInit {
           this.doctorService.doctorList.splice(this.doctorService.doctorList.indexOf(doctor), 1);
         }
       });
+  }
+
+  detailDoctor(doctor: any):void {
+    this.doctorService
+    .getById(doctor)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        // console.log(response);
+        this.doctorService.doctor = response;
+        this.router.navigateByUrl("detail-doctor")
+      });
+  }
+
+  findDoctor(prefix: string) {
+    if(prefix === "" ) {
+      this.listAllDoctor()
+    } else {
+      this.doctorService
+      .startWith(prefix)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+        )
+        .subscribe((response: any) => {
+          // console.log(response);
+          this.doctorService.doctorList = response;
+        });
+    }
   }
 
   saveDoctorId(doctorId: number) {

@@ -16,6 +16,7 @@ export class AppointmentComponent implements OnInit {
   localAppointmentList: Array<any> = [];
   appointmenttList!: Array<any>;       // OS DADOS VINDO DA API SÃO CARREGADOS AQUI 
   appointmentIdSelected!: number;
+  prefix!: string;
 
   constructor(
     public appointmentService: AppointmentService,
@@ -106,6 +107,38 @@ export class AppointmentComponent implements OnInit {
         if (response) {
           this.appointmentService.appointmentList.splice(this.appointmentService.appointmentList.indexOf(appointment), 1);
         }
+      });
+  }
+  findAppointment(prefix: string) {
+    if(prefix === "" ) {
+      this.listAllAppointmentResume()
+    } else {
+      this.appointmentService
+      .startWith(prefix)
+      .pipe(
+        catchError((error) => {
+          return of(false);
+        })
+        )
+        .subscribe((response: any) => {
+          // console.log(response);
+          this.appointmentService.appointmentList = response;
+        });
+    }
+  }
+
+  detailAppointment(id: any):void {
+    this.appointmentService
+    .getById(id)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        // console.log(response);
+        this.appointmentService.appointment = response;
+        this.router.navigateByUrl("detail-appointment")
       });
   }
 
