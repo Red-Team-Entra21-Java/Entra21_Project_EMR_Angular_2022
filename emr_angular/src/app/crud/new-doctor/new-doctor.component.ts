@@ -36,7 +36,6 @@ export class NewDoctorComponent implements OnInit {
     private doctorService: DoctorService,
     private router: Router,
     private securityService: SecurityService,
-
   ) { }
 
   ngOnInit(): void {
@@ -67,10 +66,8 @@ export class NewDoctorComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
-        if (response) {          
+        console.log(response);
           this.doctorService.doctorList.push(response);
-        }
       });
       this.clearInputs()
       this.router.navigateByUrl("doctor")
@@ -116,5 +113,23 @@ export class NewDoctorComponent implements OnInit {
     this.registerNumber = ""
     this.registerState = ""
     this.specialty = ""
+  }
+
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createDoctor()
+    } else {
+      this.updateDoctor()
+    }
+  }
+
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
   }
 }

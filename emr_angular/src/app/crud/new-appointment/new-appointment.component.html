@@ -1,6 +1,6 @@
 <div class="card m-5 p-2" id="newAppointmentContainer">
     <div class="card-body">
-        <form action="" enctype="text/plain" method="post" id="formNewAppointment" ngNativeValidate>
+        <form #formAppointment="ngForm" (ngSubmit)="onSubmit()">
             <div class="card-body">
                 <div class="row d-flex flex-column">
                     <div class="col">
@@ -14,9 +14,9 @@
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Anamnesis</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="Describe the patient's complaint." [(ngModel)]="appointment.anamnesis" name="anamnesis" required></textarea>
+                            <label for="anamnesis" class="form-label">Anamnesis</label>
+                            <textarea class="form-control" rows="3" placeholder="Describe the patient's complaint." [(ngModel)]="appointment.anamnesis" name="anamnesis" id="anamnesis" required #anamnesis="ngModel"></textarea>
+                            <span class="text-danger" *ngIf="invalidMessage(anamnesis)">Anamnesis is required</span>
                         </div>
                     </div>
                     <div class="col">
@@ -63,10 +63,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label">Medical Release:</label>
-                                <select class="form-select form-control" [(ngModel)]="appointment.medicalRelease" name="medicalRelease">
+                                <label for="medicalRelease" class="form-label">Medical Release:</label>
+                                <select class="form-select form-control" [(ngModel)]="appointment.medicalRelease" name="medicalRelease" id="medicalRelease" required #medicalRelease="ngModel">
                                     <option *ngFor="let medicalRelease of medicalReleaseBox">{{ medicalRelease }}</option>
                                 </select>
+                                <span class="text-danger" *ngIf="invalidMessage(medicalRelease)">Medical release is required</span>
                             </div>
                         </div>
                         

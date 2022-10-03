@@ -56,7 +56,7 @@ export class NewUserComponent implements OnInit {
       )
       .subscribe((response: any) => {
         // console.log(response);
-        if (response) {          
+        if (this.securityService.authenticated === true) {          
           this.userService.userList.push(response);
         }
       });
@@ -75,9 +75,7 @@ export class NewUserComponent implements OnInit {
       )
       .subscribe((response: any) => {
         // console.log(response);
-        if (response) {
           this.userService.userList[this.userService.userList.indexOf(this.userService.user)] = response;
-        }
       });   
       this.clearInputs()
       this.router.navigateByUrl("user")
@@ -93,5 +91,24 @@ export class NewUserComponent implements OnInit {
     this.email = ""
     this.login = ""
     this.password = ""
+  }
+
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createUser()
+    } else {
+      this.updateUser()
+    }
+    
+  }
+
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
   }
 }

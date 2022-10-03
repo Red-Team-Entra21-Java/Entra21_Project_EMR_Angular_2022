@@ -94,6 +94,22 @@ export class PatientComponent implements OnInit {
       });
   }
 
+  detailPatient(patient: any):void {
+    this.patientService
+    .getById(patient)
+    .pipe(
+      catchError((error) => {
+        return of(false);
+      })
+      )
+      .subscribe((response: any) => {
+        // console.log(response);
+        this.patientService.patient = response;
+        this.router.navigateByUrl("detail-patient")
+      });
+  }
+  
+
   sendTitle() {
     this.systemService.currentTitle = "Records"
   }

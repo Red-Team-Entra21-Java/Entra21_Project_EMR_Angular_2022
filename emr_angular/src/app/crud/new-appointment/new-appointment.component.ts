@@ -115,4 +115,23 @@ export class NewAppointmentComponent implements OnInit {
     this.medicalRelease = ""
   }
 
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createAppointment()
+    } else {
+      this.updateAppointment()
+    }
+    
+  }
+
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
+  }
+
 }

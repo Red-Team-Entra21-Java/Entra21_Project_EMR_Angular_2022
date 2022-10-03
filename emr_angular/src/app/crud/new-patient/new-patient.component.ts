@@ -63,7 +63,7 @@ export class NewPatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
+        console.log(response);
         if (response) {          
           this.patientService.patientList.push(response);
         }
@@ -111,6 +111,23 @@ export class NewPatientComponent implements OnInit {
     this.country = ""
   }
 
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createPatient()
+    } else {
+      this.updatePatient()
+    }
+    
+  }
 
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
+  }
 
 }

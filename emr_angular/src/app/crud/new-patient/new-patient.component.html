@@ -24,13 +24,129 @@
 
 
     <div class="card-body">
-        <form ngNativeValidate>
+
+        <form #formPatient="ngForm" (ngSubmit)="onSubmit()">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Patient's name:</label>
+                            <input type="text" class="form-control" placeholder="Patient's name" [(ngModel)]="patient.name" name="name"  id="name" required #name="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(name)">Name is required</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">Patient's CPF:</label>
+                            <input type="text" class="form-control" placeholder="000.000.000-00"  mask="000.000.000-00" [(ngModel)]="patient.cpf" name="cpf" id="cpf" required #cpf="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(cpf)">CPF is required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="nameMother" class="form-label">Mother's name:</label>
+                            <input type="text" class="form-control" placeholder="Mother's name"
+                                [(ngModel)]="patient.nameMother" name="nameMother" id="nameMother" required #nameMother="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(nameMother)">Mother name is required</span>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="nameFather" class="form-label">Father's name:</label>
+                            <input type="text" class="form-control" placeholder="Father's name"
+                                [(ngModel)]="patient.nameFather" name="nameFather" id="nameFather">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Genre:</label>
+                            <select class="form-select form-control" [(ngModel)]="patient.genre" name="genre">
+                                <option *ngFor="let genre of genreBox">{{ genre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Birth Date:</label>
+                            <input type="date" class="form-control" id="birthDate" [(ngModel)]="patient.birth"
+                                name="birth">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="streetName" class="form-label">Street:</label>
+                            <input type="text" class="form-control" placeholder="Street"
+                                [(ngModel)]="patient.streetName" name="streetName" id="streetName">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="numberHome" class="form-label">Number:</label>
+                            <input type="text" class="form-control" placeholder="Number"
+                                [(ngModel)]="patient.numberHome" name="numberHome" id="numberHome">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="district" class="form-label">District:</label>
+                            <input type="text" class="form-control" placeholder="District"
+                                [(ngModel)]="patient.district" name="district" id="district">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City:</label>
+                            <input type="text" class="form-control" placeholder="City" [(ngModel)]="patient.city"
+                                name="city" id="city">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="State" class="form-label">State:</label>
+                            <input type="text" class="form-control" placeholder="State" [(ngModel)]="patient.state"
+                                name="state" id="State">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country:</label>
+                            <input type="text" class="form-control" placeholder="Country" [(ngModel)]="patient.country"
+                                name="country" id="country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center gap-1">
+                <button type="submit" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" [disabled]="!formPatient.valid">Save</button>
+                <button type="submit" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" [disabled]="!formPatient.valid">Update</button>
+                <button type="button" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
+            </div>
+
+        </form>
+
+
+
+
+
+        <!-- <form ngNativeValidate>
             <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Patient's name:</label>
-                            <input type="text" class="form-control" placeholder="Patient's name" [(ngModel)]="patient.name" name="name"  ngModel required>
+                            <input type="text" class="form-control" placeholder="Patient's name" [(ngModel)]="patient.name" name="name"  required>
                         </div>
                     </div>
                     <div class="col">
@@ -130,6 +246,6 @@
                 <button type="button" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
             </div>
 
-        </form>
+        </form> -->
     </div>
 </div>
