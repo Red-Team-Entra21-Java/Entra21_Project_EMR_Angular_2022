@@ -6,29 +6,23 @@
             <th>Mother Name</th>
             <th>Genre</th>
             <th>Birth Date</th>
-            <th>Street Name</th>
-            <th>Number Home</th>
             <th>District</th>
             <th>City</th>
             <th>Register Number</th>
             <th>Specialty</th>
-            <th>Appointments</th>
 
         </thead>
         <tbody>
             <tr class="text-center" *ngFor="let doctor of doctorList; let index = index">
                 <td>{{ doctor.name }}</td>
                 <td>{{ doctor.cpf }}</td>
-                <td>{{ doctor.motherName }}</td>
+                <td>{{ doctor.nameMother }}</td>
                 <td>{{ doctor.genre }}</td>
-                <td>{{ doctor.birthDate }}</td>
-                <td>{{ doctor.streetName }}</td>
-                <td>{{ doctor.numberHome }}</td>
+                <td>{{ doctor.birth }}</td>
                 <td>{{ doctor.district }}</td>
                 <td>{{ doctor.city }}</td>
                 <td>{{ doctor.registerNumber }}</td>
                 <td>{{ doctor.specialty }}</td>
-                <td>{{ doctor.numberAppointments }}</td>
             </tr>
         </tbody>
     </table>
