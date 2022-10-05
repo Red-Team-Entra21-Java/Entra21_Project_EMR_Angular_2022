@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-user',
@@ -15,6 +16,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     public userService: UserService,
+    private system: SystemService,
     private router: Router
     ) { }
 
@@ -118,6 +120,15 @@ export class UserComponent implements OnInit {
         this.router.navigateByUrl("detail-user")
       });
   }
+
+  allowedUser(): boolean {
+    if(this.system.userTypeLogged === 'Admin' ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
 

@@ -136,4 +136,11 @@ export class PatientComponent implements OnInit {
     this.patientIdSelected = patientId;
   }
 
+  allowedUser(): boolean {
+    if(this.systemService.userTypeLogged === 'Doctor' || this.systemService.userTypeLogged === 'Admin' ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

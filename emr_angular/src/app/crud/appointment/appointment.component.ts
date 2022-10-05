@@ -22,7 +22,7 @@ export class AppointmentComponent implements OnInit {
     public appointmentService: AppointmentService,
     public patientService: PatientService,
     public doctorService: DoctorService,
-    private system: SystemService,
+    public system: SystemService,
     private router: Router,
   ) { }
 
@@ -148,5 +148,13 @@ export class AppointmentComponent implements OnInit {
 
   saveAppointmentId(appointmentId: number) {
     this.appointmentIdSelected = appointmentId;
+  }
+
+  allowedUser(): boolean {
+    if(this.system.userTypeLogged === 'Doctor' || this.system.userTypeLogged === 'Admin' ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

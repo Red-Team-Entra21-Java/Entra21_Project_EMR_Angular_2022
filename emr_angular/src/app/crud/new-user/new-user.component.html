@@ -15,6 +15,27 @@
                 name="email" required email #email="ngModel">
                 <span class="text-danger" *ngIf="invalidMessage(email)">E-mail is invalid</span>
             </div>
+
+            <div class="row" [hidden]="this.securityService.authenticated === false">
+              <div class="col">
+                  <div class="mb-3">
+                      <label for="userType" class="form-label">User userType:</label>
+                      <select (ngModelChange)="user.type" class="form-select form-control" [(ngModel)]="user.type" name="userType" id="userType">
+                          <option *ngFor="let userType of userTypeBox">{{ userType }}</option>
+                      </select>
+                  </div>
+              </div>
+              
+
+          </div>
+
+            <div [hidden]="user.type !== 'Doctor' || this.securityService.authenticated === false" class="input-group mb-3" >
+              <label class="input-group-text" for="patientList" >Doctor</label>
+              <select class="form-select form-control" (ngModelChange)="setDoctor($event)" [(ngModel)]="user.doctor" name="doctor" >
+                  <option [ngValue]="doctor.id" *ngFor="let doctor of this.doctorService.doctorList; let index = index">{{ doctor.id }} - {{ doctor.name }} - {{ doctor.cpf }}</option>
+              </select>
+          </div>
+
             <div class="mb-3">
               <label for="login" class="form-label">Login:</label>
               <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.login" name="login" required #login="ngModel" >

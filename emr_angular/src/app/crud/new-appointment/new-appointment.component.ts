@@ -5,6 +5,7 @@ import { catchError, of } from 'rxjs';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
 import { PatientService } from 'src/app/services/crud/patient.service';
 import { SecurityService } from 'src/app/services/security/security.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-new-appointment',
@@ -18,6 +19,7 @@ export class NewAppointmentComponent implements OnInit {
 
   updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
   patientId!: number | null
+  doctorId: number | null = this.systemService.user[0].doctor.id
   doctor!: any | null
   patient!: any | null
   anamnesis!: string | null
@@ -29,8 +31,9 @@ export class NewAppointmentComponent implements OnInit {
   constructor(
     private appointmentService: AppointmentService,
     public patientService: PatientService,
-    private router: Router,
     private securityService: SecurityService,
+    private systemService: SystemService,
+    private router: Router,
 
   ) { }
 
@@ -52,7 +55,7 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-    this.appointment.doctor = {id: 2}
+    this.appointment.doctor = {id: this.doctorId}
     this.appointment.patient = {id: this.patientId}
     this.appointmentService
       .create(this.appointment)

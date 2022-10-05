@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { DoctorService } from 'src/app/services/crud/doctor.service';
 import { UserService } from 'src/app/services/crud/user.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 
@@ -12,18 +13,22 @@ import { SecurityService } from 'src/app/services/security/security.service';
 export class NewUserComponent implements OnInit {
 
   user!: any;
+  userTypeBox: Array<String> = ["Admin", "Doctor", "User"]
 
   updateButtonHidden: boolean = this.userService.updateButtonHidden;
   name!: string | null
   email!: string | null
   login!: string | null
   password!: string | null
-
+  type!: string | null
+  doctor!: any | null
+  doctorId!: number | null
 
   constructor(
     private userService: UserService,
+    public doctorService: DoctorService,
     private router: Router,
-    private securityService: SecurityService,
+    public securityService: SecurityService,
 
   ) { }
 
@@ -33,6 +38,8 @@ export class NewUserComponent implements OnInit {
     } else {
       this.user = {};
     }
+    console.log(this.doctorService.doctorList);
+    
   }
 
   //VERIDICAR
@@ -45,6 +52,12 @@ export class NewUserComponent implements OnInit {
   }
 
   createUser() {
+    if(this.user.doctor !== null) {
+      this.user.doctor = {id: this.doctorId}
+    }
+    if(!this.user.type) {
+      this.user.type = this.userTypeBox[2]
+    }
     this.userService
       .create(this.user)
       .pipe(
@@ -65,6 +78,9 @@ export class NewUserComponent implements OnInit {
   }
 
   updateUser(): void {
+    if(this.user.doctor !== null) {
+      this.user.doctor = {id: this.doctorId}
+    }
     this.userService
       .update(this.userService.user)
       .pipe(
@@ -101,6 +117,11 @@ export class NewUserComponent implements OnInit {
     }
     
   }
+
+  setDoctor(doctorId: any) {
+    this.doctorId = doctorId   
+  }
+
 
   invalidMessage(variable: any): boolean {
     let validation: boolean

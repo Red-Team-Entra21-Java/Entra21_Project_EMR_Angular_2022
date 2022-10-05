@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
       this.systemService.listAllPatient()
       this.systemService.listAllUser()
       this.populateDashboard()
-
+    
   }
 
   enviarTitulo() {

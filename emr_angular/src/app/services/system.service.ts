@@ -12,7 +12,9 @@ export class SystemService {
 
   currentTitle!: string;
   isLogin!: boolean;
+  user!: Array<any>;
   userLogged!: string;
+  userTypeLogged!: string;
 
   constructor(
     private patientService: PatientService,

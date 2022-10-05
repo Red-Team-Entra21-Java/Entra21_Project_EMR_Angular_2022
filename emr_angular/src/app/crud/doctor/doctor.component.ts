@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { DoctorService } from 'src/app/services/crud/doctor.service';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-doctor',
@@ -15,6 +16,7 @@ export class DoctorComponent implements OnInit {
 
   constructor(
     public doctorService: DoctorService,
+    private system: SystemService,
     private router: Router
   ) { }
 
@@ -127,6 +129,14 @@ export class DoctorComponent implements OnInit {
           // console.log(response);
           this.doctorService.doctorList = response;
         });
+    }
+  }
+
+  allowedUser(): boolean {
+    if(this.system.userTypeLogged === 'Admin' ) {
+      return true;
+    } else {
+      return false;
     }
   }
 
