@@ -38,7 +38,7 @@ export class NewUserComponent implements OnInit {
     } else {
       this.user = {};
     }
-    console.log(this.doctorService.doctorList);
+    // console.log(this.doctorService.doctorList);
     
   }
 

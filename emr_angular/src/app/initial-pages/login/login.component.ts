@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     this.service.userLogged = response[0].name
     this.service.userTypeLogged = response[0].type   
     this.service.user = response 
-    console.log(response);
+    // console.log(response);
     
     this.router.navigateByUrl('dashboard')
   }
