@@ -5,3 +5,16 @@
     background-position: right;
     background-size: cover;
 }
+
+.logo {
+    height: 100px;
+}
+
+.card-home {
+    min-height: 220px;
+
+}
+
+.logo-initial {
+    height: 40px;
+}
