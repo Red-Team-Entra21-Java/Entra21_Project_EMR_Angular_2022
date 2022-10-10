@@ -22,7 +22,9 @@ export class PatientComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.listAllPatient();
+    setTimeout(() => {
+      this.listAllPatient();
+    }, 1000);
     this.sendTitle()
   }
 
@@ -33,27 +35,26 @@ export class PatientComponent implements OnInit {
         catchError((error) => {
           let patientList: Array<any> = new Array();
           patientList.push(
-            { 
-              id: 1,
-              name: 'Patient Teste',
-              cpf: "1234",
-              nameMother: "Mother Teste",
-              nameFather: "Father Teste",
-              genre: "female",
-              birth: 1985-12-30,
-              streetName: "Street Teste",
-              numberHome: 145,
-              district: "Center",
-              city: "Teste",
-              state: "CA",
-              country: "Brazil"
+            {
+              id: 3,
+              name: "Joana da Silva",
+              cpf: "776.939.100-85",
+              nameMother: "Julia Garcia",
+              nameFather: "Joao da Silva",
+              genre: "Female",
+              birth: "1985-06-13",
+              streetName: "Rua 465",
+              numberHome: 1268,
+              district: "Numerais",
+              city: "Imbituba",
+              state: "Santa Catarina",
+              country: "Brasil"
             }
-          );
+          );         
           return of(patientList);
         })
       )
       .subscribe((response) => {
-        // console.log(response);
         this.patientService.patientList = response;
       });
   }
@@ -62,7 +63,6 @@ export class PatientComponent implements OnInit {
     this.patientService.updateButtonHidden = true
   }
 
-  
   updatePatient(patient: any):void {
     this.patientService.updateButtonHidden = false
     this.patientService
@@ -73,7 +73,6 @@ export class PatientComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         this.patientService.patient = response;
         this.router.navigateByUrl("new-patient")
       });
@@ -88,7 +87,6 @@ export class PatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         if (response) {
           this.patientService.patientList.splice(this.patientService.patientList.indexOf(patient), 1);
         }
@@ -104,7 +102,6 @@ export class PatientComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         this.patientService.patient = response;
         this.router.navigateByUrl("detail-patient")
       });
@@ -122,7 +119,6 @@ export class PatientComponent implements OnInit {
         })
         )
         .subscribe((response: any) => {
-          // console.log(response);
           this.patientService.patientList = response;
         });
     }

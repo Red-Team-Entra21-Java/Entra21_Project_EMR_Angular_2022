@@ -30,15 +30,21 @@ export class UserComponent implements OnInit {
       .pipe(
         catchError((error) => {
           let userList: Array<any> = new Array();
-          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
-          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
-          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
-          
+          userList.push(
+            {
+              id: 3,
+              name: "Emerson Seiler",
+              login: "admin",
+              email: "seiler@emr.com",
+              password: "admin",
+              type: "Admin",
+              doctor: null
+            }
+          );        
           return of(userList);
         })
       )
       .subscribe((response) => {
-        // console.log(response);
         this.userService.userList = response;
       });
   }
@@ -46,11 +52,6 @@ export class UserComponent implements OnInit {
   newUser(): void {
     this.userService.updateButtonHidden = true
   }
-
-  // updateUser(user: any): void {
-  //   this.userService.updateButtonHidden = false
-  //   this.userService.user = user;
-  // }
 
   updateUser(user: any):void {
     this.userService.updateButtonHidden = false
@@ -62,7 +63,6 @@ export class UserComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         this.userService.user = response[0];
         this.router.navigateByUrl("new-user")
       });
@@ -77,7 +77,6 @@ export class UserComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         if (response) {
           this.userService.userList.splice(this.userService.userList.indexOf(user), 1);
         }
@@ -100,7 +99,6 @@ export class UserComponent implements OnInit {
         })
         )
         .subscribe((response: any) => {
-          // console.log(response);
           this.userService.userList = response;
         });
     }
@@ -115,7 +113,6 @@ export class UserComponent implements OnInit {
       })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         this.userService.user = response;
         this.router.navigateByUrl("detail-user")
       });
@@ -128,7 +125,6 @@ export class UserComponent implements OnInit {
       return false;
     }
   }
-
 }
 
 

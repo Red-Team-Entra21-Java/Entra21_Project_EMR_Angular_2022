@@ -38,16 +38,15 @@ export class NewAppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(!this.appointmentService.updateButtonHidden) {
+    if (!this.appointmentService.updateButtonHidden) {
       this.appointment = this.appointmentService.appointment;
     } else {
       this.appointment = {};
-    }    
+    }
   }
 
-  //VERIFICAR
   isLogged() {
-    if(this.securityService.authenticated === false) {
+    if (this.securityService.authenticated === false) {
       this.router.navigateByUrl("")
     } else {
       this.router.navigateByUrl("appointments")
@@ -55,26 +54,66 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-    this.appointment.doctor = {id: this.doctorId}
-    this.appointment.patient = {id: this.patientId}
+    this.appointment.doctor = { id: this.doctorId }
+    this.appointment.patient = { id: this.patientId }
     this.appointmentService
       .create(this.appointment)
       .pipe(
         catchError((error) => {
-          //this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
-          this.router.navigateByUrl("appointments")           
-          return of( this.appointmentService.appointmentList);
+          let appointmentList: Array<any> = new Array();
+          appointmentList.push(
+            {
+              id: 1,
+              date_appointment: "02/10/2022 19:13",
+              anamnesis: "Cefaleia leve",
+              prescription: "Paracetamol, se dor ou febre",
+              certificate: "n/h",
+              forwarding: "n/h",
+              medicalRelease: "Released",
+              patient: {
+                id: 1,
+                name: "Sheldon Cooper",
+                cpf: "316.094.990-77",
+                nameMother: "Carla Cooper",
+                nameFather: "Jose Cooper",
+                genre: "Male",
+                birth: "1995-02-01",
+                streetName: "Rua Adolfo Konder",
+                numberHome: 1253,
+                district: "Centro",
+                city: "Navegantes",
+                state: "SC",
+                country: "Brasil"
+              },
+              doctor: {
+                id: 1,
+                name: "Carla Maria Moraes",
+                cpf: "528.220.220-46",
+                nameMother: "Julia Moraes",
+                nameFather: "Lucas Moraes",
+                genre: "Female",
+                birth: "1986-09-14",
+                streetName: "Rua Conselheir",
+                numberHome: 3476,
+                district: "Rocio Fechado",
+                city: "Londrina",
+                state: "Parana",
+                country: "Brasil",
+                registerNumber: "62445561-0",
+                registerState: "PR",
+                specialty: "Obstetra"
+              }
+            },
+          );
+          this.router.navigateByUrl("appointments")
+          return of(appointmentList);
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
-        if (response) {          
-          // this.appointmentService.appointmentList.push(response);
-          // console.log(response);        
-        }
+        this.appointmentService.appointmentList.push(response);
       });
-      this.clearInputs();
-      this.router.navigateByUrl("appointments")
+    this.clearInputs();
+    this.router.navigateByUrl("appointments")
   }
 
   updateAppointment(): void {
@@ -87,25 +126,23 @@ export class NewAppointmentComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         if (response) {
           this.appointmentService.appointmentList[this.appointmentService.appointmentList.indexOf(this.appointmentService.appointment)] = response;
         }
       });
-      this.clearInputs()
-      this.router.navigateByUrl("appointments")
+    this.clearInputs()
+    this.router.navigateByUrl("appointments")
   }
 
   cancelRecord() {
     this.clearInputs()
     this.router.navigateByUrl("appointments")
-    
+
   }
 
   setPatient(patientId: any) {
-    this.patientId = patientId   
+    this.patientId = patientId
   }
-
 
   clearInputs() {
     this.doctor = ""
@@ -119,17 +156,16 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.updateButtonHidden === true) {
+    if (this.updateButtonHidden === true) {
       this.createAppointment()
     } else {
       this.updateAppointment()
     }
-    
   }
 
   invalidMessage(variable: any): boolean {
     let validation: boolean
-    if(!variable.valid && variable.touched) {
+    if (!variable.valid && variable.touched) {
       validation = true;
     } else {
       validation = false;

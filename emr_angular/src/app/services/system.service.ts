@@ -28,13 +28,10 @@ export class SystemService {
       .getAllResume()
       .pipe(
         catchError((error) => {
-          let appointmentList: Array<any> = new Array();
-          appointmentList.push({ 	id: 1, patient_id: 1, doctor_id: 1, date: 2020-12-30, hour: "22:34:00", anamnesis: "Dor de cabeça", prescription: "Paracetamol 8/8h", certificate: "atestado 15 dias", forwarding: "n/h", medicalRelease: "liberado" });      
-          return of(appointmentList);
+          return of(error);
         })
       )
       .subscribe((response) => {
-        // console.log(response);
         this.appointmentService.appointmentList = response;
       });
   }
@@ -44,25 +41,7 @@ export class SystemService {
       .getAll()
       .pipe(
         catchError((error) => {
-          let doctorList: Array<any> = new Array();
-          doctorList.push(
-            { 
-              id: 1,
-              name: 'Doctor Teste',
-              cpf: "1234",
-              nameMother: "Mother Teste",
-              nameFather: "Father Teste",
-              genre: "female",
-              birth: 1985-12-30,
-              streetName: "Street Teste",
-              numberHome: 145,
-              district: "Center",
-              city: "Teste",
-              state: "CA",
-              country: "Brazil"
-            }
-          );
-          return of(doctorList);
+          return of(error);
         })
       )
       .subscribe((response) => {
@@ -76,29 +55,10 @@ export class SystemService {
       .getAll()
       .pipe(
         catchError((error) => {
-          let patientList: Array<any> = new Array();
-          patientList.push(
-            { 
-              id: 1,
-              name: 'Patient Teste',
-              cpf: "1234",
-              nameMother: "Mother Teste",
-              nameFather: "Father Teste",
-              genre: "female",
-              birth: 1985-12-30,
-              streetName: "Street Teste",
-              numberHome: 145,
-              district: "Center",
-              city: "Teste",
-              state: "CA",
-              country: "Brazil"
-            }
-          );
-          return of(patientList);
+          return of(error);
         })
       )
       .subscribe((response) => {
-        // console.log(response);
         this.patientService.patientList = response;
       });
   }
@@ -108,16 +68,10 @@ export class SystemService {
       .getAll()
       .pipe(
         catchError((error) => {
-          let userList: Array<any> = new Array();
-          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
-          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
-          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
-          
-          return of(userList);
+          return of(error);
         })
       )
       .subscribe((response) => {
-        // console.log(response);
         this.userService.userList = response;
       });
   }

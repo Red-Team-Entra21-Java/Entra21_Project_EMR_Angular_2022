@@ -10,11 +10,7 @@
         <div class="align-self-center text-end w-50">
             <div class="row d-flex">
                 <div class="col">
-                    <app-login [hidden]="isLogin"></app-login>
-                    <app-new-user [hidden]="!isLogin"></app-new-user>
-                    <div  class="alert alert-light" role="alert">
-                        Don't have a registration? Register <b class="cursor" (click)="recordUser()" >here!</b>
-                    </div>
+                    <app-new-user></app-new-user>
                 </div>
             </div>
         </div>

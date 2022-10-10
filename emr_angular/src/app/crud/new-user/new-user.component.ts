@@ -37,9 +37,7 @@ export class NewUserComponent implements OnInit {
       this.user = this.userService.user;
     } else {
       this.user = {};
-    }
-    // console.log(this.doctorService.doctorList);
-    
+    }    
   }
 
   //VERIDICAR
@@ -62,13 +60,23 @@ export class NewUserComponent implements OnInit {
       .create(this.user)
       .pipe(
         catchError((error) => {
-          this.userService.userList.push(this.user);   //VERIFICAR
+          let userList: Array<any> = new Array();
+          userList.push(
+            {
+              id: 3,
+              name: "Emerson Seiler",
+              login: "admin",
+              email: "seiler@emr.com",
+              password: "admin",
+              type: "Admin",
+              doctor: null
+            }
+          );
           this.router.navigateByUrl("user")           
-          return of( this.userService.userList);
+          return of(userList);
         })
       )
       .subscribe((response: any) => {
-        // console.log(response);
         if (this.securityService.authenticated === true) {          
           this.userService.userList.push(response);
         }
@@ -85,8 +93,7 @@ export class NewUserComponent implements OnInit {
       .update(this.userService.user)
       .pipe(
         catchError((error) => {
-          this.userService.userList[this.userService.userList.indexOf(this.userService.user)] = this.userService.user;//VERIFICAR
-          return of(error);
+          return of(false);
         })
       )
       .subscribe((response: any) => {
@@ -115,13 +122,11 @@ export class NewUserComponent implements OnInit {
     } else {
       this.updateUser()
     }
-    
   }
 
   setDoctor(doctorId: any) {
     this.doctorId = doctorId   
   }
-
 
   invalidMessage(variable: any): boolean {
     let validation: boolean

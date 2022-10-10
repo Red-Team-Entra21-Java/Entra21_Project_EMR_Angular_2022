@@ -37,38 +37,40 @@
                 <button [disabled]="!allowedUser()" routerLink="../new-doctor" class="btn btn-success ml-2" (click)="newDoctor()">New
                     Doctor</button>
             </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead class="text-center">
+                        <th class="th-button"></th>
+                        <th>ID</th>
+                        <th>Doctor Name</th>
+                        <th>Specialty</th>
+                        <th>Registration Number</th>
+                    </thead>
+                    <tbody class="text-center" id="tbodyDoctor">
+                        <tr *ngFor="let doctor of this.doctorService.doctorList; let index = index">
+                            <td class="p-1">
+                                <div class="d-flex gap-1 justify-content-center p-1">
+                                    <button class="mx-1 btn btn-primary d-flex align-items-center justify-content-center buttonsInterative" (click)="detailDoctor(doctor)">
+                                        <span class="material-icons-sharp">description</span>
+                                    </button>
+                                    <button [disabled]="!allowedUser()" class="mx-1 btn btn-success d-flex align-items-center justify-content-center buttonsInterative" (click)="updateDoctor(doctor)">
+                                        <span class="material-icons-sharp">edit</span>
+                                    </button>
+                                    <button [disabled]="!allowedUser()" class="mx-1 btn btn-danger d-flex align-items-center justify-content-center buttonsInterative" data-toggle="modal" data-target="#deleteModal" (click)="saveDoctorId(doctor)">
+                                        <span class="material-icons-sharp">delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>{{ doctor.id }}</td>
+                            <td>{{ doctor.name }}</td>
+                            <td>{{ doctor.specialty }}</td>
+                            <td>{{ doctor.registerNumber }} - {{ doctor.registerState}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
 
-            <table class="table table-bordered table-hover table-striped">
-                <thead class="text-center">
-                    <th></th>
-                    <th>ID</th>
-                    <th>Doctor Name</th>
-                    <th>Specialty</th>
-                    <th>Registration Number</th>
-                </thead>
-                <tbody class="text-center" id="tbodyDoctor">
-                    <tr *ngFor="let doctor of this.doctorService.doctorList; let index = index">
-                        <td class="p-1">
-                            <div class="d-flex gap-1 justify-content-center p-1">
-                                <button class="mx-1 btn btn-primary d-flex align-items-center justify-content-center buttonsInterative" (click)="detailDoctor(doctor)">
-                                    <span class="material-icons-sharp">description</span>
-                                </button>
-                                <button [disabled]="!allowedUser()" class="mx-1 btn btn-success d-flex align-items-center justify-content-center buttonsInterative" (click)="updateDoctor(doctor)">
-                                    <span class="material-icons-sharp">edit</span>
-                                </button>
-                                <button [disabled]="!allowedUser()" class="mx-1 btn btn-danger d-flex align-items-center justify-content-center buttonsInterative" data-toggle="modal" data-target="#deleteModal" (click)="saveDoctorId(doctor)">
-                                    <span class="material-icons-sharp">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                        <td>{{ doctor.id }}</td>
-                        <td>{{ doctor.name }}</td>
-                        <td>{{ doctor.specialty }}</td>
-                        <td>{{ doctor.registerNumber }} - {{ doctor.registerState}}</td>
-                        
-                    </tr>
-                </tbody>
-            </table>
+            </div>
 
         </div>
     </div>

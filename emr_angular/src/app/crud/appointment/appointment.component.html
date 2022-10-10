@@ -24,13 +24,6 @@
     </div>
 
     <div class="card-body">
-        
-        <div class="mb-3">
-            <label for="searchAppointment" class="form-label">Search Appointment</label> <br>
-            <input type="text" class="form-control" placeholder="Insert appointment date..."
-                aria-label="Recipient's patient cpf" aria-describedby="searchButton" id="searchAppointment"
-                (keyup)="findAppointment(prefix)" [(ngModel)]="this.prefix" name="prefix">
-        </div>
 
         <div class="mb-3 d-flex justify-content-end">
             <button [disabled]="!allowedUser()" routerLink="../new-appointment" class="btn btn-success ml-2" (click)="newAppointment()">New
@@ -38,39 +31,42 @@
         </div>
 
 
-        <table class="table table-bordered table-hover table-striped">
-            <thead class="text-center">
-                <th></th>
-                <th>ID</th>
-                <th>Date/Hour</th>
-                <th>CPF Patient</th>
-                <th>Patient Name</th>
-                <th>Doctor Name</th>
-            </thead>
-            <tbody class="text-center" id="tbodyAppointment">
-                <tr *ngFor="let appointment of this.appointmentService.appointmentList; let index = index">
-                    <td class="p-1">
-                        <div class="d-flex gap-1 justify-content-center p-1"> 
-                            <button class="mx-1 btn btn-primary d-flex align-items-center justify-content-center buttonsInterative" (click)="detailAppointment(appointment.id)">
-                                <span class="material-icons-sharp">description</span>
-                            </button>
-                            <button [disabled]="!allowedUser()" class="mx-1 btn btn-danger d-flex align-items-center justify-content-center buttonsInterative" data-toggle="modal" data-target="#deleteModal" (click)="saveAppointmentId(appointment)">
-                                <span class="material-icons-sharp">delete</span>
-                            </button>
-                            <button [disabled]="!allowedUser()" class="mx-1 btn btn-success d-flex align-items-center justify-content-center buttonsInterative" (click)="updateAppointment(appointment.id)">
-                                <span class="material-icons-sharp">edit</span>
-                            </button>
-                            
+        <div class="table-responsive">
 
-                        </div>
-                    </td>
-                    <td>{{ appointment.id }}</td>
-                    <td>{{ appointment.date }}</td>
-                    <td>{{ appointment.patientCpf }}</td>
-                    <td>{{ appointment.patientName }}</td>
-                    <td>{{ appointment.doctorName }}</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="text-center">
+                    <th class="th-button"></th>
+                    <th>ID</th>
+                    <th>Date/Hour</th>
+                    <th>CPF Patient</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                </thead>
+                <tbody class="text-center" id="tbodyAppointment">
+                    <tr *ngFor="let appointment of this.appointmentService.appointmentList; let index = index">
+                        <td class="p-1">
+                            <div class="d-flex gap-1 justify-content-center p-1 m-0"> 
+                                <button class="mx-1 btn btn-primary d-flex align-items-center justify-content-center buttonsInterative" (click)="detailAppointment(appointment.id)">
+                                    <span class="material-icons-sharp">description</span>
+                                </button>
+                                <button [disabled]="!allowedUser()" class="mx-1 btn btn-danger d-flex align-items-center justify-content-center buttonsInterative" data-toggle="modal" data-target="#deleteModal" (click)="saveAppointmentId(appointment)">
+                                    <span class="material-icons-sharp">delete</span>
+                                </button>
+                                <button [disabled]="!allowedUser()" class="mx-1 btn btn-success d-flex align-items-center justify-content-center buttonsInterative" (click)="updateAppointment(appointment.id)">
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                                
+    
+                            </div>
+                        </td>
+                        <td>{{ appointment.id }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.patientCpf }}</td>
+                        <td>{{ appointment.patientName }}</td>
+                        <td>{{ appointment.doctorName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/crud/user.service';
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   erroMessage: boolean = true;
   login!: string;
   password!: string;
+  isLogin: boolean = this.service.isLogin;
 
   constructor(
     private router: Router,
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.security.authenticated = false;
+        console.log(this.service.isLogin);
   }
 
   validateLogin() {
@@ -33,9 +35,39 @@ export class LoginComponent implements OnInit {
       .pipe(
         catchError((error) => {
           let userList: Array<any> = new Array();
-          userList.push({ id: 1, name: 'Administrator', login: "admin", email:"admin@emr.com", password: "admin" });
-          userList.push({ id: 2, name: 'Doctor', login: "doctor", email:"doctor@emr.com", password: "doctor" });
-          userList.push({ id: 3, name: 'User', login: "user", email:"user@emr.com", password: "user" });
+          userList.push(
+            {
+              id: 3,
+              name: "Admin",
+              login: "admin",
+              email: "admin@emr.com",
+              password: "admin",
+              type: "Admin",
+              doctor: null
+            }
+          );
+          userList.push(
+            {
+              id: 3,
+              name: "Doctor",
+              login: "doctor",
+              email: "doctor@emr.com",
+              password: "doctor",
+              type: "Doctor",
+              doctor: null
+            }
+          );
+          userList.push(
+            {
+              id: 3,
+              name: "User",
+              login: "user",
+              email: "user@emr.com",
+              password: "user",
+              type: "User",
+              doctor: null
+            }
+          );
           return of(userList);
         })
       )
@@ -53,8 +85,6 @@ export class LoginComponent implements OnInit {
     this.service.userLogged = response[0].name
     this.service.userTypeLogged = response[0].type   
     this.service.user = response 
-    // console.log(response);
-    
     this.router.navigateByUrl('dashboard')
   }
 
@@ -63,10 +93,6 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       this.erroMessage = true; 
     }, 3000); 
-  }
-
-  recordUser() {
-    this.service.isLogin = false;
   }
 
 }

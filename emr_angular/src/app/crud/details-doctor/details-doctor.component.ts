@@ -18,6 +18,4 @@ export class DetailsDoctorComponent implements OnInit {
     this.doctor = this.doctorService.doctor;
   }
 
-
-
 }

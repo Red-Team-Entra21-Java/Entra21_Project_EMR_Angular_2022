@@ -17,6 +17,7 @@ import { UserComponent } from './crud/user/user.component';
 import { FormsPagesComponent } from './initial-pages/forms-pages/forms-pages.component';
 import { HomeComponent } from './initial-pages/home/home.component';
 import { InitialPagesModule } from './initial-pages/initial-pages.module';
+import { RegisterComponent } from './initial-pages/register/register.component';
 import { TeamComponent } from './initial-pages/team/team.component';
 import { AppointmentReportComponent } from './report/appointment-report/appointment-report.component';
 import { DoctorReportComponent } from './report/doctor-report/doctor-report.component';
@@ -27,6 +28,7 @@ import { SecurityService } from './services/security/security.service';
 const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "login", component: FormsPagesComponent},
+  { path: "register", component: RegisterComponent},
   { path: "dashboard", component: DashboardComponent,canActivate: [SecurityService]},
   { path: "team", component: TeamComponent},
   { path: "appointments", component: AppointmentComponent,canActivate: [SecurityService]},
