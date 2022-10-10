@@ -79,7 +79,6 @@ export class NewPatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
         if (response) {          
           this.patientService.patientList.push(response);
         }
