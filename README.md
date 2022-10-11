@@ -300,7 +300,10 @@ user: root and password: Mysql123@ )
 5. Click on the fourth icon to create a new schema
 6. Enter the bank name in the ``emr``` case. If you put another name, you need to change the settings in Spring to locate the bank.
 7. Finally click apply.
-8. Another way to do this is through the sql syntax with the command: CREATE SCHEMA `emr`;
+8. Another way to do this is through the sql syntax with the command: 
+    ````
+    CREATE SCHEMA `emr`;
+    ````
 
 <br>
 
