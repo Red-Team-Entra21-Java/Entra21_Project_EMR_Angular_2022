@@ -307,7 +307,19 @@ user: root and password: Mysql123@ )
 
 ---
 
+## **📚 Postman**
+
+You can test the requests through Postman, importing the collections available [here](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Spring_2022/tree/main/request_postman).
+
+<br>
+
+---
+
 ### **The back-end version of the project developed in SPRING can be found [HERE](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Spring_2022).**
+
+<br>
+
+---
 
 ## **📚 Technologies and Concepts**
 
