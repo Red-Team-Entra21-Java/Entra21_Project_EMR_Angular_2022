@@ -17,9 +17,9 @@ export class NewAppointmentComponent implements OnInit {
   medicalReleaseBox: Array<String> = ["Released", "internee", "Forwarded Evaluation", "Death"]
   appointment!: any;
 
-  updateButtonHidden: boolean = this.appointmentService.updateButtonHidden;
+  updateButtonHidden: boolean = this.appointmentService.updateButtonHidden; 
   patientId!: number | null
-  doctorId: number | null = this.systemService.user[0].doctor.id
+  doctorId: number | null = (this.systemService.user[0].doctor !== null) ? this.systemService.user[0].doctor.id  : 1
   doctor!: any | null
   patient!: any | null
   anamnesis!: string | null

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AppointmentService {
 
-  updateButtonHidden: boolean = true;
+    updateButtonHidden: boolean = true;
     indexUpdateDoctor!: number;
   
     appointmentList!: Array<any>;
