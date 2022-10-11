@@ -14,11 +14,11 @@
 
 ## **🏥 About the project**
 
-O EMR é um sistema de prontuário eletrônico que tem por finalidade tratar da gestão de pequenas clínicas e consultórios de atendimento médico.
+The EMR is an electronic medical record system that aims to deal with the management of small clinics and medical care offices.
 
-Focado na gestão de prontuários eletrônicos, é capaz de armazenar e gerenciar as informações relativas aos pacientes durante os ciclos de atendimentos. Com o histórico é possível ao profissional de saúde conhecer as pessoalidades do quadro do seu paciente e assim tomar melhores decisões.
+Focused on the management of electronic medical records, it is able to store and manage information related to patients during the service cycles. With the history, it is possible for the health professional to know the personalities of the patient's framework and thus make better decisions.
 
-Outro ponto importante está relacionado a emissão de documentação impressa, assim anulando a possibilidade de erros causados com problemas de interpretação de caligrafia.
+Another important point is related to the issue of printed documentation, thus eliminating the possibility of errors caused by handwriting interpretation problems.
 
 ---
 <br>
