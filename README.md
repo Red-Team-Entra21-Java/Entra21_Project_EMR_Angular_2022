@@ -218,7 +218,9 @@ In the UserController class are the CRUD methods related to the calls, through w
 
 ## 📊&nbsp; Reports
 
-
+The reports bring data referring to existing records in the database, that is, appointment, patient, doctor and user data.
+They are listed in table format, displaying the most pertinent data.
+All data is called through existing http methods within the Angular service, and sent through Spring controllers.
 
 </details>
 
@@ -233,12 +235,12 @@ In the UserController class are the CRUD methods related to the calls, through w
 1. Make a project copy to your machine:
     - git clone [https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022)
     - Or a direct download from the page [HERE](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022).
-    - Import the project into your VSCode.
+2. Import the project into your VSCode.
         - If you don't have VSCode installed, watch this video I recorded teaching you how to install it. [VIEW VIDEO](https://youtu.be/82GnguThEAQ).
-    - The node must be installed.
+3. The node must be installed.
         - If you don't have node installed, go to the page and download it according to your operating system.
         - Node download page [HERE](https://nodejs.org/en/).
-    - Angular CLI must be installed.
+4.  Angular CLI must be installed.
         - If the Angular CLI is not installed it will be necessary to install it, for that node must be installed. Run the following command in your terminal:
     
     `npm install -g @angular/cli@latest`
@@ -254,8 +256,52 @@ In the UserController class are the CRUD methods related to the calls, through w
 
 ## **Spring**
 
+1. To run the project, Java JDK, Spring tools Suite and Maven must be installed and the environment variable defined.
+2. To install Java JDK
+    - Download JDK from the [site](https://www.oracle.com/java/technologies/downloads/#jdk19-windows)
+    - Install the JDK exe File
+    - Check the Directory ``C:\Program Files\Java\jdk-xxx`` if exists folder jdk
+3. To install Maven
+    - Download Maven [here](https://maven.apache.org/download.cgi)
+    - Unzip file
+    - Create a folder named maven in ``C:\``
+    - Press the Windows key on the keyboard and type: "edit system variables". Click on the option that appears.
+    - On the "Environment Variables" screen that will open, click the "New" button just below the part of the screen that says "environment Variables".
+    - In the variable name and value fields, fill in: ``MAVEN_HOME`` and ``C:\maven\bin``, respectively. Confirm.
+    - Check if it worked by opening a new prompt and typing ``mvn -version``
+4. To install Spring Tools Suite
+    - Download Spring Tools Suite from the [site](https://spring.io/tools)
+    - Double click on the downloaded file to unzip.
+    - Wait for unpacking.
+    - A folder called ``sts-x.xx.x.RELEASE`` will be created in the unzip location.
+    - Move the folder to a location of your choice.
+    -Select the ``SpringToolSuite4`` application from inside the folder and create a shortcut on the desktop for easy access.
+5. Make a project copy to your machine:
+    - git clone [https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Spring_2022.git](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Spring_2022.git)
+    - Or a direct download from the page [HERE](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Spring_2022.git).
+6. Import the project into your Spring Tools Suite.
+    - File -> Import -> Maven -> Existing Maven Projects -> Next -> Browse -> Select Downloaded Project -> Finish
+7. A change to the application.properties file is required.
+    - It is necessary to define your bank address, username and password.
+    - By default these are the data, just when installing the database enter the same data for username and password (
+user: root and password: Mysql123@ )
+    ```` 
+    spring.datasource.url=jdbc:mysql://localhost:3306/emr
+    spring.datasource.username=root
+    spring.datasource.password=Mysql123@
+    ````
 
 ## **MySql**
+
+1. To run the project, MySql just needs to be running with a database called emr, Spring itself will create the necessary tables.
+2. To install MySql just follow this video I created demonstrating the steps. [Tutorial](https://youtu.be/0LJrh9Vuowg)
+3. To create the database, open MySql Workbench
+4. Access the local instance with your password.
+5. Click on the fourth icon to create a new schema
+6. Enter the bank name in the ``emr``` case. If you put another name, you need to change the settings in Spring to locate the bank.
+7. Finally click apply.
+8. Another way to do this is through the sql syntax with the command: CREATE SCHEMA `emr`;
+
 <br>
 
 ---
