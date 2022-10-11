@@ -1,38 +1,109 @@
 <div class="card m-5 p-2" id="newUserContainer">
   <div class="card-body">
-    <form action="/salvo.html" enctype="text/plain" method="get" id="formNewUser" ngNativeValidate>
+    <form #formUser="ngForm" (ngSubmit)="onSubmit()" >
       <div class="card-body">
         <div class="row">
           <div class="col-12">
             <div class="mb-3">
-              <label for="userNameRecord" class="form-label">Enter your name:</label>
-              <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="user.name" name="name" required>
+              <label for="name" class="form-label">Enter your name:</label>
+              <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="user.name" name="name" id="name" required #name="ngModel">
+              <span class="text-danger" *ngIf="invalidMessage(name)">Name is required</span>
             </div>
             <div class="mb-3">
               <label for="userEmail" class="form-label">Enter you e-mail:</label>
-              <input type="email" class="form-control" placeholder="your_email@email.com" [(ngModel)]="user.email" name="email"  required>
+              <input type="email" class="form-control" placeholder="your_email@email.com" [(ngModel)]="user.email"
+                name="email" required email #email="ngModel">
+                <span class="text-danger" *ngIf="invalidMessage(email)">E-mail is invalid</span>
             </div>
+
+            <div class="row" [hidden]="this.securityService.authenticated === false">
+              <div class="col">
+                  <div class="mb-3">
+                      <label for="userType" class="form-label">User userType:</label>
+                      <select (ngModelChange)="user.type" class="form-select form-control" [(ngModel)]="user.type" name="userType" id="userType">
+                          <option *ngFor="let userType of userTypeBox">{{ userType }}</option>
+                      </select>
+                  </div>
+              </div>
+              
+
+          </div>
+
+            <div [hidden]="user.type !== 'Doctor' || this.securityService.authenticated === false" class="input-group mb-3" >
+              <label class="input-group-text" for="patientList" >Doctor</label>
+              <select class="form-select form-control" (ngModelChange)="setDoctor($event)" [(ngModel)]="user.doctor" name="doctor" >
+                  <option [ngValue]="doctor.id" *ngFor="let doctor of this.doctorService.doctorList; let index = index">{{ doctor.id }} - {{ doctor.name }} - {{ doctor.cpf }}</option>
+              </select>
+          </div>
+
             <div class="mb-3">
               <label for="login" class="form-label">Login:</label>
-              <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.login" name="login"  required>
+              <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.login" name="login" required #login="ngModel" >
+              <span class="text-danger" *ngIf="invalidMessage(login)">Login is required</span>
+
             </div>
           </div>
           <div class="col-12">
             <div class="mb-3">
               <label for="passwordUser" class="form-label">Password:</label>
-              <input type="password" class="form-control" placeholder="*********" [(ngModel)]="user.password" name="password"  required>
+              <input type="password" class="form-control" placeholder="*********" [(ngModel)]="user.password"
+                name="password" required #password="ngModel">
+                <span class="text-danger" *ngIf="invalidMessage(password)">Password is required</span>
+
             </div>
           </div>
         </div>
- 
+
 
         <div class="d-flex flex-row justify-content-center gap-1">
-          <button class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" (click)="createUser()" >Save</button>
-          <button class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateUser()">Update</button>
+          <button type="submit" [disabled]="!formUser.valid" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden">Save</button>
+          <button type="submit" [disabled]="!formUser.valid" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateUser()">Update</button>
           <button class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
         </div>
       </div>
     </form>
+
+
+
+
+
+    <!-- <form method="post" ngNativeValidate>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="name" class="form-label">Enter your name:</label>
+              <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="user.name" name="name" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Enter you e-mail:</label>
+              <input type="email" class="form-control" placeholder="your_email@email.com" [(ngModel)]="user.email"
+                name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="login" class="form-label">Login:</label>
+              <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.login" name="login"
+                required>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="passwordUser" class="form-label">Password:</label>
+              <input type="password" class="form-control" placeholder="*********" [(ngModel)]="user.password"
+                name="password" required>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="d-flex flex-row justify-content-center gap-1">
+          <button class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" (click)="createUser()">Save</button>
+          <button class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateUser()">Update</button>
+          <button class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
+
+        </div>
+      </div>
+    </form> -->
   </div>
 </div>

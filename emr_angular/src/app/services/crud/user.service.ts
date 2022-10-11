@@ -32,6 +32,11 @@ export class UserService {
     return this.http.get<any>(this.apiUrl + '/' + user.id);
   }
 
+  startWith(prefix: any): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl + '/start/' + prefix);
+  }
+
   create(user: any): Observable<any> {
 
     return this.http.post<any>(this.apiUrl, user);
@@ -50,6 +55,11 @@ export class UserService {
   login(user: any): Observable<any> {
 
     return this.http.post<any>(this.apiUrl + '/login', user);
+  }
+
+  getByDoctorId(id: any): Observable<any> {
+
+    return this.http.get<any>(this.apiUrl + '/doctor/' + id);
   }
 
 }

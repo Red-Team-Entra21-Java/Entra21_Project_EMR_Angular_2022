@@ -31,12 +31,10 @@ export class NewDoctorComponent implements OnInit {
   registerState!: string | null
   specialty!: string | null
 
-
   constructor(
     private doctorService: DoctorService,
     private router: Router,
     private securityService: SecurityService,
-
   ) { }
 
   ngOnInit(): void {
@@ -61,16 +59,34 @@ export class NewDoctorComponent implements OnInit {
       .create(this.doctor)
       .pipe(
         catchError((error) => {
-          //this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
+          let doctorList: Array<any> = new Array();
+          doctorList.push(
+            {
+              id: 1,
+              name: "Carla Maria Moraes",
+              cpf: "528.220.220-46",
+              nameMother: "Julia Moraes",
+              nameFather: "Lucas Moraes",
+              genre: "Female",
+              birth: "1986-09-14",
+              streetName: "Rua Conselheir",
+              numberHome: 3476,
+              district: "Rocio Fechado",
+              city: "Londrina",
+              state: "Parana",
+              country: "Brasil",
+              registerNumber: "62445561-0",
+              registerState: "PR",
+              specialty: "Obstetra"
+            }
+          ); 
           this.router.navigateByUrl("doctor")           
-          return of( this.doctorService.doctorList);
+          return of(doctorList);
         })
       )
       .subscribe((response: any) => {
         console.log(response);
-        if (response) {          
           this.doctorService.doctorList.push(response);
-        }
       });
       this.clearInputs()
       this.router.navigateByUrl("doctor")
@@ -86,7 +102,6 @@ export class NewDoctorComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
         if (response) {
           this.doctorService.doctorList[this.doctorService.doctorList.indexOf(this.doctorService.doctor)] = response;
         }
@@ -116,5 +131,23 @@ export class NewDoctorComponent implements OnInit {
     this.registerNumber = ""
     this.registerState = ""
     this.specialty = ""
+  }
+
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createDoctor()
+    } else {
+      this.updateDoctor()
+    }
+  }
+
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
   }
 }

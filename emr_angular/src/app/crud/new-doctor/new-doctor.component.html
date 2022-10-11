@@ -1,19 +1,20 @@
 <div class="card m-5 p-2" id="newDoctorContainer">
     <div class="card-body">
-        <form action="/salvo.html" enctype="text/plain" method="get" id="formNewDoctor" ngNativeValidate>
+        <form #formDoctor="ngForm" (ngSubmit)="onSubmit()">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorName" class="form-label">Doctor's name:</label>
-                            <input type="text" class="form-control" placeholder="Doctor's name" [(ngModel)]="doctor.name" name="name" required>
+                            <label for="name" class="form-label">Doctor's name:</label>
+                            <input type="text" class="form-control" placeholder="Doctor's name" [(ngModel)]="doctor.name" name="name" id="name" required #name="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(name)">Name is required</span>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorCPF" class="form-label">CPF doctor:</label>
-                            <input type="text" class="form-control"
-                                id="doctorCPF" placeholder="000.000.000-00" [(ngModel)]="doctor.cpf" name="cpf" required>
+                            <label for="cpf" class="form-label">CPF doctor:</label>
+                            <input type="text" class="form-control" placeholder="000.000.000-00" mask="000.000.000-00" [(ngModel)]="doctor.cpf" name="cpf" id="cpf" required #cpf="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(cpf)">CPF is required</span>
                         </div>
                     </div>
                 </div>
@@ -21,16 +22,15 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorMotherName" class="form-label">Mother's name:</label>
-                            <input type="text" class="form-control"
-                                id="doctorMotherName" placeholder="Mother's name" [(ngModel)]="doctor.nameMother" name="nameMother">
+                            <label for="nameMother" class="form-label">Mother's name:</label>
+                            <input type="text" class="form-control" placeholder="Mother's name" [(ngModel)]="doctor.nameMother" name="nameMother" id="nameMother" required #nameMother="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(nameMother)">Mother name is required</span>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="doctorFatherName" class="form-label">Father's name:</label>
-                            <input type="text" class="form-control"
-                                id="doctorFatherName" placeholder="Father's name" [(ngModel)]="doctor.nameFather" name="nameFather">
+                            <input type="text" class="form-control" id="doctorFatherName" placeholder="Father's name" [(ngModel)]="doctor.nameFather" name="nameFather">
                         </div>
                     </div>
                 </div>
@@ -56,24 +56,20 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="doctorStreet" class="form-label">Street:</label>
-                            <input type="text" class="form-control"
-                                id="doctorStreet" placeholder="Street name" [(ngModel)]="doctor.streetName" name="streetName">
+                            <input type="text" class="form-control" id="doctorStreet" placeholder="Street name" [(ngModel)]="doctor.streetName" name="streetName">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorHomeNumber"
-                                class="form-label">Number:</label>
-                            <input type="number" class="form-control"
-                                id="doctorHomeNumber" placeholder="Number" [(ngModel)]="doctor.numberHome" name="numberHome">
+                            <label for="doctorHomeNumber" class="form-label">Number:</label>
+                            <input type="number" class="form-control" id="doctorHomeNumber" placeholder="Number" [(ngModel)]="doctor.numberHome" name="numberHome">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="doctorDistrict"
                                 class="form-label">District:</label>
-                            <input type="text" class="form-control"
-                                id="doctorDistrict" placeholder="District" [(ngModel)]="doctor.district" name="district">
+                            <input type="text" class="form-control" id="doctorDistrict" placeholder="District" [(ngModel)]="doctor.district" name="district">
                         </div>
                     </div>
                 </div>
@@ -81,63 +77,49 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorCity"
-                                class="form-label">City:</label>
-                            <input type="text" class="form-control"
-                                id="doctorCity" placeholder="City" [(ngModel)]="doctor.city" name="city">
+                            <label for="doctorCity" class="form-label">City:</label>
+                            <input type="text" class="form-control" id="doctorCity" placeholder="City" [(ngModel)]="doctor.city" name="city">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorState"
-                                class="form-label">State:</label>
-                            <input type="text" class="form-control"
-                                id="doctorState" placeholder="State" [(ngModel)]="doctor.state" name="state">
+                            <label for="doctorState" class="form-label">State:</label>
+                            <input type="text" class="form-control" id="doctorState" placeholder="State" [(ngModel)]="doctor.state" name="state">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorCountry"
-                                class="form-label">País:</label>
-                            <input type="text" class="form-control"
-                                id="doctorCountry"
-                                placeholder="Country" [(ngModel)]="doctor.country" name="country">
+                            <label for="doctorCountry" class="form-label">País:</label>
+                            <input type="text" class="form-control" id="doctorCountry" placeholder="Country" [(ngModel)]="doctor.country" name="country">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorRegisterNumber"
-                                class="form-label">Register number:</label>
-                            <input type="text" class="form-control"
-                                id="doctorRegisterNumber"
-                                placeholder="00000000-00" [(ngModel)]="doctor.registerNumber" name="registerNumber">
+                            <label for="RegisterNumber" class="form-label">Register number:</label>
+                            <input type="text" class="form-control" placeholder="00000000-00" [(ngModel)]="doctor.registerNumber" name="registerNumber" id="registerNumber" required #registerNumber="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(registerNumber)">Register number is required</span>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorRegisterState"
-                                class="form-label">Register State:</label>
-                            <input type="text" class="form-control"
-                                id="doctorRegisterNumber"
-                                placeholder="Santa Catarina" [(ngModel)]="doctor.registerState" name="registerState">
+                            <label for="doctorRegisterState" class="form-label">Register State:</label>
+                            <input type="text" class="form-control" placeholder="SC" [(ngModel)]="doctor.registerState" name="registerState" id="registerState" required #registerState="ngModel">
+                            <span class="text-danger" *ngIf="invalidMessage(registerNumber)">Register State is required</span>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="doctorSpecialty"
-                                class="form-label">Specialty:</label>
-                            <input type="text" class="form-control"
-                                id="doctorSpecialty"
-                                placeholder="Specialty" [(ngModel)]="doctor.specialty" name="specialty">
+                            <label for="doctorSpecialty" class="form-label">Specialty:</label>
+                            <input type="text" class="form-control" id="doctorSpecialty" placeholder="Specialty" [(ngModel)]="doctor.specialty" name="specialty">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-center gap-1">
-                <button type="button" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" (click)="createDoctor()">Save</button>
-                <button type="button" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" (click)="updateDoctor()">Update</button>
+                <button type="submit" class="mx-1 btn btn-primary" [hidden]="!updateButtonHidden" [disabled]="!formDoctor.valid">Save</button>
+                <button type="submit" class="mx-1 btn btn-success" [hidden]="updateButtonHidden" [disabled]="!formDoctor.valid">Update</button>
                 <button type="button" class="mx-1 btn btn-outline-danger" (click)="cancelRecord()">Cancel</button>
 
             </div>

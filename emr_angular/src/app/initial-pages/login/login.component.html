@@ -3,23 +3,24 @@
             aria-hidden="true">&times;</span></button>
     <strong>Login or Password incorrect!</strong>
 </div>
+
 <div class="card">
     <div class="card-header">LOGIN</div>
     <div class="card-body">
-        <div class="mb-3">
-            <label for="userName" class="form-label">User Name:</label>
-            <input type="text" class="form-control" placeholder="User name" required [(ngModel)]="login" name="login">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="password"
-                name="password">
-        </div>
+        <form>
+            <div class="mb-3">
+                <label for="userName" class="form-label">User Name:</label>
+                <input type="text" class="form-control" placeholder="User name" required [(ngModel)]="login" name="login">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="password" name="password">
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary" (click)="validateLogin()">Login</button>
+                <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
+            </div>
+        </form>
 
-        <div class="card-footer text-center">
-            <p>Don't have a registration? Register <a routerLink="../login" (click)="recordUser()" >here!</a></p> 
-            <button type="submit" class="btn btn-primary" (click)="validateLogin()">Login</button>
-            <button class="btn btn-danger ml-1" routerLink="">Cancel</button>
-        </div>
     </div>
 </div>

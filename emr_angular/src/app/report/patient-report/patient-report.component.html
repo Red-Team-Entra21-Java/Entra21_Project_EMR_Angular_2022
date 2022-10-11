@@ -4,32 +4,24 @@
             <th>Name</th>
             <th>CPF</th>
             <th>Mother Name</th>
-            <th>Father Name</th>
             <th>Genre</th>
             <th>Birth Date</th>
-            <th>Street Name</th>
-            <th>Number Home</th>
             <th>District</th>
             <th>City</th>
             <th>State</th>
             <th>Country</th>
-            <th>Appointments</th>
         </thead>
         <tbody>
             <tr class="text-center" *ngFor="let patient of patientList; let index = index">
                 <td>{{ patient.name }}</td>
                 <td>{{ patient.cpf }}</td>
-                <td>{{ patient.motherName }}</td>
-                <td>{{ patient.fatherName }}</td>
+                <td>{{ patient.nameMother }}</td>
                 <td>{{ patient.genre }}</td>
-                <td>{{ patient.birthDate }}</td>
-                <td>{{ patient.streetName }}</td>
-                <td>{{ patient.numberHome }}</td>
+                <td>{{ patient.birth }}</td>
                 <td>{{ patient.district }}</td>
                 <td>{{ patient.city }}</td>
                 <td>{{ patient.state }}</td>
                 <td>{{ patient.country }}</td>
-                <td>{{ patient.appointments.length }}</td>
             </tr>
         </tbody>
     </table>

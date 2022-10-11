@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AppointmentService {
 
-  updateButtonHidden: boolean = true;
+    updateButtonHidden: boolean = true;
     indexUpdateDoctor!: number;
   
     appointmentList!: Array<any>;
@@ -24,10 +24,20 @@ export class AppointmentService {
   
       return this.http.get<any>(this.apiUrl);
     }
+
+    getAllResume(): Observable<any> {
   
-    getById(appointment: any): Observable<any> {
+      return this.http.get<any>(this.apiUrl+ '/resume');
+    }
   
-      return this.http.get<any>(this.apiUrl + '/' + appointment.id);
+    getById(id: any): Observable<any> {
+  
+      return this.http.get<any>(this.apiUrl + '/' + id);
+    }
+
+    startWith(prefix: any): Observable<any> {
+
+      return this.http.get<any>(this.apiUrl + '/start/' + prefix);
     }
   
     create(appointment: any): Observable<any> {
@@ -43,6 +53,11 @@ export class AppointmentService {
     delete(appointment: any): Observable<any> {
   
       return this.http.delete<any>(this.apiUrl + '/' + appointment.id);
+    }
+
+    getByPatientId(id: any): Observable<any> {
+
+      return this.http.get<any>(this.apiUrl + '/patient/' + id);
     }
 
 }

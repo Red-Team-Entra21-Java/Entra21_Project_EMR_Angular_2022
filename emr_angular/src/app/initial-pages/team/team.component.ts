@@ -45,7 +45,7 @@ export class TeamComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         this.teamService.teamList = response;
       });
   }

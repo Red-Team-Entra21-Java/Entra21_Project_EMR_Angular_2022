@@ -13,7 +13,11 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DetailsPatientComponent } from './details-patient/details-patient.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
+import { DetailsDoctorComponent } from './details-doctor/details-doctor.component';
+import { DetailsUserComponent } from './details-user/details-user.component';
+import { DetailsAppointmentComponent } from './details-appointment/details-appointment.component';
 
 
 @NgModule({
@@ -28,13 +32,19 @@ import { FormsModule } from '@angular/forms';
     NewUserComponent,
     UserComponent,
     DetailsPatientComponent,
+    DetailsDoctorComponent,
+    DetailsUserComponent,
+    DetailsAppointmentComponent,
+    
     
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [
     NewUserComponent

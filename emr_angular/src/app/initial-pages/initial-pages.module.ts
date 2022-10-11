@@ -8,6 +8,7 @@ import { FormsPagesComponent } from './forms-pages/forms-pages.component';
 import { CrudModule } from '../crud/crud.module';
 import { FormsModule } from '@angular/forms';
 import { TeamComponent } from './team/team.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -17,6 +18,7 @@ import { TeamComponent } from './team/team.component';
     HomeComponent,
     FormsPagesComponent,
     TeamComponent,
+    RegisterComponent,
     
   ],
   imports: [

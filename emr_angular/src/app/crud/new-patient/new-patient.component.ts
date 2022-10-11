@@ -43,7 +43,6 @@ export class NewPatientComponent implements OnInit {
     }
   }
 
-  //VERIDICAR
   isLogged() {
     if(this.securityService.authenticated === false) {
       this.router.navigateByUrl("")
@@ -57,13 +56,29 @@ export class NewPatientComponent implements OnInit {
       .create(this.patient)
       .pipe(
         catchError((error) => {
-          //this.doctorService.doctorList.push(this.doctor);   //VERIFICAR
-          this.router.navigateByUrl("doctor")           
-          return of( this.patientService.patientList);
+          let patientList: Array<any> = new Array();
+            patientList.push(
+            {
+              id: 3,
+              name: "Joana da Silva",
+              cpf: "776.939.100-85",
+              nameMother: "Julia Garcia",
+              nameFather: "Joao da Silva",
+              genre: "Female",
+              birth: "1985-06-13",
+              streetName: "Rua 465",
+              numberHome: 1268,
+              district: "Numerais",
+              city: "Imbituba",
+              state: "Santa Catarina",
+              country: "Brasil"
+            }
+          ); 
+          this.router.navigateByUrl("patient")           
+          return of(patientList);
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
         if (response) {          
           this.patientService.patientList.push(response);
         }
@@ -82,7 +97,6 @@ export class NewPatientComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log(response);
         if (response) {
           this.patientService.patientList[this.patientService.patientList.indexOf(this.patientService.patient)] = response;
         }
@@ -109,5 +123,23 @@ export class NewPatientComponent implements OnInit {
     this.city = ""
     this.state = ""
     this.country = ""
+  }
+
+  onSubmit() {
+    if(this.updateButtonHidden === true) {
+      this.createPatient()
+    } else {
+      this.updatePatient()
+    }
+  }
+
+  invalidMessage(variable: any): boolean {
+    let validation: boolean
+    if(!variable.valid && variable.touched) {
+      validation = true;
+    } else {
+      validation = false;
+    }
+    return validation
   }
 }

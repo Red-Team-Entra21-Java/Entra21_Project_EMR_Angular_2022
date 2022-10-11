@@ -1,25 +1,192 @@
-<section class="row initial p-0 m-0">
-    <div class="col background-color d-flex justify-content-center ">
-        <div class="align-self-center text-end">
-             <h1 class="text-light title-initial ">Electronic <br/> Medical <br/>Record</h1>
-             <p class="text-secondary">Electronic medical record for medical records.<br/>Log in or sign up!</p>
-             <a routerLink="../login" (click)="recordUser(false)" class="btn btn-light w-25">Login</a>
-             <a routerLink="../login" (click)="recordUser(true)" class="btn btn-light ml-2 w-25">Register</a>
-        </div>
-    </div>
-    <div class="col initial-image p-0">
-        <nav class="navbar navbar-default d-flex flex-row background-color m-0 p-0">
-            <div class="container-fluid">
-              <div class="navbar-header">
-              </div>
-              <ul class="nav navbar-nav flex-row m-2">
-                <li><a class="text-light mr-3" routerLink="team"><b>TEAM</b></a></li>
-                <li><a class="text-light" routerLink=""><b>CONTACT</b></a></li>
-              </ul>
+<section class="w-100">
+  <header class="">
+    <nav class="navbar navbar-expand-lg fixed-top background-color">
+        <div class="container-fluid d-flex justify-content-between">
+            <a class="navbar-brand" href="#home">
+                <img class="logo-initial" src="../../../assets/icons/logo.png" alt="Inside Medical Logo">
+            </a>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-5 mb-1 mb-lg-0">
+                    <li class="nav-item"> 
+                        <a class="nav-link text-light" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#solution">Solution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#technology">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" routerLink="team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#contact">Contact</a>
+                    </li>
+                    
+                </ul>
             </div>
-          </nav>
-        
+        </div>
+    </nav>
+  </header>
+</section>
+
+<a name="home"></a>
+<section class="row initial p-0 m-0">
+  <div class="col background-color d-flex justify-content-center ">
+    <div class="align-self-center text-end">
+      <h1 class="text-light title-initial ">Electronic <br /> Medical <br />Record</h1>
+      <p class="text-secondary">Electronic medical record for medical records.<br />Log in or sign up!</p>
+      <a routerLink="../login" (click)="recordUser(false)" class="btn btn-light w-25">Login</a>
+      <a routerLink="../login" (click)="recordUser(true)" class="btn btn-light ml-2 w-25">Register</a>
     </div>
+  </div>
+  <div class="col initial-image p-0">
+
+
+  </div>
 </section>
 
 
+<!-- ABOUT SECTION -->
+<a name="about"></a>
+<section class="container-fluid second-section h-auto background-color">
+  <div class="row p-0">
+    <div class="col p-5 background-primary-color d-flex align-items-center justify-content-center flex-column ">
+      <div class="row">
+        <h2 class="pb-4 pt-4">About</h2>
+      </div>
+
+      <div class="row container mb-5 g-3">
+        <div class="col-md col-lg-4">
+          <div class="card card-home">
+            <div class="card-body">
+              <h3>History</h3>
+              <p>Thinking about health institutions that were unable to adapt to digitalization, EMR was born, a simple software with low complexity to facilitate the use of electronic medical records.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md col-lg-4">
+          <div class="card card-home">
+            <div class="card-body">
+              <h3>Purpose</h3>
+              <p>Bring digital transformation to small, non-digitized institutions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md col-lg-4">
+          <div class="card card-home">
+            <div class="card-body">
+              <h3>Tecnology</h3>
+              <p>Solve pain in the area through technology.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<a name="solution"></a>
+<section
+  class="container-fluid third-section background-primary-color h-auto d-block d-md-flex flex-md-column justify-content-center background-color pb-5">
+  <h2 class="text-center pb-4 pt-4">Solution</h2>
+  <div class="row container mx-auto">
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <img class="w-100" src="../../../assets/images/readme_images/emr_initial.gif" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col order-first order-lg-last col-lg-6 d-flex flex-column align-items-center justify-content-center">
+      <p class="ml-5 fs-5 w-100 text-center">
+        <b>
+          The EMR is an electronic medical record system that aims to deal with the management of small clinics and
+          medical care offices.
+
+          Focused on the management of electronic medical records, it is able to store and manage information related to
+          patients during the service cycles. With the history, it is possible for the health professional to know the
+          personalities of the patient's framework and thus make better decisions.
+
+          Another important point is related to the issue of printed documentation, thus eliminating the possibility of
+          errors caused by handwriting interpretation problems.
+        </b>
+      </p>
+      <a class="btn btn-light w-50 rounded-3 mb-5 mt-2"
+        href="https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022" target="_blank">More Details
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECH SECTION -->
+<a name="technology"></a>
+<section class="container-fluid third-section background-primary-color h-auto d-block d-md-flex flex-md-column justify-content-center background-color pb-5">
+  <h2 class="text-center pb-4 pt-4">Technologies Used</h2>
+  <div class="card mx-5">
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-sm-4 col-6">
+          <div class="description-block border-right">
+            <img class="logo" src="../../../assets/images/logo/spring_logo.png" alt="Spring Logo">
+            <h5 class="description-header">Spring Boot</h5>
+          </div>
+
+        </div>
+
+        <div class="col-sm-4 col-6">
+          <div class="description-block border-right">
+            <img class="logo" src="../../../assets/images/logo/angular_logo.png" alt="Angular Logo">
+            <h5 class="description-header">Angular</h5>
+          </div>
+        </div>
+
+        <div class="col-sm-4 col-6">
+          <div class="description-block">
+            <img class="logo" src="../../../assets/images/logo/mysql_logo.png" alt="MySql Logo">
+            <h5 class="description-header">MySql</h5>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<a name="contact"></a>
+<section   class="container-fluid fouth-section background-primary-color d-block d-md-flex flex-md-column justify-content-center background-color pt-3 pb-3">
+  <h2 class="text-center pb-4 pt-5 pt-lg-0">Contact</h2> 
+  <div class="row container mx-auto">
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-md-center align-items-lg-start justify-content-center">
+      <h3 class="w-75">Send us an email!</h3>
+      <div>
+        
+          
+          <p>seiler.emerson@gmail.com
+          <br>
+          welliton1991borges@gmail.com</p>
+        
+
+
+      </div>
+    </div>
+
+    <div class="col">
+      <button class="btn btn-light" routerLink="team"><h5>Meet our team!</h5></button>
+    </div>
+  </div>
+</section>

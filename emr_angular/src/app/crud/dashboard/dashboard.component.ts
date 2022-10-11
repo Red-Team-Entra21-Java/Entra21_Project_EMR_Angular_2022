@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
   usersNumber!: number
 
   constructor(
-    private router: Router,
     private systemService: SystemService,
     private appointmentService: AppointmentService,
     private patientService: PatientService,
@@ -32,13 +31,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.enviarTitulo()
     this.doctorsNumber 
-
-      this.systemService.listAllAppointment()
-      this.systemService.listAllDoctor()
-      this.systemService.listAllPatient()
-      this.systemService.listAllUser()
-      this.populateDashboard()
-
+    this.systemService.listAllAppointment()
+    this.systemService.listAllDoctor()
+    this.systemService.listAllPatient()
+    this.systemService.listAllUser()
+    this.populateDashboard()
   }
 
   enviarTitulo() {
@@ -53,5 +50,4 @@ export class DashboardComponent implements OnInit {
       this.usersNumber = this.userService.userList.length
     }, 1000);
   }
-
 }
