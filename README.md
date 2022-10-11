@@ -78,7 +78,7 @@ The system flow is based on the concept:
 
 <details>
     <summary>
-        <b>&nbsp; Start</b>
+        <b>🏥&nbsp; Start</b>
     </summary>
 
 # 🏥&nbsp; Start
@@ -112,7 +112,7 @@ The logic used communicates with the back-end and through the User class, UserCo
 
 <details>
     <summary>
-        <b>&nbsp; Appointment CRUD</b>
+        <b>🩺&nbsp; Appointment CRUD</b>
     </summary>
 
 ## 🩺&nbsp; Appointment
@@ -137,7 +137,7 @@ In the AppointmentController class are the CRUD methods related to the calls, th
 
 <details>
     <summary>
-        <b>&nbsp; Patient CRUD</b>
+        <b>😷&nbsp; Patient CRUD</b>
     </summary>
 
 ## 😷&nbsp; Patient
@@ -162,7 +162,7 @@ In the PatientController class are the CRUD methods related to the calls, throug
 
 <details>
     <summary>
-        <b>&nbsp; Doctor CRUD</b>
+        <b>👩‍🔬&nbsp; Doctor CRUD</b>
     </summary>
 
 ## 👩‍🔬&nbsp; Doctor
@@ -188,7 +188,7 @@ In the DoctorController class are the CRUD methods related to the calls, through
 
 <details>
     <summary>
-        <b>&nbsp; User CRUD</b>
+        <b>👨🏻‍💻&nbsp; User CRUD</b>
     </summary>
 
 ## 👨🏻‍💻&nbsp; User
@@ -213,7 +213,7 @@ In the UserController class are the CRUD methods related to the calls, through w
 
 <details>
     <summary>
-        <b>&nbsp; Reports</b>
+        <b>📊&nbsp; Reports</b>
     </summary>
 
 ## 📊&nbsp; Reports
@@ -275,7 +275,11 @@ In this project we use Angular framework with HTML5, CSS3, Bootstrap and apply t
 7. Agile Methodologies
 8. Kanban
 
-****👨🏻‍🎓  Authors****
+----
+
+<br>
+
+## 👨🏻‍🎓  **Authors**
 
 <br>
 
