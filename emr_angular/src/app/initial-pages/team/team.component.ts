@@ -28,17 +28,25 @@ export class TeamComponent implements OnInit {
               name: 'Emerson Seiler',
               github: 'https://github.com/seiler-emerson',
               linkedin: 'https://www.linkedin.com/in/seileremerson/',
-              college: 'Studying Software Engineering',
+              college: 'Studying Software Engineering and B.Sc Mechanical Engineering',
               image: 'https://avatars.githubusercontent.com/seiler-emerson'
             },
             {
               id: 2,
               name: 'Welliton Borges',
               github: 'https://github.com/Wellitonborges',
-              linkedin: 'https://www.linkedin.com/in/seileremerson/',
-              college: 'Studying Software Engineering',
+              linkedin: 'https://www.linkedin.com/in/Wellitonborges/',
+              college: 'Studying Analysis and Systems Development',
               image: 'https://avatars.githubusercontent.com/Wellitonborges'
-            }
+            },
+            {
+              id: 2,
+              name: 'Bárbara Ribeiro',
+              github: 'https://github.com/Ba-Ribeiro',
+              linkedin: 'https://www.linkedin.com/in/Ba-Ribeiro/',
+              college: 'B.A. Accounting Sciences',
+              image: 'https://avatars.githubusercontent.com/Ba-Ribeiro'
+            },
           );
 
           return of(teamList);
