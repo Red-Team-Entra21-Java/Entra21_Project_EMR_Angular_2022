@@ -1,16 +1,14 @@
-# README (1)
-
 ## **Project EMR - Electronic Medical Record**
 
 ## **🗃️ Table of Contents**
 
-- [About the project](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#about-project)
-- [Class diagram](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#class-diagram)
-- [Application flowchart](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#application-flowchart)
-- [Application in operation](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#application-operation)
-- [Instructions for execute the Project](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#execute-project)
-- [Technologies and Concepts](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#technologies)
-- [Author](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022#author)
+- [About the project]()
+- [Front-end and Back-end diagrams]()
+- [Application flowchart]()
+- [Application in operation]()
+- [Instructions for execute the Project]()
+- [Technologies and Concepts]()
+- [Author]()
 
 ---
 
