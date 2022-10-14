@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
   usersNumber!: number
   lastSevenDays: Array<any> = []
   totalAppointmentLastSevenDays: Array<any> = [0, 0, 0, 0, 0, 0, 0,]
-  dataGraphicAppointments: any = {}
-  
   styleGraphic = {
     primary: "#6571ff",
     secondary: "#7987a1",
@@ -38,7 +36,84 @@ export class DashboardComponent implements OnInit {
     vd: "#DC143C",
     fontFamily: "'Roboto', Helvetica, sans-serif"
   }
-  
+  dataGraphicAppointments: any = {
+    chart: {
+      type: "line",
+      height: "550",
+      parentHeightOffset: 0,
+      foreColor: this.styleGraphic.bodyColor,
+      background: this.styleGraphic.cardBg,
+      toolbar: {
+        show: false,
+      },
+    },
+    theme: {
+      mode: "light",
+    },
+    tooltip: {
+      theme: "light",
+    },
+    colors: [this.styleGraphic.vd],
+    fill: {
+      opacity: 0.9,
+    },
+    grid: {
+      padding: {
+        bottom: -4,
+      },
+      borderColor: this.styleGraphic.gridBorder,
+      xaxis: {
+        lines: {
+          show: true,
+        },
+      },
+    },
+    series: [
+      {
+        name: "Appointments on the day.",
+        data: [0,0,0,0,0,0,0]
+      },
+    ],
+    xaxis: {
+      categories: this.lastSevenDays,
+      axisBorder: {
+        color: this.styleGraphic.gridBorder,
+      },
+      axisTicks: {
+        color: this.styleGraphic.gridBorder,
+      },
+    },
+    yaxis: {
+      min: 0,
+      max: 2,
+      forceNiceScale: true,
+      title: {
+        text: "Amount of Appointments",
+        style: {
+          size: 9,
+          color: this.styleGraphic.muted,
+        },
+      },
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: "center",
+      fontFamily: this.styleGraphic.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 2,
+      },
+    },
+    stroke: {
+      width: 3,
+    curve: "smooth",
+    lineCap: "round"
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    }
   
   constructor(
     private systemService: SystemService,
@@ -60,14 +135,8 @@ export class DashboardComponent implements OnInit {
       
       setTimeout(() => {
         this.getAmountAppointmentDate()
-        
-        console.log(this.lastSevenDays);
-        console.log(this.totalAppointmentLastSevenDays);
-        
         this.dataGraphicAppointments = this.graphicAppointmentLastSevenDays()
-      }, 2000);
-      
-      
+      }, 1000);    
   }
 
   enviarTitulo() {
@@ -82,7 +151,6 @@ export class DashboardComponent implements OnInit {
       this.usersNumber = this.userService.userList.length
     }, 1000);
   }
-
 
   gerateDataSevenDay() {
     let hoje: any = ""
@@ -112,84 +180,88 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-  graphicAppointmentLastSevenDays() {
-    return {
-      chart: {
-        type: "line",
-        height: "550",
-        parentHeightOffset: 0,
-        foreColor: this.styleGraphic.bodyColor,
-        background: this.styleGraphic.cardBg,
-        toolbar: {
-          show: false,
+    graphicAppointmentLastSevenDays() {
+      return {
+        chart: {
+          type: "line",
+          height: "550",
+          parentHeightOffset: 0,
+          foreColor: this.styleGraphic.bodyColor,
+          background: this.styleGraphic.cardBg,
+          toolbar: {
+            show: false,
+          },
         },
-      },
-      theme: {
-        mode: "light",
-      },
-      tooltip: {
-        theme: "light",
-      },
-      colors: [this.styleGraphic.vd],
-      fill: {
-        opacity: 0.9,
-      },
-      grid: {
-        padding: {
-          bottom: -4,
+        theme: {
+          mode: "light",
         },
-        borderColor: this.styleGraphic.gridBorder,
+        tooltip: {
+          theme: "light",
+        },
+        colors: [this.styleGraphic.vd],
+        fill: {
+          opacity: 0.9,
+        },
+        grid: {
+          padding: {
+            bottom: -4,
+          },
+          borderColor: this.styleGraphic.gridBorder,
+          xaxis: {
+            lines: {
+              show: true,
+            },
+          },
+        },
+        series: [
+          {
+            name: "Appointments on the day.",
+            data: this.totalAppointmentLastSevenDays,
+          },
+        ],
         xaxis: {
-          lines: {
-            show: true,
+          categories: this.lastSevenDays,
+          axisBorder: {
+            color: this.styleGraphic.gridBorder,
+          },
+          axisTicks: {
+            color: this.styleGraphic.gridBorder,
           },
         },
-      },
-      series: [
-        {
-          name: "Appointments on the day.",
-          data: this.totalAppointmentLastSevenDays,
-        },
-      ],
-      xaxis: {
-        categories: this.lastSevenDays,
-        axisBorder: {
-          color: this.styleGraphic.gridBorder,
-        },
-        axisTicks: {
-          color: this.styleGraphic.gridBorder,
-        },
-      },
-      yaxis: {
-        title: {
-          text: "Amount of Appointments",
-          style: {
-            size: 9,
-            color: this.styleGraphic.muted,
+        yaxis: {
+          min: 0,
+          max: this.totalAppointmentLastSevenDays.reduce(function(prev, current) { 
+            return prev > current ? prev+0.25 : current+0.25; 
+          }),
+          forceNiceScale: true,
+          title: {
+            text: "Amount of Appointments",
+            style: {
+              size: 9,
+              color: this.styleGraphic.muted,
+            },
           },
         },
-      },
-      legend: {
-        show: true,
-        position: "top",
-        horizontalAlign: "center",
-        fontFamily: this.styleGraphic.fontFamily,
-        itemMargin: {
-          horizontal: 8,
-          vertical: 2,
+        legend: {
+          show: true,
+          position: "top",
+          horizontalAlign: "center",
+          fontFamily: this.styleGraphic.fontFamily,
+          itemMargin: {
+            horizontal: 8,
+            vertical: 2,
+          },
         },
-      },
-      stroke: {
-        width: 3,
-      curve: "smooth",
-      lineCap: "round"
-      },
-      dataLabels: {
-        enabled: false,
-      },
+        stroke: {
+          width: 3,
+        curve: "smooth",
+        lineCap: "round"
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        }
       }
-    }
 
 
 }
