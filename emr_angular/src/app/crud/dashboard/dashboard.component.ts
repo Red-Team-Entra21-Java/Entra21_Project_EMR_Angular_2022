@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   doctorsNumber!: number
   usersNumber!: number
   lastSevenDays: Array<any> = []
-  totalAppointmentLastSevenDays: Array<any> = [0, 0, 0, 0, 0, 0, 0,]
+  totalAppointmentLastSevenDays: Array<any> = [0,0,0,0,0,0,0]
   styleGraphic = {
     primary: "#6571ff",
     secondary: "#7987a1",
@@ -36,107 +36,29 @@ export class DashboardComponent implements OnInit {
     vd: "#DC143C",
     fontFamily: "'Roboto', Helvetica, sans-serif"
   }
-  dataGraphicAppointments: any = {
-    chart: {
-      type: "line",
-      height: "550",
-      parentHeightOffset: 0,
-      foreColor: this.styleGraphic.bodyColor,
-      background: this.styleGraphic.cardBg,
-      toolbar: {
-        show: false,
-      },
-    },
-    theme: {
-      mode: "light",
-    },
-    tooltip: {
-      theme: "light",
-    },
-    colors: [this.styleGraphic.vd],
-    fill: {
-      opacity: 0.9,
-    },
-    grid: {
-      padding: {
-        bottom: -4,
-      },
-      borderColor: this.styleGraphic.gridBorder,
-      xaxis: {
-        lines: {
-          show: true,
-        },
-      },
-    },
-    series: [
-      {
-        name: "Appointments on the day.",
-        data: [0,0,0,0,0,0,0]
-      },
-    ],
-    xaxis: {
-      categories: this.lastSevenDays,
-      axisBorder: {
-        color: this.styleGraphic.gridBorder,
-      },
-      axisTicks: {
-        color: this.styleGraphic.gridBorder,
-      },
-    },
-    yaxis: {
-      min: 0,
-      max: 2,
-      forceNiceScale: true,
-      title: {
-        text: "Amount of Appointments",
-        style: {
-          size: 9,
-          color: this.styleGraphic.muted,
-        },
-      },
-    },
-    legend: {
-      show: true,
-      position: "top",
-      horizontalAlign: "center",
-      fontFamily: this.styleGraphic.fontFamily,
-      itemMargin: {
-        horizontal: 8,
-        vertical: 2,
-      },
-    },
-    stroke: {
-      width: 3,
-    curve: "smooth",
-    lineCap: "round"
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    }
-  
+  dataGraphicAppointments: any = {}
+
   constructor(
     private systemService: SystemService,
     private appointmentService: AppointmentService,
     private patientService: PatientService,
     private doctorService: DoctorService,
     private userService: UserService,
-    
-    ) { }
-    
-    ngOnInit(): void {
-      this.enviarTitulo()
-      this.doctorsNumber
-      this.systemService.listAllAppointment()
-      this.systemService.listAllDoctor()
-      this.systemService.listAllPatient()
-      this.systemService.listAllUser()
-      this.populateDashboard()
-      
-      setTimeout(() => {
-        this.getAmountAppointmentDate()
-        this.dataGraphicAppointments = this.graphicAppointmentLastSevenDays()
-      }, 1000);    
+  ) { }
+
+  ngOnInit(): void {
+    this.enviarTitulo()
+    this.doctorsNumber
+    this.systemService.listAllAppointment()
+    this.systemService.listAllDoctor()
+    this.systemService.listAllPatient()
+    this.systemService.listAllUser()
+    this.populateDashboard()
+    this.gerateDataSevenDay()
+    setTimeout(() => {
+      this.getAmountAppointmentDate()
+      this.dataGraphicAppointments = this.graphicAppointmentLastSevenDays()
+    }, 1000);
   }
 
   enviarTitulo() {
@@ -149,7 +71,7 @@ export class DashboardComponent implements OnInit {
       this.patientsNumber = this.patientService.patientList.length
       this.doctorsNumber = this.doctorService.doctorList.length
       this.usersNumber = this.userService.userList.length
-    }, 1000);
+    }, 2000);
   }
 
   gerateDataSevenDay() {
@@ -170,7 +92,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getAmountAppointmentDate() {
-    this.gerateDataSevenDay()
     for (let count = 0; count < this.appointmentService.appointmentList.length; count++) {
       for (let countDay = 0; countDay < this.lastSevenDays.length; countDay++) {
         if (this.appointmentService.appointmentList[count].date.split(" ")[0].slice(0, 5) === this.lastSevenDays[countDay]) {
@@ -180,88 +101,89 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-    graphicAppointmentLastSevenDays() {
-      return {
-        chart: {
-          type: "line",
-          height: "550",
-          parentHeightOffset: 0,
-          foreColor: this.styleGraphic.bodyColor,
-          background: this.styleGraphic.cardBg,
-          toolbar: {
-            show: false,
-          },
+  graphicAppointmentLastSevenDays() {
+    return {
+      chart: {
+        type: "line",
+        height: "550",
+        width: '100%',
+        parentHeightOffset: 0,
+        foreColor: this.styleGraphic.bodyColor,
+        background: this.styleGraphic.cardBg,
+        toolbar: {
+          show: false,
         },
-        theme: {
-          mode: "light",
+      },
+      theme: {
+        mode: "light",
+      },
+      tooltip: {
+        theme: "light",
+      },
+      colors: [this.styleGraphic.vd],
+      fill: {
+        opacity: 0.9,
+      },
+      grid: {
+        padding: {
+          bottom: -4,
         },
-        tooltip: {
-          theme: "light",
-        },
-        colors: [this.styleGraphic.vd],
-        fill: {
-          opacity: 0.9,
-        },
-        grid: {
-          padding: {
-            bottom: -4,
-          },
-          borderColor: this.styleGraphic.gridBorder,
-          xaxis: {
-            lines: {
-              show: true,
-            },
-          },
-        },
-        series: [
-          {
-            name: "Appointments on the day.",
-            data: this.totalAppointmentLastSevenDays,
-          },
-        ],
+        borderColor: this.styleGraphic.gridBorder,
         xaxis: {
-          categories: this.lastSevenDays,
-          axisBorder: {
-            color: this.styleGraphic.gridBorder,
-          },
-          axisTicks: {
-            color: this.styleGraphic.gridBorder,
+          lines: {
+            show: true,
           },
         },
-        yaxis: {
-          min: 0,
-          max: this.totalAppointmentLastSevenDays.reduce(function(prev, current) { 
-            return prev > current ? prev+0.25 : current+0.25; 
-          }),
-          forceNiceScale: true,
-          title: {
-            text: "Amount of Appointments",
-            style: {
-              size: 9,
-              color: this.styleGraphic.muted,
-            },
+      },
+      series: [
+        {
+          name: "Appointments on the day.",
+          data: this.totalAppointmentLastSevenDays,
+        },
+      ],
+      xaxis: {
+        categories: this.lastSevenDays,
+        axisBorder: {
+          color: this.styleGraphic.gridBorder,
+        },
+        axisTicks: {
+          color: this.styleGraphic.gridBorder,
+        },
+      },
+      yaxis: {
+        min: 0,
+        max: this.totalAppointmentLastSevenDays.reduce(function (prev, current) {
+          return prev > current ? prev + 0.25 : current + 0.25;
+        }),
+        forceNiceScale: true,
+        title: {
+          text: "Amount of Appointments",
+          style: {
+            size: 9,
+            color: this.styleGraphic.muted,
           },
         },
-        legend: {
-          show: true,
-          position: "top",
-          horizontalAlign: "center",
-          fontFamily: this.styleGraphic.fontFamily,
-          itemMargin: {
-            horizontal: 8,
-            vertical: 2,
-          },
+      },
+      legend: {
+        show: true,
+        position: "top",
+        horizontalAlign: "center",
+        fontFamily: this.styleGraphic.fontFamily,
+        itemMargin: {
+          horizontal: 8,
+          vertical: 2,
         },
-        stroke: {
-          width: 3,
+      },
+      stroke: {
+        width: 3,
         curve: "smooth",
         lineCap: "round"
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        }
-      }
+      },
+      dataLabels: {
+        enabled: false,
+      },
+    }
+  }
 
 
 }
