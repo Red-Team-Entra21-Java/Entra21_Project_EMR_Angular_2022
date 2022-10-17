@@ -7,10 +7,10 @@
     <app-menu [hidden]="!security.authenticated"></app-menu>
 
     <div [ngClass]="security.authenticated ? 'content-wrapper' : ''">
-      <section class="content ">
-        <div class="container-fluid ">
+      <section class="content">
+        <div class="container-fluid">
           <div class="row ">
-            <div class="col-12 p-0">
+            <div class="col-12 p-0 ">
               <router-outlet></router-outlet>
             </div>
           </div>
@@ -20,6 +20,7 @@
 
     <app-footer [hidden]="!security.authenticated"></app-footer>
 
-    <aside class="control-sidebar control-sidebar-dark"></aside>
+    <!-- <aside class="control-sidebar control-sidebar-dark"></aside> -->
   </div>
 </body>
+

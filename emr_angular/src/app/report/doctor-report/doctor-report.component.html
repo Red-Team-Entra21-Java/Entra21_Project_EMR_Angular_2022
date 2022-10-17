@@ -1,29 +1,32 @@
-<div class="card m-5 p-2">
-    <table class=" table table-sm table-striped table-hover ">
-        <thead class="text-center">
-            <th>Name</th>
-            <th>CPF</th>
-            <th>Mother Name</th>
-            <th>Genre</th>
-            <th>Birth Date</th>
-            <th>District</th>
-            <th>City</th>
-            <th>Register Number</th>
-            <th>Specialty</th>
-
-        </thead>
-        <tbody>
-            <tr class="text-center" *ngFor="let doctor of doctorList; let index = index">
-                <td>{{ doctor.name }}</td>
-                <td>{{ doctor.cpf }}</td>
-                <td>{{ doctor.nameMother }}</td>
-                <td>{{ doctor.genre }}</td>
-                <td>{{ doctor.birth }}</td>
-                <td>{{ doctor.district }}</td>
-                <td>{{ doctor.city }}</td>
-                <td>{{ doctor.registerNumber }}</td>
-                <td>{{ doctor.specialty }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card margins">
+    <div class="card-body">
+        <h1 class="text-center">Doctors</h1>
+        <table class=" table table-sm table-striped table-hover ">
+            <thead class="text-center">
+                <th>Name</th>
+                <th>CPF</th>
+                <th>Mother Name</th>
+                <th>Genre</th>
+                <th>Birth Date</th>
+                <th>District</th>
+                <th>City</th>
+                <th>Register Number</th>
+                <th>Specialty</th>
+    
+            </thead>
+            <tbody>
+                <tr class="text-center" *ngFor="let doctor of doctorList; let index = index">
+                    <td>{{ doctor.name }}</td>
+                    <td>{{ doctor.cpf }}</td>
+                    <td>{{ doctor.nameMother }}</td>
+                    <td>{{ doctor.genre }}</td>
+                    <td>{{ doctor.birth }}</td>
+                    <td>{{ doctor.district }}</td>
+                    <td>{{ doctor.city }}</td>
+                    <td>{{ doctor.registerNumber }}</td>
+                    <td>{{ doctor.specialty }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
