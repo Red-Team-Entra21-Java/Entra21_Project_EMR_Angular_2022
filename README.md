@@ -304,7 +304,11 @@ user: root and password: Mysql123@ )
     ````
     CREATE SCHEMA `emr`;
     ````
-
+9. Another option is to start with a mass of data, just download it [here](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022/tree/development/data_base_mysql).
+    - Go to the administration tab
+    - Data Import/Restore
+    - Import from Self-Contained File
+    - Start Import
 <br>
 
 ---
