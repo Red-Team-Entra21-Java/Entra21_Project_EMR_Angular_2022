@@ -321,7 +321,19 @@ You can test the requests through Postman, importing the collections available [
 
 <br>
 
+
 ---
+
+## **📚 Trello**
+
+During the development process, the tasks were mapped and executed according to the planning carried out in trello, using the techniques of agile methodologies and kanban.
+
+![Trello](./readme_images/trello.png)
+
+<br>
+---
+
+
 
 ## **📚 Technologies and Concepts**
 
