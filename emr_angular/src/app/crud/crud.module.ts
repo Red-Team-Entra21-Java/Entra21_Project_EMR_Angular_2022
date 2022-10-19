@@ -19,6 +19,7 @@ import { DetailsDoctorComponent } from './details-doctor/details-doctor.componen
 import { DetailsUserComponent } from './details-user/details-user.component';
 import { DetailsAppointmentComponent } from './details-appointment/details-appointment.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { PrescriptionComponent } from './printer/prescription/prescription.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     DetailsDoctorComponent,
     DetailsUserComponent,
     DetailsAppointmentComponent,
+    PrescriptionComponent,
     
     
   ],
