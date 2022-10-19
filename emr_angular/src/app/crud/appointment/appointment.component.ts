@@ -33,6 +33,7 @@ export class AppointmentComponent implements OnInit {
     }, 1000);
     this.sendTitle();
     // this.listAppointmentTable()
+
   }
 
   listAllAppointmentResume(): void {
@@ -206,4 +207,6 @@ export class AppointmentComponent implements OnInit {
       return false;
     }
   }
+
+
 }

@@ -18,3 +18,7 @@
 .logo-initial {
     height: 40px;
 }
+
+.func-card {
+    min-height: 136px;
+}

@@ -1,11 +1,12 @@
 import { Time } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { AppointmentService } from 'src/app/services/crud/appointment.service';
 import { PatientService } from 'src/app/services/crud/patient.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { SystemService } from 'src/app/services/system.service';
+import { jsPDF } from "jspdf";
 
 @Component({
   selector: 'app-new-appointment',
@@ -16,7 +17,8 @@ export class NewAppointmentComponent implements OnInit {
 
   medicalReleaseBox: Array<String> = ["Released", "internee", "Forwarded Evaluation", "Death"]
   appointment!: any;
-
+  patientPrinter!: any
+  date: any = new Date()
   updateButtonHidden: boolean = this.appointmentService.updateButtonHidden; 
   patientId!: number | null
   doctorId: number | null = (this.systemService.user[0].doctor !== null) ? this.systemService.user[0].doctor.id  : 1
@@ -27,12 +29,17 @@ export class NewAppointmentComponent implements OnInit {
   certificate!: string | null
   forwarding!: string | null
   medicalRelease!: string | null
+  
+  
+  @ViewChild('prescriptionTemplate', { static: false }) prescriptionTemplate!: ElementRef;
+  @ViewChild('certificateTemplate', { static: false }) certificateTemplate!: ElementRef;
+  @ViewChild('forwardingTemplate', { static: false }) forwardingTemplate!: ElementRef;
 
   constructor(
-    private appointmentService: AppointmentService,
+    public appointmentService: AppointmentService,
     public patientService: PatientService,
     private securityService: SecurityService,
-    private systemService: SystemService,
+    public systemService: SystemService,
     private router: Router,
 
   ) { }
@@ -42,6 +49,9 @@ export class NewAppointmentComponent implements OnInit {
       this.appointment = this.appointmentService.appointment;
     } else {
       this.appointment = {};
+    }
+    if(this.appointment.patient !== undefined) {
+      this.setPatient(this.appointment.patient.id)
     }
   }
 
@@ -142,6 +152,17 @@ export class NewAppointmentComponent implements OnInit {
 
   setPatient(patientId: any) {
     this.patientId = patientId
+    
+    for (let count = 0; count < this.patientService.patientList.length; count++) {
+      if(patientId === this.patientService.patientList[count].id) {
+        this.patientPrinter = this.patientService.patientList[count]
+        
+      }
+      
+      
+    }
+    console.log(this.patientPrinter);
+    
   }
 
   clearInputs() {
@@ -171,6 +192,35 @@ export class NewAppointmentComponent implements OnInit {
       validation = false;
     }
     return validation
+  }
+
+  printPrescription() {
+    const prescription = new jsPDF('p','pt','a4');
+    prescription.html(this.prescriptionTemplate.nativeElement, {
+      callback: (pdf)=> {
+        // pdf.save("prescription.pdf");
+        pdf.autoPrint()
+        pdf.output('dataurlnewwindow', {filename:"Prescription"})
+      }
+    })
+  }
+  printCertificate() {
+    const certificate = new jsPDF('p','pt','a4');
+    certificate.html(this.certificateTemplate.nativeElement, {
+      callback: (pdf)=> {
+        pdf.autoPrint()
+        pdf.output('dataurlnewwindow', {filename:"Certificate"})
+      }
+    })
+  }
+  printForwarding() {
+    const forwarding = new jsPDF('p','pt','a4');
+    forwarding.html(this.forwardingTemplate.nativeElement, {
+      callback: (pdf)=> {
+        pdf.autoPrint()
+        pdf.output('dataurlnewwindow', {filename:"Forwarding"})
+      }
+    })
   }
 
 }

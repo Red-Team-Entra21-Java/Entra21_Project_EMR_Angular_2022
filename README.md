@@ -216,6 +216,8 @@ In the UserController class are the CRUD methods related to the calls, through w
 
 ## 📊&nbsp; Reports
 
+![User](./readme_images/emr_report.gif)
+
 The reports bring data referring to existing records in the database, that is, appointment, patient, doctor and user data.
 They are listed in table format, displaying the most pertinent data.
 All data is called through existing http methods within the Angular service, and sent through Spring controllers.
@@ -302,7 +304,11 @@ user: root and password: Mysql123@ )
     ````
     CREATE SCHEMA `emr`;
     ````
-
+9. Another option is to start with a mass of data, just download it [here](https://github.com/Red-Team-Entra21-Java/Entra21_Project_EMR_Angular_2022/tree/development/data_base_mysql).
+    - Go to the administration tab
+    - Data Import/Restore
+    - Import from Self-Contained File
+    - Start Import
 <br>
 
 ---
@@ -319,7 +325,19 @@ You can test the requests through Postman, importing the collections available [
 
 <br>
 
+
 ---
+
+## **📚 Trello**
+
+During the development process, the tasks were mapped and executed according to the planning carried out in trello, using the techniques of agile methodologies and kanban.
+
+![Trello](./readme_images/trello.png)
+
+<br>
+---
+
+
 
 ## **📚 Technologies and Concepts**
 
