@@ -216,6 +216,8 @@ In the UserController class are the CRUD methods related to the calls, through w
 
 ## 📊&nbsp; Reports
 
+![User](./readme_images/emr_report.gif)
+
 The reports bring data referring to existing records in the database, that is, appointment, patient, doctor and user data.
 They are listed in table format, displaying the most pertinent data.
 All data is called through existing http methods within the Angular service, and sent through Spring controllers.
