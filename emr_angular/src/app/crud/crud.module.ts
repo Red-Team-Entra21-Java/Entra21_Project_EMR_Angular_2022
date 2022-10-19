@@ -18,6 +18,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { DetailsDoctorComponent } from './details-doctor/details-doctor.component';
 import { DetailsUserComponent } from './details-user/details-user.component';
 import { DetailsAppointmentComponent } from './details-appointment/details-appointment.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { PrescriptionComponent } from './printer/prescription/prescription.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { DetailsAppointmentComponent } from './details-appointment/details-appoi
     DetailsDoctorComponent,
     DetailsUserComponent,
     DetailsAppointmentComponent,
+    PrescriptionComponent,
     
     
   ],
@@ -44,7 +47,8 @@ import { DetailsAppointmentComponent } from './details-appointment/details-appoi
     RouterModule,
     FormsModule,
     NgxMaskModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ],
   exports: [
     NewUserComponent

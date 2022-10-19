@@ -1,30 +1,33 @@
-<div class="card m-5 p-2">
-    <table class=" table table-sm table-striped table-hover ">
-        <thead class="text-center">
-            <th>Name</th>
-            <th>CPF</th>
-            <th>Mother Name</th>
-            <th>Genre</th>
-            <th>Birth Date</th>
-            <th>District</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Country</th>
-        </thead>
-        <tbody>
-            <tr class="text-center" *ngFor="let patient of patientList; let index = index">
-                <td>{{ patient.name }}</td>
-                <td>{{ patient.cpf }}</td>
-                <td>{{ patient.nameMother }}</td>
-                <td>{{ patient.genre }}</td>
-                <td>{{ patient.birth }}</td>
-                <td>{{ patient.district }}</td>
-                <td>{{ patient.city }}</td>
-                <td>{{ patient.state }}</td>
-                <td>{{ patient.country }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card margins">
+    <div class="card-body">
+        <h1 class="text-center">Patients</h1>
+        <table class=" table table-sm table-striped table-hover ">
+            <thead class="text-center">
+                <th>Name</th>
+                <th>CPF</th>
+                <th>Mother Name</th>
+                <th>Genre</th>
+                <th>Birth Date</th>
+                <th>District</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+            </thead>
+            <tbody>
+                <tr class="text-center" *ngFor="let patient of patientList; let index = index">
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.cpf }}</td>
+                    <td>{{ patient.nameMother }}</td>
+                    <td>{{ patient.genre }}</td>
+                    <td>{{ patient.birth }}</td>
+                    <td>{{ patient.district }}</td>
+                    <td>{{ patient.city }}</td>
+                    <td>{{ patient.state }}</td>
+                    <td>{{ patient.country }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

@@ -13,6 +13,7 @@ import { NewDoctorComponent } from './crud/new-doctor/new-doctor.component';
 import { NewPatientComponent } from './crud/new-patient/new-patient.component';
 import { NewUserComponent } from './crud/new-user/new-user.component';
 import { PatientComponent } from './crud/patient/patient.component';
+import { PrescriptionComponent } from './crud/printer/prescription/prescription.component';
 import { UserComponent } from './crud/user/user.component';
 import { FormsPagesComponent } from './initial-pages/forms-pages/forms-pages.component';
 import { HomeComponent } from './initial-pages/home/home.component';
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: "patient-report", component: PatientReportComponent,canActivate: [SecurityService]},
   { path: "doctor-report", component: DoctorReportComponent,canActivate: [SecurityService]},
   { path: "user-report", component: UserReportComponent,canActivate: [SecurityService]},
+  { path: "printer", component: PrescriptionComponent},
   
   // { path: "new-appointment/:date/:hour/:doctor/:patient/:patientCPF/:anamnesis/:prescription/:certificate/:forwarding/:medicalRelease", component: NewAppointmentComponent,canActivate: [SecurityService]},
   // { path: "new-patient/:name/:cpf/:motherName/:fatherName/:genre/:birthDate/:streetName/:numberHome/:district/:city/:state/:country", component: NewPatientComponent,canActivate: [SecurityService]},
