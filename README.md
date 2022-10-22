@@ -258,7 +258,7 @@ All data is called through existing http methods within the Angular service, and
 
 1. To run the project, Java JDK, Spring tools Suite and Maven must be installed and the environment variable defined.
 2. To install Java JDK
-    - Download JDK from the [site](https://www.oracle.com/java/technologies/downloads/#jdk19-windows)
+    - Download JDK from [here](https://drive.google.com/file/d/1fT_WYUkoMXVoRfWb6EgSr8Hn9BevUeLO/view?usp=sharing)
     - Install the JDK exe File
     - Check the Directory ``C:\Program Files\Java\jdk-xxx`` if exists folder jdk
 3. To install Maven
@@ -294,7 +294,7 @@ user: root and password: Mysql123@ )
 ## **MySql**
 
 1. To run the project, MySql just needs to be running with a database called emr, Spring itself will create the necessary tables.
-2. To install MySql just follow this video I created demonstrating the steps. [Tutorial](https://youtu.be/0LJrh9Vuowg)
+2. To install MySql just follow this video I created demonstrating the steps. [Tutorial](https://youtu.be/0LJrh9Vuowg) and [Download](https://drive.google.com/file/d/1YbWqaWGp-IOoksGA7D3CeZ1MhCmiELCW/view?usp=sharing)
 3. To create the database, open MySql Workbench
 4. Access the local instance with your password.
 5. Click on the fourth icon to create a new schema
