@@ -5,7 +5,12 @@
             <a class="navbar-brand" href="#home">
                 <img class="logo-initial" src="../../../assets/icons/logo.png" alt="Inside Medical Logo">
             </a>
-    
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-5 mb-1 mb-lg-0">
                     <li class="nav-item"> 
@@ -29,66 +34,74 @@
         </div>
     </nav>
   </header>
+
 </section>
 
+<!-- HOME SECTION -->
 <a name="home"></a>
-<section class="row initial p-0 m-0">
-  <div class="col background-color d-flex justify-content-center ">
-    <div class="align-self-center text-end">
-      <h1 class="text-light title-initial ">Electronic <br /> Medical <br />Record</h1>
-      <p class="text-secondary">Electronic medical record for medical records.<br />Log in or sign up!</p>
-      <a routerLink="../login" (click)="recordUser(false)" class="btn btn-light w-25">Login</a>
-      <a routerLink="../login" (click)="recordUser(true)" class="btn btn-light ml-2 w-25">Register</a>
-    </div>
-  </div>
-  <div class="col initial-image p-0">
+<section class="container-fluid align-items-center mt-5 initial">
+  <div class="row p-0" style="height: 100vh;">
+      <div class="col-md col-lg-6 p-5 left-side d-flex align-items-center justify-content-center background-color">
+          <div class="info">
+            <h1 class="text-light title-initial">Electronic <br /> Medical <br />Record</h1>
+            <p class="text-secondary">Electronic medical record for medical records.<br />Log in or sign up!</p>
+            <a routerLink="../login" (click)="recordUser(false)" class="btn btn-light home-button ">Login</a>
+            <a routerLink="../login" (click)="recordUser(true)" class="btn btn-light ml-2  home-button">Register</a>
+          </div>
+      </div>
 
+      <div class="initial-image col col-md d-none d-lg-flex align-items-center justify-content-center ">
+      </div>
 
   </div>
 </section>
-
 
 <!-- ABOUT SECTION -->
 <a name="about"></a>
 <section class="container-fluid second-section h-auto background-color">
+
+
+
+  
   <div class="row p-0">
     <div class="col p-5 background-primary-color d-flex align-items-center justify-content-center flex-column ">
       <div class="row">
         <h2 class="pb-4 pt-4">About</h2>
       </div>
 
-      <div class="row container mb-5 g-3">
-        <div class="col-md col-lg-4">
-          <div class="card card-home">
-            <div class="card-body">
-              <h3>History</h3>
-              <p>Thinking about health institutions that were unable to adapt to digitalization, EMR was born, a simple software with low complexity to facilitate the use of electronic medical records.</p>
+      <div class="card mx-5">
+        <div class="card-body">
+          <div class="row">
+    
+            <div class="col-md col-lg-4">
+              <div class="description-block">
+                <h3>History</h3>
+                <p>Thinking about health institutions that were unable to adapt to digitalization, EMR was born, a simple software with low complexity to facilitate the use of electronic medical records.</p>  
+              </div>
+    
             </div>
-          </div>
-        </div>
-        <div class="col-md col-lg-4">
-          <div class="card card-home">
-            <div class="card-body">
-              <h3>Purpose</h3>
-              <p>Bring digital transformation to small, non-digitized institutions.</p>
+    
+            <div class="ol-md col-lg-4">
+              <div class="description-block">
+                <h3>Purpose</h3>
+                <p>Bring digital transformation to small, non-digitized institutions.</p>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md col-lg-4">
-          <div class="card card-home">
-            <div class="card-body">
-              <h3>Tecnology</h3>
-              <p>Solve pain in the area through technology.</p>
+    
+            <div class="ol-md col-lg-4">
+              <div class="description-block">
+                <h3>Tecnology</h3>
+                <p>Solve pain in the area through technology.</p>
+              </div>
+    
             </div>
+    
+    
           </div>
         </div>
       </div>
-
-
-
-
+      
     </div>
-    
   </div>
 </section>
 
@@ -99,13 +112,13 @@
   <h2 class="text-center pb-4 pt-4">Solution</h2>
   <div class="row container mx-auto">
 
-    <div class="col display-doctor">
+    <div class="col-md col-lg-6 display-doctor">
       <img class="w-100 p-1 display-doctor" src="../../../assets/images/doctor.png" alt="">
       
     </div>
 
-    <div class="col order-first order-lg-last col-lg-6 d-flex flex-column align-items-center justify-content-center">
-      <p class="ml-5 fs-5 w-100 text-center">
+    <div class="col-lg col-lg-6 order-first order-lg-last d-flex flex-column align-items-center justify-content-center">
+      <p class="mx-5 fs-5 w-100 text-center">
         <b>
           The EMR is an electronic medical record system that aims to deal with the management of small clinics and
           medical care offices.
@@ -190,22 +203,22 @@
     <div class="card-body">
       <div class="row">
 
-        <div class="col-sm-4 col-6">
-          <div class="description-block border-right">
+        <div class="col-sm-4 col-12">
+          <div class="description-block">
             <img class="logo" src="../../../assets/images/logo/spring_logo.png" alt="Spring Logo">
             <h5 class="description-header">Spring Boot</h5>
           </div>
 
         </div>
 
-        <div class="col-sm-4 col-6">
-          <div class="description-block border-right">
+        <div class="col-sm-4 col-12">
+          <div class="description-block ">
             <img class="logo" src="../../../assets/images/logo/angular_logo.png" alt="Angular Logo">
             <h5 class="description-header">Angular</h5>
           </div>
         </div>
 
-        <div class="col-sm-4 col-6">
+        <div class="col-sm-4 col-12">
           <div class="description-block">
             <img class="logo" src="../../../assets/images/logo/mysql_logo.png" alt="MySql Logo">
             <h5 class="description-header">MySql</h5>
@@ -220,43 +233,31 @@
 
 </section>
 
-<section class="container-fluid third-section background-primary-color h-auto d-block d-md-flex flex-md-column justify-content-center background-color pb-5 d-flex align-items-center justify-content-center">
+<section class="container-fluid h-auto d-flex flex-column justify-content-center background-color pb-5 align-items-center">
   <h2 class="text-center pb-4 pt-4">Presentation</h2>
-  <div class="row">
-    <div class="col"></div>
-    <div class="col-8">
-      <div class="card w-100">
-        <div class="card-body">
-          <video controls class="w-100" src="../../../assets/presentation_audio.mp4"></video>
-        </div>
-      </div>
+  <div class="card mx-5">
+    <div class="card-body">
+      <video controls src="../../../assets/presentation_audio.mp4"></video>
     </div>
-    <div class="col"></div>
   </div>
 
 
 </section>
 
 <a name="contact"></a>
-<section   class="container-fluid fouth-section background-primary-color d-block d-md-flex flex-md-column justify-content-center background-color pt-3 pb-3">
+<section class="container-fluid fouth-section background-primary-color d-block d-md-flex flex-md-column justify-content-center background-color pt-3 pb-3">
   <h2 class="text-center pb-4 pt-5 pt-lg-0">Contact</h2> 
-  <div class="row container mx-auto">
-    <div class="col-12 col-lg-6 d-flex flex-column align-items-md-center align-items-lg-start justify-content-center">
-      <h3 class="w-75">Send us an email!</h3>
+  <div style="height: 30vh;" class="row container mx-auto">
+    <div class="col d-flex flex-column align-items-md-center align-items-lg-center justify-content-center">
+      <h3 class="">Send us an email!</h3>
+      <p>seiler.emerson@gmail.com</p>
+        <p>welliton1991borges@gmail.com</p>
       <div>
-        
-          
-          <p>seiler.emerson@gmail.com
           <br>
-          welliton1991borges@gmail.com</p>
-        
-
-
       </div>
+      <button class="btn btn-light" routerLink="team"><h5>Meet our team!</h5></button>
+      
     </div>
 
-    <div class="col">
-      <button class="btn btn-light" routerLink="team"><h5>Meet our team!</h5></button>
-    </div>
   </div>
 </section>
