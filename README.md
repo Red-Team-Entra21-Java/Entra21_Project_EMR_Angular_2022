@@ -20,6 +20,8 @@ Focused on the management of electronic medical records, it is able to store and
 
 Another important point is related to the issue of printed documentation, thus eliminating the possibility of errors caused by handwriting interpretation problems.
 
+You can watch the full presentation in the video below.
+[![MR Video](./readme_images/video_emr.png)](https://youtu.be/zAlA0TAjGdM)
 ---
 <br>
 
