@@ -1,25 +1,29 @@
-<section class="row initial p-0 m-0">
-
-    <div class="col login-image">
-        <a class="text-primary" routerLink="" >
-            <img class="logo" src="../../../assets/icons/logo.png" alt="">
-        </a>
-    </div>
-
-    <div class="col background-color d-flex justify-content-center">
-        <div class="align-self-center text-end w-50">
-            <div class="row d-flex">
-                <div class="col">
-                    <app-login [hidden]="isLogin"></app-login>
-                    <app-new-user [hidden]="!isLogin"></app-new-user>
-                    <div [hidden]="isLogin" class="alert alert-light" role="alert">
-                        Don't have a registration? Register <b class="cursor" (click)="recordUser()" >here!</b>
-                    </div>
+<section class="container-fluid align-items-center initial">
+    <div class="row p-0" style="height: 100vh;">
+        <div class="login-image col col-lg d-block">
+            <a class="text-primary" routerLink="" >
+                <img class="logo" src="../../../assets/icons/logo.png" alt="">
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-6 p-5 left-side d-flex align-items-center justify-content-center background-color">
+            <div class="row">
+                <div class="col-12" >
+                    <div class="align-self-center text-end">
+                        <div class="row d-flex">
+                            <div class="col">
+                                <app-login [hidden]="isLogin"></app-login>
+                                <app-new-user [hidden]="!isLogin"></app-new-user>
+                                <div [hidden]="isLogin" class="alert alert-light" role="alert">
+                                    Don't have a registration? Register <b class="cursor" (click)="recordUser()" >here!</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
                 </div>
             </div>
         </div>
+  
+
+  
     </div>
-</section>
-
-
-
+  </section>
