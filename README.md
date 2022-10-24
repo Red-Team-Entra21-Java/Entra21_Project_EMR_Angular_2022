@@ -20,6 +20,9 @@ Focused on the management of electronic medical records, it is able to store and
 
 Another important point is related to the issue of printed documentation, thus eliminating the possibility of errors caused by handwriting interpretation problems.
 
+You can watch the full presentation in the video below.
+
+[![MR Video](./readme_images/video_emr.png)](https://youtu.be/zAlA0TAjGdM)
 ---
 <br>
 
@@ -229,6 +232,14 @@ All data is called through existing http methods within the Angular service, and
 ---
 
 ## **👨🏽‍🏫 Instructions for execute the Project**
+
+## ☁️ **Deploy**
+There is the possibility to test the application through the website: https://seiler-emerson.github.io/emr/
+
+Test users:
+- login: admin / password: admin
+- login: doctor / password: doctor
+- login: user / password: user
 
 ## **Angular**
 
