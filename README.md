@@ -233,6 +233,14 @@ All data is called through existing http methods within the Angular service, and
 
 ## **👨🏽‍🏫 Instructions for execute the Project**
 
+## ☁️ **Deploy**
+There is the possibility to test the application through the website: https://seiler-emerson.github.io/emr/
+
+Test users:
+- login: admin / password: admin
+- login: doctor / password: doctor
+- login: user / password: user
+
 ## **Angular**
 
 1. Make a project copy to your machine:
