@@ -234,12 +234,11 @@ All data is called through existing http methods within the Angular service, and
 ## **👨🏽‍🏫 Instructions for execute the Project**
 
 ## ☁️ **Deploy**
+Due to the removal of heroku's free plan and the completion of the entra21 talent show, only the front end deply is working.
 There is the possibility to test the application through the website: https://seiler-emerson.github.io/emr/
 
 Test users:
 - login: admin / password: admin
-- login: doctor / password: doctor
-- login: user / password: user
 
 ## **Angular**
 
